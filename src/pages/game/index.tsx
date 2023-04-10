@@ -1,10 +1,18 @@
 import React from "react";
-import { GamePageStyle } from "./style";
+import {
+    GamePageStyle,
+    SlotGameStyle
+} from "./styled";
+import { Carousel } from "./components/carousel";
 
 export const GamePage = () => {
     return (
         <GamePageStyle>
-            Game Page
+            <SlotGameStyle>
+                <Carousel />
+                <Carousel />
+                <Carousel />
+            </SlotGameStyle>
         </GamePageStyle>
     );
 }
