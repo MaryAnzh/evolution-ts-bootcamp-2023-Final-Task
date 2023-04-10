@@ -15,4 +15,5 @@ export const MainStyle = styled.main`
   flex-direction: column;
   align-items: center;
   flex: 1 0 auto;
+  background: red;
 `;
