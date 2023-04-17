@@ -9,7 +9,6 @@ type HeaderProps = {
 }
 
 export const Header: React.FC<HeaderProps> = observer((props) => {
-    const themeName = useContext(ThemeContext);
 
     return (
         <HeaderStyle>

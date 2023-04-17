@@ -5,7 +5,6 @@ export const HeaderStyle = styled.header`
   padding: 1rem;
   display: flex;
   align-items: center;
-  background: ${({ theme }) => theme.color};
 `;
 
 export const UserNameWrap = styled.div`
@@ -14,5 +13,5 @@ export const UserNameWrap = styled.div`
 
 export const UserNameGreasing = styled.span`
   font-size: 1.25re;
-  color: ${props => props.theme.color}
+
 `;

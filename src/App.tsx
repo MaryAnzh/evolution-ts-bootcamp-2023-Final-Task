@@ -8,7 +8,8 @@ import { Footer } from './components/common/footer';
 import { MainStyle } from './AppStyled';
 import { GamePage } from './pages/game';
 import { APPStyled } from './AppStyled';
-import { ITheme, themes } from './themes/themes-context';
+import { themes } from './themes/themes-context';
+import { ITheme } from './themes/theme.interface';
 
 export const store = new Store();
 

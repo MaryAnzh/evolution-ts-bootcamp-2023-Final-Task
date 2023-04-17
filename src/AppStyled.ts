@@ -6,6 +6,7 @@ export const APPStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: ${({theme}) => theme.gradient}
 `;
 
 export const MainStyle = styled.main`
@@ -15,5 +16,4 @@ export const MainStyle = styled.main`
   flex-direction: column;
   align-items: center;
   flex: 1 0 auto;
-  background: black;
 `;
