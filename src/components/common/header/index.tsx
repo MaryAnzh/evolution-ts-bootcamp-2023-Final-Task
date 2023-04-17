@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { store } from "../../../App";
 import { HeaderStyle } from "./style";
+import { ThemeContext } from "styled-components";
 
-export const Header = observer(() => {
+type HeaderProps = {
+    changeTheme: (themeName: 'black' | 'see') => void
+}
+
+export const Header: React.FC<HeaderProps> = observer((props) => {
+    const themeName = useContext(ThemeContext);
 
     return (
         <HeaderStyle>
@@ -17,6 +23,13 @@ export const Header = observer(() => {
                     change user
                 </button>
             </div>
+            <button
+                onClick={() => props.changeTheme('black')}
+            >Black</button>
+            <button
+                onClick={() => props.changeTheme('see')}
+            >See</button>
+
         </HeaderStyle >
     );
 })
