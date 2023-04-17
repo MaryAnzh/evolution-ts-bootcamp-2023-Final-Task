@@ -1,8 +1,14 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { store } from "../../../App";
-import { HeaderStyle } from "./style";
-import { ThemeContext } from "styled-components";
+import {
+    HeaderStyle,
+    UserNameGreasing,
+    UserNameWrap,
+    ThemesWrap,
+    BlackThemeButton,
+    SeeThemeButton
+} from "./style";
 
 type HeaderProps = {
     changeTheme: (themeName: 'black' | 'see') => void
@@ -12,8 +18,14 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
 
     return (
         <HeaderStyle>
-            <div>
-                <div>current user: {store.user}</div>
+            <UserNameWrap>
+                <UserNameGreasing>
+                    Hello  {store.user}
+                </UserNameGreasing>
+            </UserNameWrap>
+            {/* <div>
+                 <div>current user: {store.user}</div>
+                </ThemesWrap>
                 <button onClick={
                     () => {
                         store.setUser("Alfred");
@@ -21,14 +33,20 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                 }>
                     change user
                 </button>
-            </div>
-            <button
-                onClick={() => props.changeTheme('black')}
-            >Black</button>
-            <button
-                onClick={() => props.changeTheme('see')}
-            >See</button>
+            </div> */}
 
+            <ThemesWrap>
+                <BlackThemeButton
+                    onClick={() => props.changeTheme('black')}
+                >
+                    Black
+                </BlackThemeButton>
+                <SeeThemeButton
+                    onClick={() => props.changeTheme('see')}
+                >
+                    See
+                </SeeThemeButton>
+            </ThemesWrap>
         </HeaderStyle >
     );
 })
