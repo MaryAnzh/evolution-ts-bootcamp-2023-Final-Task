@@ -4,6 +4,7 @@ import {
     SlotGameStyle
 } from "./styled";
 import { Carousel } from "./components/carousel";
+import { ControlPanel } from "./components/control-panel";
 
 export const GamePage = () => {
     return (
@@ -13,6 +14,7 @@ export const GamePage = () => {
                 <Carousel />
                 <Carousel />
             </SlotGameStyle>
+            <ControlPanel />
         </GamePageStyle>
     );
 }
