@@ -6,4 +6,4 @@ export const HeaderStyle = styled.header`
   display: flex;
   align-items: center;
   background: pink;
-  `;
+`;

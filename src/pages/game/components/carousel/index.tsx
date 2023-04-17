@@ -8,8 +8,8 @@ import {
 } from "./styled";
 
 export const Carousel = () => {
-    // const [rotate, setRotate] = useState(0);
-    // const rotateAngle = 45;
+    const [rotate, setRotate] = useState(0);
+    const rotateAngle = 45;
     
     const rotateStyle = {
         transform: `perspective(1000px) rotateX(${rotate}deg)`,
@@ -19,7 +19,7 @@ export const Carousel = () => {
         return (
             <CarouselCard
                 key={el}
-                style={{ transform: `rotateX(${45 * i}deg) translateZ(200px)` }}>
+                style={{ transform: `rotateX(${rotateAngle * i}deg) translateZ(200px)` }}>
             </CarouselCard>
         );
     });

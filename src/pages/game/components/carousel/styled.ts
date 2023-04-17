@@ -39,7 +39,7 @@ export const CarouselBody = styled.div`
   align-items: center;
   transform-style: preserve-3d;
   transition: all .3s;
-  animation: spin linear 10s infinite;
+  /* animation: spin linear 10s infinite; */
   
   @keyframes spin {
       0% {transform: perspective(1000px) rotateX(0deg) rotateX(8deg)}
