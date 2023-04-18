@@ -14,8 +14,6 @@ import { ITheme } from './themes/theme.interface';
 export const store = new Store();
 
 const App = () => {
-
-
   const [theme, setTheme] = useState<ITheme>(themes.black);
 
   const changeTheme = (t: 'black' | 'see') => {

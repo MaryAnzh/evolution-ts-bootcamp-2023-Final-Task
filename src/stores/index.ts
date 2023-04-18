@@ -1,18 +1,36 @@
 import { action, makeObservable, observable } from "mobx";
 
+export interface ISlot {
+  isSpin: boolean,
+  isPause: boolean,
+  value: number,
+}
 export interface ISlots {
-  slot1: number,
-  slot2: number,
-  slot3: number,
+  slot0: ISlot,
+  slot1: ISlot,
+  slot2: ISlot,
 }
 
 export class Store {
   user = 'Guest';
-  slots: ISlots = {
-    slot1: 0,
-    slot2: 0,
-    slot3: 0,
-  };
+
+  slots: ISlot[] = [
+    {
+      isSpin: false,
+      isPause: true,
+      value: 0,
+    },
+    {
+      isSpin: false,
+      isPause: true,
+      value: 0,
+    },
+    {
+      isSpin: false,
+      isPause: true,
+      value: 0,
+    },
+  ];
 
   constructor() {
     makeObservable(this, {
@@ -24,5 +42,16 @@ export class Store {
 
   setUser(user: string) {
     this.user = user;
+  }
+
+  spinSlot(slotIndex: number) {
+    this.slots[slotIndex].isSpin = true;
+    this.slots[slotIndex].isPause = false;
+  }
+
+  stopSlot(slotIndex: number) {
+    //this.slots[slotIndex].isSpin = false;
+    this.slots[slotIndex].isPause = true;
+
   }
 }
