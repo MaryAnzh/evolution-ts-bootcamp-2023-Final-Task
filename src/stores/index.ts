@@ -32,11 +32,15 @@ export class Store {
     },
   ];
 
+  cards = [[0, 1, 2, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 6, 7]];
+
   constructor() {
     makeObservable(this, {
       user: observable,
       slots: observable,
       setUser: action,
+      spinSlot: action,
+      stopSlot: action,
     });
   }
 
@@ -46,12 +50,14 @@ export class Store {
 
   spinSlot(slotIndex: number) {
     this.slots[slotIndex].isSpin = true;
-    this.slots[slotIndex].isPause = false;
   }
 
   stopSlot(slotIndex: number) {
-    //this.slots[slotIndex].isSpin = false;
-    this.slots[slotIndex].isPause = true;
-
+    this.slots[slotIndex].isSpin = false;
   }
+
+  mixCard(slotNumber: number) {
+    console.log('');
+  }
+
 }

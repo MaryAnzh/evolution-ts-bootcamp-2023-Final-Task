@@ -7,9 +7,9 @@ export const ControlPanelButton = () => {
 
     const starSpin = () => {
         slotsCount.forEach(slot => {
-            const time = 1000 * (slot + 1);
+            const time = 1000 * (slot + 1)
             store.spinSlot(slot);
-            setTimeout(() => {store.stopSlot(slot)}, time);
+            setTimeout(() => { store.stopSlot(slot) }, time);
         });
     }
 
