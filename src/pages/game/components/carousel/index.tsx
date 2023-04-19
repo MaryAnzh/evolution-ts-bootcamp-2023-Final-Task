@@ -24,7 +24,7 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
         animation: store.slots[props.number].isSpin ? animation : 'none',
     }
 
-    const cardList = store.cards[props.number].map((el, i) => {
+    const cardList = store.slots[props.number].cards.map((el, i) => {
         return (
             <CarouselCard
                 key={el}
@@ -42,8 +42,7 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
                 <CarouselBodyWrap>
                     <CarouselBody
                         style={rotateStyle}
-                        onAnimationStartCapture=
-                        {(e) => console.log(e)}>
+                    >
                         {cardList}
                     </CarouselBody>
                 </CarouselBodyWrap>

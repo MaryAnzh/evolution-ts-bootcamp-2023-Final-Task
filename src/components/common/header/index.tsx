@@ -23,22 +23,10 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                     Hello  {store.user}
                 </UserNameGreasing>
             </UserNameWrap>
-            {/* <div>
-                 <div>current user: {store.user}</div>
-                </ThemesWrap>
-                <button onClick={
-                    () => {
-                        store.setUser("Alfred");
-                    }
-                }>
-                    change user
-                </button>
-            </div> */}
 
             <ThemesWrap>
                 <BlackThemeButton
-                    onClick={() => props.changeTheme('black')}
-                >
+                    onClick={() => props.changeTheme('black')}>
                     Black
                 </BlackThemeButton>
                 <SeaThemeButton

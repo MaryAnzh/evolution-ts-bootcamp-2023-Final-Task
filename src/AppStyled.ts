@@ -8,7 +8,6 @@ export const APPStyled = styled.div`
   align-items: center;
   /* background: ${({ theme }) => theme.background}; */
   background: ${({ theme }) => theme.gradient};
-
 `;
 
 export const MainStyle = styled.main`
