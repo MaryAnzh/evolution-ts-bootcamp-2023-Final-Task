@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const GamePageStyle = styled.div`
+  max-width: ${({ theme }) => theme.maxPageWidth};
   width: 100%;
   height: 100%;
   padding: 1rem;
@@ -25,5 +26,5 @@ export const SlotGameStyle = styled.div`
 export const SlotGameTitle = styled.h2`
    font-size: 3rem;
    color: ${({ theme }) => theme.color};
-   font-weight: 800;
+   font-weight: 600;
  `;

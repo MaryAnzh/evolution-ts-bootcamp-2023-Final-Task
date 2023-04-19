@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderStyle = styled.header`
+  max-width: ${({ theme }) => theme.maxAppWidth};
   width: 100%;
   padding: 1rem;
   display: flex;
@@ -32,9 +33,9 @@ export const BlackThemeButton = styled.button`
   border-radius: 6px;
 `;
 
-export const SeeThemeButton = styled.button`
+export const SeaThemeButton = styled.button`
   padding: 0.4rem 0.6rem;
-  background: ${({theme}) => theme.gradient};
+  background: ${({ theme }) => theme.gradient};
   border: 1px solid ;
   color: ${({ theme }) => theme.fontColor};;
   text-transform: uppercase;

@@ -7,11 +7,11 @@ import {
     UserNameWrap,
     ThemesWrap,
     BlackThemeButton,
-    SeeThemeButton
+    SeaThemeButton
 } from "./style";
 
 type HeaderProps = {
-    changeTheme: (themeName: 'black' | 'see') => void
+    changeTheme: (themeName: 'black' | 'sea') => void
 }
 
 export const Header: React.FC<HeaderProps> = observer((props) => {
@@ -41,11 +41,11 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                 >
                     Black
                 </BlackThemeButton>
-                <SeeThemeButton
-                    onClick={() => props.changeTheme('see')}
+                <SeaThemeButton
+                    onClick={() => props.changeTheme('sea')}
                 >
-                    See
-                </SeeThemeButton>
+                    Sea
+                </SeaThemeButton>
             </ThemesWrap>
         </HeaderStyle >
     );
