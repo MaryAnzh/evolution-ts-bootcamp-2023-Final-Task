@@ -1,5 +1,7 @@
 export interface ITheme {
-    name: 'black' | 'see',
+    name: 'black' | 'sea',
+    maxAppWidth: string,
+    maxPageWidth: string,
     mainColor: string,
     mainColorLight: string,
     mainColorLight_1: string,

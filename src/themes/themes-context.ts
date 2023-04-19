@@ -3,11 +3,19 @@ import { ITheme } from './theme.interface';
 
 export interface IThemes {
     black: ITheme,
-    see: ITheme,
+    sea: ITheme,
+}
+
+const varConst = {
+    maxAppWidth: 1200,
+    maxPageWidth: 920,
+
 }
 
 export const blackTheme: ITheme = {
     name: 'black',
+    maxAppWidth: `${varConst.maxAppWidth}px`,
+    maxPageWidth: `${varConst.maxPageWidth}px`,
     mainColor: 'string',
     mainColorLight: 'string',
     mainColorLight_1: 'string',
@@ -28,8 +36,10 @@ export const blackTheme: ITheme = {
     gradient: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%)',
 }
 
-export const seeTheme: ITheme = {
-    name: 'see',
+export const seaTheme: ITheme = {
+    name: 'sea',
+    maxAppWidth: `${varConst.maxAppWidth}px`,
+    maxPageWidth: `${varConst.maxPageWidth}px`,
     mainColor: '#275F6D',
     mainColorLight: '#157991',
     mainColorLight_1: 'string',
@@ -52,5 +62,5 @@ export const seeTheme: ITheme = {
 
 export const themes: IThemes = {
     black: blackTheme,
-    see: seeTheme,
+    sea: seaTheme,
 }

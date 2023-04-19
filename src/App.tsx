@@ -16,8 +16,8 @@ export const store = new Store();
 const App = () => {
   const [theme, setTheme] = useState<ITheme>(themes.black);
 
-  const changeTheme = (t: 'black' | 'see') => {
-    const currTheme: ITheme = t === 'black' ? themes.black : themes.see;
+  const changeTheme = (t: 'black' | 'sea') => {
+    const currTheme: ITheme = t === 'black' ? themes.black : themes.sea;
     setTheme(() => currTheme);
   }
 

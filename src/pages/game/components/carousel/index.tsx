@@ -17,14 +17,14 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
     const rotate = 0;
     const rotateAngle = 45;
 
-    const animation = `spin 0.7s linear infinite`;
+    const animation = `spin 1s linear infinite`;
 
     const rotateStyle = {
         transform: `perspective(1000px) rotateX(${rotate}deg)`,
         animation: store.slots[props.number].isSpin ? animation : 'none',
     }
 
-    const cardList = store.cards[props.number].map((el, i) => {
+    const cardList = store.slots[props.number].cards.map((el, i) => {
         return (
             <CarouselCard
                 key={el}
@@ -42,8 +42,7 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
                 <CarouselBodyWrap>
                     <CarouselBody
                         style={rotateStyle}
-                        onAnimationStartCapture=
-                        {(e) => console.log(e)}>
+                    >
                         {cardList}
                     </CarouselBody>
                 </CarouselBodyWrap>

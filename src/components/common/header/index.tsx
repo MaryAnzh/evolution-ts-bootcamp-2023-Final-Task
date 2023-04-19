@@ -7,11 +7,11 @@ import {
     UserNameWrap,
     ThemesWrap,
     BlackThemeButton,
-    SeeThemeButton
+    SeaThemeButton
 } from "./style";
 
 type HeaderProps = {
-    changeTheme: (themeName: 'black' | 'see') => void
+    changeTheme: (themeName: 'black' | 'sea') => void
 }
 
 export const Header: React.FC<HeaderProps> = observer((props) => {
@@ -23,29 +23,17 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                     Hello  {store.user}
                 </UserNameGreasing>
             </UserNameWrap>
-            {/* <div>
-                 <div>current user: {store.user}</div>
-                </ThemesWrap>
-                <button onClick={
-                    () => {
-                        store.setUser("Alfred");
-                    }
-                }>
-                    change user
-                </button>
-            </div> */}
 
             <ThemesWrap>
                 <BlackThemeButton
-                    onClick={() => props.changeTheme('black')}
-                >
+                    onClick={() => props.changeTheme('black')}>
                     Black
                 </BlackThemeButton>
-                <SeeThemeButton
-                    onClick={() => props.changeTheme('see')}
+                <SeaThemeButton
+                    onClick={() => props.changeTheme('sea')}
                 >
-                    See
-                </SeeThemeButton>
+                    Sea
+                </SeaThemeButton>
             </ThemesWrap>
         </HeaderStyle >
     );
