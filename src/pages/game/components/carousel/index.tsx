@@ -6,33 +6,47 @@ import {
     CarouselBody,
     CarouselCard,
 } from "./styled";
+import { store } from "../../../../App";
+import { observer } from "mobx-react-lite";
 
-export const Carousel = () => {
-    // const [rotate, setRotate] = useState(0);
-    // const rotateAngle = 45;
-    
+type CarouselProps = {
+    number: number
+}
+
+export const Carousel: React.FC<CarouselProps> = observer((props) => {
+    const rotate = 0;
+    const rotateAngle = 45;
+
+    const animation = `spin 0.7s linear infinite`;
+
     const rotateStyle = {
         transform: `perspective(1000px) rotateX(${rotate}deg)`,
+        animation: store.slots[props.number].isSpin ? animation : 'none',
     }
 
-    const cardList = [1, 2, 3, 4, 5, 6, 7, 8].map((el, i) => {
+    const cardList = store.cards[props.number].map((el, i) => {
         return (
             <CarouselCard
                 key={el}
-                style={{ transform: `rotateX(${45 * i}deg) translateZ(200px)` }}>
+                style={{
+                    transform: `rotateX(${rotateAngle * i}deg) translateZ(200px)`
+                }}>
+                {el}
             </CarouselCard>
         );
     });
 
-    
     return (
         <CarouselStyle>
             <CarouselContainer>
                 <CarouselBodyWrap>
-                <CarouselBody style={rotateStyle}>
+                    <CarouselBody
+                        style={rotateStyle}
+                        onAnimationStartCapture=
+                        {(e) => console.log(e)}>
                         {cardList}
                     </CarouselBody>
                 </CarouselBodyWrap>
             </CarouselContainer>
         </CarouselStyle>)
-}
+})

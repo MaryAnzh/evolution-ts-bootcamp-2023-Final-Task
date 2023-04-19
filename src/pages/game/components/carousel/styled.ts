@@ -39,7 +39,7 @@ export const CarouselBody = styled.div`
   align-items: center;
   transform-style: preserve-3d;
   transition: all .3s;
-  animation: spin linear 10s infinite;
+  /* animation: spin 1s linear infinite; */
   
   @keyframes spin {
       0% {transform: perspective(1000px) rotateX(0deg) rotateX(8deg)}
@@ -65,5 +65,7 @@ export const CarouselCard = styled.div`
     background-position-x: right;
     background-size: 30%;
     background-repeat: no-repeat;
+    font-size: 4rem;
+    color: black;
     z-index: 11;
 `;
