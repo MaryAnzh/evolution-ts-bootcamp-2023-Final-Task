@@ -10,7 +10,20 @@ export const GamePageStyle = styled.div`
   color: white;
 `;
 
+export const SlotGameTopPanel = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
 export const SlotGameStyle = styled.div`
   display: flex;
   gap: 1rem;
 `;
+
+export const SlotGameTitle = styled.h2`
+   font-size: 3rem;
+   color: ${({ theme }) => theme.color};
+   font-weight: 800;
+ `;

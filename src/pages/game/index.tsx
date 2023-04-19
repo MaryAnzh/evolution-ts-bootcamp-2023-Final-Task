@@ -1,10 +1,14 @@
 import React from "react";
-import {
-    GamePageStyle,
-    SlotGameStyle
-} from "./styled";
 import { Carousel } from "./components/carousel";
 import { ControlPanel } from "./components/control-panel";
+import { ScorePanel } from "./components/score";
+
+import {
+    GamePageStyle,
+    SlotGameStyle,
+    SlotGameTitle,
+    SlotGameTopPanel
+} from "./styled";
 
 export const GamePage = () => {
     const slotCount = [0, 1, 2];
@@ -16,6 +20,10 @@ export const GamePage = () => {
 
     return (
         <GamePageStyle>
+            <SlotGameTopPanel>
+                <SlotGameTitle>Slot game</SlotGameTitle>
+                <ScorePanel />
+            </SlotGameTopPanel>
             <SlotGameStyle>
                 {slots}
             </SlotGameStyle>

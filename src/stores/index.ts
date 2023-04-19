@@ -50,6 +50,7 @@ export class Store {
 
   spinSlot(slotIndex: number) {
     this.slots[slotIndex].isSpin = true;
+    this.mixCard(slotIndex);
   }
 
   stopSlot(slotIndex: number) {
@@ -57,7 +58,10 @@ export class Store {
   }
 
   mixCard(slotNumber: number) {
-    console.log('');
+    const random = Math.floor(Math.random() * 8);
+    const arr = [...this.cards[slotNumber]];
+    const arr2 = arr.splice(0, random);
+    this.cards[slotNumber] = [...arr, ...arr2];
   }
 
 }

@@ -17,7 +17,7 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
     const rotate = 0;
     const rotateAngle = 45;
 
-    const animation = `spin 0.7s linear infinite`;
+    const animation = `spin 1s linear infinite`;
 
     const rotateStyle = {
         transform: `perspective(1000px) rotateX(${rotate}deg)`,
