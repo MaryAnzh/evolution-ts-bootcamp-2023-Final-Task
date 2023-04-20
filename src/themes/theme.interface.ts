@@ -1,3 +1,5 @@
+export enum ThemeEnum { black, sea }
+
 export interface ITheme {
     name: 'black' | 'sea',
     maxAppWidth: string,

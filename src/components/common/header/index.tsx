@@ -9,9 +9,10 @@ import {
     BlackThemeButton,
     SeaThemeButton
 } from "./style";
+import { ThemeEnum } from "../../../themes/theme.interface";
 
 type HeaderProps = {
-    changeTheme: (themeName: 'black' | 'sea') => void
+    changeTheme: (themeName: ThemeEnum) => void
 }
 
 export const Header: React.FC<HeaderProps> = observer((props) => {
@@ -26,11 +27,11 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
 
             <ThemesWrap>
                 <BlackThemeButton
-                    onClick={() => props.changeTheme('black')}>
+                    onClick={() => props.changeTheme(ThemeEnum.black)}>
                     Black
                 </BlackThemeButton>
                 <SeaThemeButton
-                    onClick={() => props.changeTheme('sea')}
+                    onClick={() => props.changeTheme(ThemeEnum.sea)}
                 >
                     Sea
                 </SeaThemeButton>

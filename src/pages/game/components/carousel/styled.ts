@@ -60,12 +60,11 @@ export const CarouselCard = styled.div`
     transform-style: preserve-3d;
     border-radius: 1rem;
     border: 1px solid white;
-    background-position-y: bottom;
-    background-position-x: right;
-    background-size: 30%;
+    background-position: center;
+    background-size: 40%;
     background-repeat: no-repeat;
     font-size: 4rem;
-    color: ${({theme}) => theme.color};
+    color: ${({ theme }) => theme.color};
     z-index: 11;
     
     /* &::after {
