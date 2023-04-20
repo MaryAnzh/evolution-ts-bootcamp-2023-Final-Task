@@ -1,8 +1,10 @@
 import { action, makeObservable, observable } from "mobx";
+import { ICard, blackCards, seaCards } from "../data/cards";
+import { ThemeEnum } from "../themes/theme.interface";
 
 export interface ISlot {
   isSpin: boolean,
-  cards: number[],
+  cards: ICard[],
 }
 
 export interface ISlots {
@@ -14,19 +16,23 @@ export interface ISlots {
 export class Store {
   user = 'Guest';
 
+  theme = {
+    black: true,
+    sea: false,
+  };
+
   slots: ISlot[] = [
     {
       isSpin: false,
-      cards: [...Array(8).keys()]
+      cards: []
     },
     {
       isSpin: false,
-      cards: [...Array(8).keys()]
+      cards: []
     },
     {
       isSpin: false,
-      cards: [...Array(8).keys()]
-
+      cards: []
     },
   ];
 
@@ -42,7 +48,21 @@ export class Store {
     bonus: 30
   };
 
+  themesImg = {
+    black: [],
+    sea: [],
+  }
+
   constructor() {
+    this.slots.forEach((slot, i) => {
+      if (this.theme.black) {
+        this.setSlotCards(i, blackCards);
+      }
+      if (this.theme.sea) {
+        this.setSlotCards(i, seaCards);
+      }
+    });
+
     makeObservable(this, {
       user: observable,
       slots: observable,
@@ -51,9 +71,11 @@ export class Store {
       startRound: action,
       setScore: action,
       setSlotCards: action,
-      setSpin: action
+      setSpin: action,
+      setTheme: action,
     });
   }
+
   //setters
   setUser = (user: string) => {
     this.user = user;
@@ -66,8 +88,21 @@ export class Store {
     this.slots[i].isSpin = value;
   }
 
-  setSlotCards = (slotIndex: number, cards: number[]) => {
+  setSlotCards = (slotIndex: number, cards: ICard[]) => {
     this.slots[slotIndex].cards = cards;
+  }
+
+  setTheme = (theme: ThemeEnum) => {
+    if (theme === ThemeEnum.black) {
+      this.slots.forEach((slot, i) => {
+        this.setSlotCards(i, blackCards);
+      });
+    }
+    if (theme === ThemeEnum.sea) {
+      this.slots.forEach((slot, i) => {
+        this.setSlotCards(i, seaCards);
+      });
+    }
   }
 
   //round logic
@@ -100,7 +135,7 @@ export class Store {
 
   //utils
 
-  mixCard = (cards: number[]) => {
+  mixCard = (cards: ICard[]) => {
     const random = Math.floor(Math.random() * 8);
     const arr = [...cards];
     const arr2 = arr.splice(0, random);
@@ -108,9 +143,9 @@ export class Store {
   }
 
   checkResult = () => {
-    const value0 = this.slots[0].cards[0];
-    const value1 = this.slots[1].cards[0];
-    const value2 = this.slots[2].cards[0];
+    const value0 = this.slots[0].cards[0].id;
+    const value1 = this.slots[1].cards[0].id;
+    const value2 = this.slots[2].cards[0].id;
     if (value0 === value1 && value0 === value2) {
       this.setScore(this.pointMap.jackpot);
     } else if (value0 === value1 || value0 === value2 || value2 === value1) {

@@ -9,16 +9,22 @@ import { MainStyle } from './AppStyled';
 import { GamePage } from './pages/game';
 import { APPStyled } from './AppStyled';
 import { themes } from './themes/themes-context';
-import { ITheme } from './themes/theme.interface';
+import { ITheme, ThemeEnum } from './themes/theme.interface';
 
 export const store = new Store();
 
 const App = () => {
   const [theme, setTheme] = useState<ITheme>(themes.black);
 
-  const changeTheme = (t: 'black' | 'sea') => {
-    const currTheme: ITheme = t === 'black' ? themes.black : themes.sea;
-    setTheme(() => currTheme);
+  const changeTheme = (t: ThemeEnum) => {
+    if (t === ThemeEnum.black) {
+      store.setTheme(ThemeEnum.black);
+      setTheme(() => themes.black);
+    }
+    if (t === ThemeEnum.sea) {
+      store.setTheme(ThemeEnum.sea);
+      setTheme(() => themes.sea);
+    }
   }
 
   return (
