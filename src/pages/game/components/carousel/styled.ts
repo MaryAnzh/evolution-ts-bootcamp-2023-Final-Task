@@ -50,7 +50,7 @@ export const CarouselBody = styled.div`
 export const CarouselCard = styled.div`
     position: absolute;
     width: 90%;
-    height: 100%;
+    height: 90%;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -58,14 +58,44 @@ export const CarouselCard = styled.div`
     backface-visibility: hidden;
     transform-origin: center;
     transform-style: preserve-3d;
-    border-radius: 0.554m;
+    border-radius: 1rem;
     border: 1px solid white;
-    background-color: #eee;
     background-position-y: bottom;
     background-position-x: right;
     background-size: 30%;
     background-repeat: no-repeat;
     font-size: 4rem;
-    color: black;
+    color: ${({theme}) => theme.color};
     z-index: 11;
+    
+    /* &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      box-sizing: border-box;
+        height: 100%;
+        border-radius: 1rem;
+        border: 10px solid transparent;
+        background: radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #D1B464 100%) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 2;
+    } */
+`;
+
+export const CardBorderStyle = styled.div`
+ 
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        border: 10px solid transparent;
+        background: radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #D1B464 100%) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 2;
+}
 `;
