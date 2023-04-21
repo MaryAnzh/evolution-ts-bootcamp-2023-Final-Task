@@ -22,4 +22,5 @@ export interface ITheme {
     fontFamilyTitle: string,
     background: string,
     gradient: string,
+    gloverImg: string
 }

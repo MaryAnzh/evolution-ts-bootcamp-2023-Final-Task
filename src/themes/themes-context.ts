@@ -34,6 +34,7 @@ export const blackTheme: ITheme = {
     fontFamilyTitle: 'string',
     background: `rgb(0, 0, 0)`,
     gradient: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%)',
+    gloverImg: './assets/gold-button.png'
 }
 
 export const seaTheme: ITheme = {
@@ -58,6 +59,7 @@ export const seaTheme: ITheme = {
     fontFamilyTitle: 'string',
     background: `rgb(56, 56, 56)`,
     gradient: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%)',
+    gloverImg: './assets/bubble.png'
 }
 
 export const themes: IThemes = {

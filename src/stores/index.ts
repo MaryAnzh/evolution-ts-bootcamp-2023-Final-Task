@@ -16,16 +16,8 @@ export interface ISlots {
 export class Store {
   isGame = false;
   isWinner = false;
-
+  theme: ThemeEnum = ThemeEnum.black;
   user = 'Guest';
-
-  theme = {
-    black: true,
-    sea: false,
-  };
-
-  cardsInCarousel = 8;
-
   slots: ISlot[] = [
     {
       isSpin: false,
@@ -41,9 +33,11 @@ export class Store {
     },
   ];
 
-  score = 100;
-  startScore = 100;
-  winnerScore = 1100;
+  //const
+  cardsInCarousel = 8;
+  score = 20;
+  startScore = 20;
+  winnerScore = 1000;
 
   storeConst = {
     spinTime: 1000,
@@ -54,11 +48,6 @@ export class Store {
     jackpot: 1000,
     bonus: 30
   };
-
-  themesImg = {
-    black: [],
-    sea: [],
-  }
 
   constructor() {
     makeObservable(this, {
@@ -90,18 +79,28 @@ export class Store {
   setWinner = (value: boolean) => {
     this.isWinner = value;
   }
-
   setUser = (user: string) => {
     this.user = user;
+  }
+  setTheme = (value: ThemeEnum) => {
+    this.theme = value;
+    if (value === ThemeEnum.black) {
+      this.slots.forEach((slot, i) => {
+        this.setSlotCards(i, blackCards);
+      });
+    }
+    if (value === ThemeEnum.sea) {
+      this.slots.forEach((slot, i) => {
+        this.setSlotCards(i, seaCards);
+      });
+    }
   }
   setScore = (point: number) => {
     this.score += point;
   }
-
   setSpin = (i: number, value: boolean) => {
     this.slots[i].isSpin = value;
   }
-
   setSlotCards = (slotIndex: number, cards: ICard[]) => {
     this.slots[slotIndex].cards.forEach((elem, i) => {
       const src = cards.find(el => elem.id === el.id);
@@ -110,22 +109,8 @@ export class Store {
       }
     });
   }
-
   setMixCard = (slotIndex: number, cards: ICard[]) => {
     this.slots[slotIndex].cards = cards;
-  }
-
-  setTheme = (theme: ThemeEnum) => {
-    if (theme === ThemeEnum.black) {
-      this.slots.forEach((slot, i) => {
-        this.setSlotCards(i, blackCards);
-      });
-    }
-    if (theme === ThemeEnum.sea) {
-      this.slots.forEach((slot, i) => {
-        this.setSlotCards(i, seaCards);
-      });
-    }
   }
 
   //round logic
@@ -185,10 +170,10 @@ export class Store {
   fillSlotCards = () => {
     this.slots.forEach((slot, i) => {
       slot.cards = this.createCards();
-      if (this.theme.black) {
+      if (this.theme === ThemeEnum.black) {
         this.setSlotCards(i, blackCards);
       }
-      if (this.theme.sea) {
+      if (this.theme === ThemeEnum.sea) {
         this.setSlotCards(i, seaCards);
       }
     });

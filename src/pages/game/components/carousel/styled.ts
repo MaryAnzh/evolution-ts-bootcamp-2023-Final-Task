@@ -60,7 +60,7 @@ export const CarouselCard = styled.div`
     transform-style: preserve-3d;
     border-radius: 1rem;
     background-position: center;
-    background-size: 40%;
+    background-size: 50%;
     background-repeat: no-repeat;
     font-size: 4rem;
     color: ${({ theme }) => theme.color};
@@ -96,4 +96,20 @@ export const CardBorderStyle = styled.div`
         mask-composite: exclude;
         z-index: 2;
 }
+`;
+
+export const Fairy = styled.div`
+  position: absolute;
+  width: 15px;
+  height: 18px;
+  border-radius: 50%;
+  background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(${({ theme }) => theme.gloverImg});
+    opacity: 0.6;
+    
+    &:hover {
+      opacity: 1;
+    }
 `;
