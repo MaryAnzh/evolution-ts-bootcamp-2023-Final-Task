@@ -7,11 +7,16 @@ import { Header } from './components/common/header';
 import { Footer } from './components/common/footer';
 import { MainStyle } from './AppStyled';
 import { GamePage } from './pages/game';
-import { APPStyled } from './AppStyled';
 import { themes } from './themes/themes-context';
 import { ITheme, ThemeEnum } from './themes/theme.interface';
 import { GameOver } from './components/pop-up-components/game-over';
 import { observer } from 'mobx-react-lite';
+import { WinnerMessage } from './components/pop-up-components/win';
+import {
+  APPStyled,
+  BlockedStyle
+} from './AppStyled';
+
 
 export const store = new Store();
 
@@ -35,7 +40,11 @@ const App = observer(() => {
         <APPStyled className="App">
           {!store.isGame &&
             <GameOver></GameOver>
-
+          }
+          {store.isWinner &&
+            <WinnerMessage></WinnerMessage>}
+          {(store.slots[0].isSpin || store.slots[1].isSpin || store.slots[2].isSpin) &&
+            <BlockedStyle></BlockedStyle>
           }
           <Header changeTheme={changeTheme} />
           <MainStyle>

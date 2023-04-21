@@ -15,6 +15,7 @@ export interface ISlots {
 
 export class Store {
   isGame = false;
+  isWinner = false;
 
   user = 'Guest';
 
@@ -40,8 +41,9 @@ export class Store {
     },
   ];
 
-  score = 10;
-  startScore = 10;
+  score = 100;
+  startScore = 100;
+  winnerScore = 1100;
 
   storeConst = {
     spinTime: 1000,
@@ -61,6 +63,7 @@ export class Store {
   constructor() {
     makeObservable(this, {
       isGame: observable,
+      isWinner: observable,
       user: observable,
       slots: observable,
       score: observable,
@@ -73,6 +76,7 @@ export class Store {
       setSpin: action,
       setTheme: action,
       setMixCard: action,
+      setWinner: action,
     });
 
     this.setIsGame(true);
@@ -82,6 +86,9 @@ export class Store {
   //setters
   setIsGame = (value: boolean) => {
     this.isGame = value;
+  }
+  setWinner = (value: boolean) => {
+    this.isWinner = value;
   }
 
   setUser = (user: string) => {
@@ -125,6 +132,7 @@ export class Store {
   startNewGame = () => {
     this.setIsGame(true);
     this.setScore(this.startScore);
+    this.setWinner(false);
     this.fillSlotCards();
   }
 
@@ -146,8 +154,9 @@ export class Store {
           if (this.score <= 0) {
             this.setIsGame(false);
           }
-          if (this.score > 1500) {
-            console.log('You winner!!!');
+          if (this.score >= this.winnerScore) {
+            this.setWinner(true);
+            this.winnerScore += this.winnerScore;
           }
         }
         clearTimeout(timer);
