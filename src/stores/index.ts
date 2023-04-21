@@ -41,9 +41,9 @@ export class Store {
     },
   ];
 
-  score = 100;
-  startScore = 100;
-  winnerScore = 1100;
+  score = 20;
+  startScore = 20;
+  winnerScore = 1000;
 
   storeConst = {
     spinTime: 1000,
