@@ -13,10 +13,11 @@ export const ScorePanel: React.FC = observer(() => {
 
     return (
         <ScorePanelStyle>
-            <ScoreIconStyle></ScoreIconStyle>
             <ScoreWrapStyle>
                 {point}
             </ScoreWrapStyle>
+            <ScoreIconStyle></ScoreIconStyle>
+
         </ScorePanelStyle>
     );
 });

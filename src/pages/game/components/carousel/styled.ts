@@ -59,7 +59,6 @@ export const CarouselCard = styled.div`
     transform-origin: center;
     transform-style: preserve-3d;
     border-radius: 1rem;
-    border: 1px solid white;
     background-position: center;
     background-size: 40%;
     background-repeat: no-repeat;
