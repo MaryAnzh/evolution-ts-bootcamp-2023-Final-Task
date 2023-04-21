@@ -10,10 +10,12 @@ import { GamePage } from './pages/game';
 import { APPStyled } from './AppStyled';
 import { themes } from './themes/themes-context';
 import { ITheme, ThemeEnum } from './themes/theme.interface';
+import { GameOver } from './components/pop-up-components/game-over';
+import { observer } from 'mobx-react-lite';
 
 export const store = new Store();
 
-const App = () => {
+const App = observer(() => {
   const [theme, setTheme] = useState<ITheme>(themes.black);
 
   const changeTheme = (t: ThemeEnum) => {
@@ -31,6 +33,10 @@ const App = () => {
     <BrowserRouter>
       <ThemeContext.Provider value={theme}>
         <APPStyled className="App">
+          {!store.isGame &&
+            <GameOver></GameOver>
+
+          }
           <Header changeTheme={changeTheme} />
           <MainStyle>
             <Routes>
@@ -42,6 +48,6 @@ const App = () => {
       </ThemeContext.Provider>
     </BrowserRouter>
   );
-}
+});
 
 export { App };
