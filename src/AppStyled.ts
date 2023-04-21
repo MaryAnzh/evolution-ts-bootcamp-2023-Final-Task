@@ -18,3 +18,14 @@ export const MainStyle = styled.main`
   align-items: center;
   flex: 1 0 auto;
 `;
+
+export const BlockedStyle = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0%);
+  z-index: 13;
+
+`;

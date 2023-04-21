@@ -14,12 +14,16 @@ export interface ISlots {
 }
 
 export class Store {
+  isGame = false;
+  isWinner = false;
+
   user = 'Guest';
 
   theme = {
     black: true,
     sea: false,
   };
+
   cardsInCarousel = 8;
 
   slots: ISlot[] = [
@@ -38,6 +42,8 @@ export class Store {
   ];
 
   score = 100;
+  startScore = 100;
+  winnerScore = 1100;
 
   storeConst = {
     spinTime: 1000,
@@ -55,31 +61,36 @@ export class Store {
   }
 
   constructor() {
-    this.slots.forEach((slot, i) => {
-      slot.cards = this.createCards();
-      if (this.theme.black) {
-        this.setSlotCards(i, blackCards);
-      }
-      if (this.theme.sea) {
-        this.setSlotCards(i, seaCards);
-      }
-    });
-
     makeObservable(this, {
+      isGame: observable,
+      isWinner: observable,
       user: observable,
       slots: observable,
       score: observable,
+      setIsGame: action,
       setUser: action,
+      startNewGame: action,
       startRound: action,
       setScore: action,
       setSlotCards: action,
       setSpin: action,
       setTheme: action,
       setMixCard: action,
+      setWinner: action,
     });
+
+    this.setIsGame(true);
+    this.fillSlotCards();
   }
 
   //setters
+  setIsGame = (value: boolean) => {
+    this.isGame = value;
+  }
+  setWinner = (value: boolean) => {
+    this.isWinner = value;
+  }
+
   setUser = (user: string) => {
     this.user = user;
   }
@@ -118,6 +129,13 @@ export class Store {
   }
 
   //round logic
+  startNewGame = () => {
+    this.setIsGame(true);
+    this.setScore(this.startScore);
+    this.setWinner(false);
+    this.fillSlotCards();
+  }
+
   startRound = () => {
     this.setScore(this.pointMap.roundCost);
     this.slots.forEach((el) => {
@@ -134,10 +152,11 @@ export class Store {
         if (i === this.slots.length - 1) {
           this.checkResult();
           if (this.score <= 0) {
-            console.log('Game over');
+            this.setIsGame(false);
           }
-          if (this.score > 1500) {
-            console.log('You winner!!!');
+          if (this.score >= this.winnerScore) {
+            this.setWinner(true);
+            this.winnerScore += this.winnerScore;
           }
         }
         clearTimeout(timer);
@@ -161,6 +180,18 @@ export class Store {
     const arr = [...cards];
     const arr2 = arr.splice(0, random);
     return [...arr, ...arr2];
+  }
+
+  fillSlotCards = () => {
+    this.slots.forEach((slot, i) => {
+      slot.cards = this.createCards();
+      if (this.theme.black) {
+        this.setSlotCards(i, blackCards);
+      }
+      if (this.theme.sea) {
+        this.setSlotCards(i, seaCards);
+      }
+    });
   }
 
   checkResult = () => {
