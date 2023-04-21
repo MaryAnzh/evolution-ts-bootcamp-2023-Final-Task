@@ -20,11 +20,12 @@ export class Store {
     black: true,
     sea: false,
   };
+  cardsInCarousel = 8;
 
   slots: ISlot[] = [
     {
       isSpin: false,
-      cards: []
+      cards: [],
     },
     {
       isSpin: false,
@@ -55,6 +56,7 @@ export class Store {
 
   constructor() {
     this.slots.forEach((slot, i) => {
+      slot.cards = this.createCards();
       if (this.theme.black) {
         this.setSlotCards(i, blackCards);
       }
@@ -73,6 +75,7 @@ export class Store {
       setSlotCards: action,
       setSpin: action,
       setTheme: action,
+      setMixCard: action,
     });
   }
 
@@ -89,6 +92,15 @@ export class Store {
   }
 
   setSlotCards = (slotIndex: number, cards: ICard[]) => {
+    this.slots[slotIndex].cards.forEach((elem, i) => {
+      const src = cards.find(el => elem.id === el.id);
+      if (src) {
+        elem.url = src.url;
+      }
+    });
+  }
+
+  setMixCard = (slotIndex: number, cards: ICard[]) => {
     this.slots[slotIndex].cards = cards;
   }
 
@@ -117,7 +129,7 @@ export class Store {
   finishRound = () => {
     this.slots.map((slot, i) => {
       const timer = setTimeout(() => {
-        this.setSlotCards(i, this.mixCard(slot.cards));
+        this.setMixCard(i, this.mixCard(slot.cards));
         this.setSpin(i, false);
         if (i === this.slots.length - 1) {
           this.checkResult();
@@ -134,6 +146,15 @@ export class Store {
   }
 
   //utils
+  createCards = () => {
+    return [...Array(this.cardsInCarousel).keys()].map(el => {
+      const card: ICard = {
+        id: el,
+        url: ''
+      }
+      return card;
+    });
+  }
 
   mixCard = (cards: ICard[]) => {
     const random = Math.floor(Math.random() * 8);
