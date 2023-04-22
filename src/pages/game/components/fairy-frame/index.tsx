@@ -5,32 +5,36 @@ import {
 } from './styled';
 
 export const FairyFrame = () => {
-    const fairyRadius = 20;
+    const fairyRadius = 7.5;
+    const fairyInHorizontalLine = 5;
+    const fairyInVerticalLine = 3;
+    const leftPadding = 5;
+    const topPadding = 15;
+    const posX = (padding: number, fairyIndex: number, fairyInLine: number) => `calc((${padding}% + (${fairyIndex} * ((100% - ${padding}%)/${fairyInLine}))) + (${fairyRadius}px))`;
+    const posY = (padding: number, fairyIndex: number, fairyInLine: number) => `calc((${padding}% + (${fairyIndex} * ((100% - ${padding}%)/${fairyInLine}))))`;
 
-    const fairyTop = [...Array(5).keys()].map((el, i) => {
-        const posX = `calc((5% + (${i} * (95%/5))) + (7.5px))`;
+    const fairyTop = [...Array(fairyInHorizontalLine).keys()].map((el, i) => {
+        const pos = posX(leftPadding, i, fairyInHorizontalLine);
         return (
-            <FairySTyle key={el} style={{ left: `${posX}`, top: '0', width: `${fairyRadius}p}px`, height: `${fairyRadius}p}px` }}></FairySTyle>
+            <FairySTyle key={el} style={{ left: `${pos}`, top: '0' }}></FairySTyle>
         );
     })
-    const fairyBottom = [...Array(5).keys()].map((el, i) => {
-        const posX = `calc((5% + (${i} * (95%/5))) + (7.5px))`;
+    const fairyBottom = [...Array(fairyInHorizontalLine).keys()].map((el, i) => {
+        const pos = posX(leftPadding, i, fairyInHorizontalLine);
         return (
-            <FairySTyle key={el} style={{ left: `${posX}`, bottom: '0', width: `${fairyRadius}p}px`, height: `${fairyRadius}p}px` }}></FairySTyle>
+            <FairySTyle key={el} style={{ left: `${pos}`, bottom: '0' }}></FairySTyle>
         );
     })
-    const fairyLeft = [...Array(3).keys()].map((el, i) => {
-        const posX = `calc((15% + (${i} * (85%/3))) + (5px))`;
-
+    const fairyLeft = [...Array(fairyInVerticalLine).keys()].map((el, i) => {
+        const pos = posY(topPadding, i, fairyInVerticalLine);
         return (
-            <FairySTyle key={el} style={{ top: `${posX}`, left: '0', width: `${fairyRadius}p}px`, height: `${fairyRadius}p}px` }}></FairySTyle>
+            <FairySTyle key={el} style={{ top: `${pos}`, left: '0' }}></FairySTyle>
         );
     })
-    const fairyRight = [...Array(3).keys()].map((el, i) => {
-        const posX = `calc((15% + (${i} * (85%/3))) + (5px))`;
-
+    const fairyRight = [...Array(fairyInVerticalLine).keys()].map((el, i) => {
+        const pos = posY(topPadding, i, fairyInVerticalLine);
         return (
-            <FairySTyle key={el} style={{ top: `${posX}`, right: '0', width: `${fairyRadius}p}px`, height: `${fairyRadius}p}px` }}></FairySTyle>
+            <FairySTyle key={el} style={{ top: `${pos}`, right: '0' }}></FairySTyle>
         );
     })
 
