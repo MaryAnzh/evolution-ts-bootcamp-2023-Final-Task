@@ -1,5 +1,6 @@
 import React from "react";
 import { store } from "../../../App";
+import { sounds } from "../../../data/sounds";
 
 import { PopUpStyle } from "../styled";
 import {
@@ -12,6 +13,11 @@ import {
 } from "./styled";
 
 export const GameOver = () => {
+    const startGame = () => {
+        sounds.startClick.play();
+        store.startNewGame();
+    }
+
     return (
         <PopUpStyle>
             <GameOverStyle>
@@ -24,7 +30,7 @@ export const GameOver = () => {
                 <GameOverButtonWrap>
                     <GameOverMoney></GameOverMoney>
                     <StartGameButton
-                        onClick={() => store.startNewGame()}
+                        onClick={startGame}
                     >
                         Start new
                     </StartGameButton>
