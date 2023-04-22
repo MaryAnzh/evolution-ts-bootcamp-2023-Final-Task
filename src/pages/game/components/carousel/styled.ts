@@ -84,7 +84,6 @@ export const CarouselCard = styled.div`
 `;
 
 export const CardBorderStyle = styled.div`
- 
         width: 100%;
         height: 100%;
         border-radius: 30px;
@@ -95,7 +94,6 @@ export const CardBorderStyle = styled.div`
           -webkit-mask-composite: xor;
         mask-composite: exclude;
         z-index: 2;
-}
 `;
 
 export const Fairy = styled.div`
