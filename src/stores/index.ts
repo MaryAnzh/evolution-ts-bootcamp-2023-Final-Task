@@ -33,10 +33,22 @@ export class Store {
     },
   ];
 
+  fairyAnimation = [
+    {
+      animation: false,
+    },
+    {
+      animation: false,
+    },
+    {
+      animation: false,
+    }
+  ]
+
   //const
   cardsInCarousel = 8;
-  score = 20;
-  startScore = 20;
+  score = 100;
+  startScore = 100;
   winnerScore = 1000;
 
   storeConst = {
@@ -55,6 +67,7 @@ export class Store {
       isWinner: observable,
       user: observable,
       slots: observable,
+      fairyAnimation: observable,
       score: observable,
       setIsGame: action,
       setUser: action,
@@ -63,6 +76,7 @@ export class Store {
       setScore: action,
       setSlotCards: action,
       setSpin: action,
+      setFairyAnimation: action,
       setTheme: action,
       setMixCard: action,
       setWinner: action,
@@ -81,6 +95,9 @@ export class Store {
   }
   setUser = (user: string) => {
     this.user = user;
+  }
+  setFairyAnimation = (index: number, value: boolean) => {
+    this.fairyAnimation[index].animation = value;
   }
   setTheme = (value: ThemeEnum) => {
     this.theme = value;
@@ -115,6 +132,7 @@ export class Store {
 
   //round logic
   startNewGame = () => {
+    this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, false));
     this.setIsGame(true);
     this.setScore(this.startScore);
     this.setWinner(false);
@@ -122,6 +140,7 @@ export class Store {
   }
 
   startRound = () => {
+    this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, false));
     this.setScore(this.pointMap.roundCost);
     this.slots.forEach((el) => {
       el.isSpin = true;
@@ -183,9 +202,27 @@ export class Store {
     const value0 = this.slots[0].cards[0].id;
     const value1 = this.slots[1].cards[0].id;
     const value2 = this.slots[2].cards[0].id;
-    if (value0 === value1 && value0 === value2) {
+
+    if ((value0 === value1 && value0 === value2) && value0 !== 0) {
+      this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, true));
       this.setScore(this.pointMap.jackpot);
-    } else if (value0 === value1 || value0 === value2 || value2 === value1) {
+    }
+    else if (((value0 === value1) && value0 !== 0)
+      || value0 === value2
+      || ((value2 === value1) && value1 !== 0)
+    ) {
+      if (value0 === value1) {
+        this.setFairyAnimation(0, true);
+        this.setFairyAnimation(1, true);
+      }
+      if (value1 === value2) {
+        this.setFairyAnimation(1, true);
+        this.setFairyAnimation(2, true);
+      }
+      if (value0 === value2) {
+        this.setFairyAnimation(0, true);
+        this.setFairyAnimation(2, true);
+      }
       this.setScore(this.pointMap.bonus);
     }
   }
