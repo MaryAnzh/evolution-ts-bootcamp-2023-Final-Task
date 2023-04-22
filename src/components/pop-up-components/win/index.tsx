@@ -1,5 +1,6 @@
 import React from "react";
 import { store } from "../../../App";
+import { sounds } from "../../../data/sounds";
 
 import { PopUpStyle } from "../styled";
 import {
@@ -13,6 +14,11 @@ import {
 } from "./styled";
 
 export const WinnerMessage = () => {
+    const startGame = () => {
+        sounds.startClick.play();
+        store.startNewGame();
+    }
+
     return (
         <PopUpStyle>
             <WinStyle>
@@ -28,7 +34,7 @@ export const WinnerMessage = () => {
                 <WinButtonWrap>
                     <WinMoney></WinMoney>
                     <ContinuaGameButton
-                        onClick={() => store.startNewGame()}
+                        onClick={startGame}
                     >
                         continue
                     </ContinuaGameButton>

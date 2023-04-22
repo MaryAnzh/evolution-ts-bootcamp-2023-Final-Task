@@ -48,8 +48,8 @@ export class Store {
 
   //const
   cardsInCarousel = 8;
-  score = 100;
-  startScore = 100;
+  score = 20;
+  startScore = 20;
   winnerScore = 1000;
 
   storeConst = {
@@ -157,9 +157,11 @@ export class Store {
         if (i === this.slots.length - 1) {
           this.checkResult();
           if (this.score <= 0) {
+            sounds.gameOver.play();
             this.setIsGame(false);
           }
           if (this.score >= this.winnerScore) {
+            sounds.winGame.play();
             this.setWinner(true);
             this.winnerScore += this.winnerScore;
           }
@@ -208,7 +210,7 @@ export class Store {
     if ((value0 === value1 && value0 === value2) && value0 !== 0) {
       this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, true));
       this.setScore(this.pointMap.jackpot);
-      sounds.winCards.play();
+      sounds.winRound.play();
     }
     else if (((value0 === value1) && value0 !== 0)
       || ((value0 === value2) && value2 !== 0)
@@ -226,7 +228,7 @@ export class Store {
         this.setFairyAnimation(0, true);
         this.setFairyAnimation(2, true);
       }
-      sounds.winCards.play();
+      sounds.winRound.play();
       this.setScore(this.pointMap.bonus);
     }
   }
