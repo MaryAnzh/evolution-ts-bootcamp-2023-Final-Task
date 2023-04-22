@@ -18,9 +18,17 @@ export const FairySTyle = styled.div`
   background-size: 100%;
   background-repeat: no-repeat;
   background-image: url(${({ theme }) => theme.gloverImg});
-  opacity: 0.6;
+  transition: .3s;
+  opacity: 0.4;
   
   &:hover {
     opacity: 1;
+  }
+
+  @keyframes fairyLight {
+    0%{opacity: 0.4}
+    30%{opacity: 0.1:}
+    80%{opacity: 1;}
+    100%{opacity: 0.4; }
   }
 `;

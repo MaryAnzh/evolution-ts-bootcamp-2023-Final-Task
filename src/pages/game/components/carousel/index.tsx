@@ -38,7 +38,7 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
                     transform: `rotateX(${rotateAngle * i}deg) translateZ(200px)`,
                     backgroundImage: `url(${img})`
                 }}>
-                <FairyFrame />              
+                <FairyFrame cardIndex={i} cardId={el.id} />
             </CarouselCard >
         );
     });
