@@ -15,6 +15,7 @@ export const MemoCardStyle = styled.div`
         opacity: 1;
         transform: rotateY(180deg);
     }
+    
     &:hover :nth-child(2) {
         transform: rotateY(180deg) scale(-1, 1);
     }
