@@ -1,12 +1,14 @@
 import React from "react";
 import { MemoFieldStyle } from "./styled";
 import { MemoCard } from "../memo-card";
+import { store } from "../../../../App";
 
 export const MemoField = () => {
-    const cardsSet = 16;
-    const cardsList = [...Array(cardsSet).keys()].map((el) => {
+    const cardsSet = [...store.slots[0].cards, ...store.slots[0].cards];
+    
+    const cardsList = cardsSet.map((card, i) => {
         return (
-            <MemoCard key={el} />
+            <MemoCard key={card.id + i} img={card.url} />
         )
     });
 

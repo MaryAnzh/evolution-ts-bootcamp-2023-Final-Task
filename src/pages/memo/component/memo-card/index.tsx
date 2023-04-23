@@ -1,10 +1,20 @@
 import React from "react";
-import { MemoCardStyle } from "./styled";
+import { MemoCardStyle, MemoCardFront, MemoBackCard } from "./styled";
 
-export const MemoCard = () => {
+type CardProps = {
+    img: string,
+}
+
+export const MemoCard: React.FC<CardProps> = (props) => {
+    const style = {
+        backgroundImage: `url(${props.img})`
+    };
+
+
     return (
         <MemoCardStyle>
-
+            <MemoCardFront></MemoCardFront>
+            <MemoBackCard style={style}> </MemoBackCard>
         </MemoCardStyle>
     )
 }
