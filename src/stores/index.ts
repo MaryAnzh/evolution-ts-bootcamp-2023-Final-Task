@@ -53,6 +53,7 @@ export class Store {
   isMemoStart = false;
   isMemoFieldBlock = false;
   isMemoRound = false;
+  isMemoWin = false;
   memoCards: IMemoCard[] = [];
   memoCouple: IMemoCouple = {
     cardId1: null,
@@ -86,6 +87,7 @@ export class Store {
       memoCards: observable,
       isMemoStart: observable,
       isMemoFieldBlock: observable,
+      isMemoWin: observable,
       setIsGame: action,
       setUser: action,
       startNewGame: action,
@@ -224,6 +226,14 @@ export class Store {
     }
   }
 
+  finishMemo = () => {
+    console.log('finish');
+    this.setIsMemoStart(false);
+    this.isMemoRound = false;
+    this.isMemoWin = false;
+    this.setMemoCards([]);
+  }
+
   openCard = (index: number) => {
 
     if (this.memoCouple.cardId1 !== null && this.memoCouple.cardId2 !== null) {
@@ -242,20 +252,16 @@ export class Store {
     }
     this.memoCards[index].isOpen = true;
     this.setIsMemoFieldBlock(true);
-    console.log('this.memoCouple');
-    console.log(this.memoCouple);
   }
 
   checkEqual = () => {
     if (!this.isMemoRound) {
       return;
     }
-    console.log('this.memoCouple');
-    console.log(this.memoCouple);
-
     const openCards = this.memoCards.filter(el => el.isOpen === true);
     if (openCards.length === this.memoCards.length) {
-      console.log('You win!!!');
+      this.isMemoWin = true;
+      sounds.winRound.play();
     }
     if (this.memoCouple.cardId2 === null) {
       this.setIsMemoFieldBlock(false);
@@ -264,7 +270,9 @@ export class Store {
     if (this.memoCouple.cardId1 && this.memoCouple.cardId2) {
       this.isMemoRound = false;
       if (this.memoCouple.cardId1.value === this.memoCouple.cardId2.value) {
-        sounds.winRound.play();
+        const audio = new Audio();
+        audio.src = './sounds/ring.mp3';
+        audio.play();
       } else {
         this.memoCards[this.memoCouple.cardId1.index].isOpen = false;
         this.memoCards[this.memoCouple.cardId2.index].isOpen = false;

@@ -27,14 +27,18 @@ export const MemoCard: React.FC<CardProps> = (props) => {
     };
 
     const show = () => {
-        store.openCard(props.index);
+        if (!store.memoCards[props.index].isOpen) {
+            store.openCard(props.index);
+        }
     }
+
     const check = () => {
         store.checkEqual();
     }
 
     return (
-        <MemoCardStyle onClick={show}>
+        <MemoCardStyle
+            onClick={show}>
             <MemoCardFront style={frontCardStyle} onTransitionEnd={check}></MemoCardFront>
             <MemoBackCard style={backCardStyle}> </MemoBackCard>
         </MemoCardStyle>
