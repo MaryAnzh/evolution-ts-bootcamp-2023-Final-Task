@@ -27,10 +27,12 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
 
             <ThemesWrap>
                 <BlackThemeButton
+                    className={store.isMemoStart ? 'blocked' : undefined}
                     onClick={() => props.changeTheme(ThemeEnum.black)}>
                     Black
                 </BlackThemeButton>
                 <SeaThemeButton
+                    className={store.isMemoStart ? 'blocked' : undefined}
                     onClick={() => props.changeTheme(ThemeEnum.sea)}
                 >
                     Sea

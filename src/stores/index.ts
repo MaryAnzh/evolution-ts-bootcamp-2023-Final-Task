@@ -15,6 +15,7 @@ export interface ISlots {
 }
 
 export class Store {
+  //slot game
   isGame = false;
   isWinner = false;
   theme: ThemeEnum = ThemeEnum.black;
@@ -46,6 +47,10 @@ export class Store {
     }
   ]
 
+  //memo
+  isMemoStart = false;
+  memoCards: ICard[] = [];
+
   //const
   cardsInCarousel = 8;
   score = 20;
@@ -70,6 +75,8 @@ export class Store {
       slots: observable,
       fairyAnimation: observable,
       score: observable,
+      memoCards: observable,
+      isMemoStart: observable,
       setIsGame: action,
       setUser: action,
       startNewGame: action,
@@ -81,6 +88,8 @@ export class Store {
       setTheme: action,
       setMixCard: action,
       setWinner: action,
+      setMemoCards: action,
+      setIsMemoStart: action,
     });
 
     this.setIsGame(true);
@@ -131,6 +140,15 @@ export class Store {
     this.slots[slotIndex].cards = cards;
   }
 
+  //memo set
+  setIsMemoStart = (value: boolean) => {
+    this.isMemoStart = value;
+  }
+  setMemoCards = (cardS: ICard[]) => {
+    const shake = [...cardS, ...cardS].sort(() => 0.5 - Math.random());
+    this.memoCards = shake;
+  }
+
   //round logic
   startNewGame = () => {
     this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, false));
@@ -170,6 +188,16 @@ export class Store {
         clearTimeout(timer);
       }, this.storeConst.spinTime * (i + 1));
     });
+  }
+
+  startMemo() {
+    this.setIsMemoStart(true);
+    if (this.theme === ThemeEnum.black) {
+      this.setMemoCards(blackCards);
+    }
+    if (this.theme === ThemeEnum.sea) {
+      this.setMemoCards(seaCards);
+    }
   }
 
   //utils

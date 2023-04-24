@@ -3,13 +3,13 @@ import { MemoCardStyle, MemoCardFront, MemoBackCard } from "./styled";
 
 type CardProps = {
     img: string,
+    value: number
 }
 
 export const MemoCard: React.FC<CardProps> = (props) => {
     const style = {
         backgroundImage: `url(${props.img})`
     };
-
 
     return (
         <MemoCardStyle>
