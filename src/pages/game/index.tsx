@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { store } from "../../App";
 
 import { Carousel } from "./components/carousel";
 import { ControlPanel } from "./components/control-panel";
@@ -30,8 +31,9 @@ export const GamePage = () => {
         <GamePageStyle>
             <SlotGameTopPanel>
                 <SlotGameTitle>Slot game</SlotGameTitle>
-                {/* <Link to={'/memo'}>Memo</Link> */}
-                <LinkToMemo onClick={link}></LinkToMemo>
+                {store.score < 100 &&
+                    <LinkToMemo onClick={link}></LinkToMemo>
+                }
                 <ScorePanel />
             </SlotGameTopPanel>
             <SlotGameStyle>

@@ -17,6 +17,7 @@ import {
 
 export const MemoPage = observer(() => {
     const startGame = () => {
+        console.log('click');
         store.startMemo();
     }
 

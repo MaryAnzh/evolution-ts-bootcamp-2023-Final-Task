@@ -223,7 +223,6 @@ export class Store {
 
   startMemo() {
     this.setIsMemoStart(true);
-
     if (this.theme === ThemeEnum.black) {
       this.setMemoCards(blackCards);
     }
@@ -234,7 +233,6 @@ export class Store {
 
   finishMemo = () => {
     this.setIsMemoStart(false);
-    this.isMemoRound = false;
     this.setIsMemoWin(false);
     this.setMemoCards([]);
     this.setScore(this.memoScore);
