@@ -1,6 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 import { ICard, blackCards, seaCards } from "../data/cards";
 import { ThemeEnum } from "../themes/theme.interface";
+import { IMemoCouple, IMemoCard, IMemoOpenCard } from "../interfaces/memo.interface";
 import { sounds } from "../data/sounds";
 
 export interface ISlot {
@@ -15,6 +16,7 @@ export interface ISlots {
 }
 
 export class Store {
+
   //slot game
   isGame = false;
   isWinner = false;
@@ -49,7 +51,13 @@ export class Store {
 
   //memo
   isMemoStart = false;
-  memoCards: ICard[] = [];
+  isMemoFieldBlock = false;
+  isMemoRound = false;
+  memoCards: IMemoCard[] = [];
+  memoCouple: IMemoCouple = {
+    cardId1: null,
+    cardId2: null,
+  }
 
   //const
   cardsInCarousel = 8;
@@ -77,6 +85,7 @@ export class Store {
       score: observable,
       memoCards: observable,
       isMemoStart: observable,
+      isMemoFieldBlock: observable,
       setIsGame: action,
       setUser: action,
       startNewGame: action,
@@ -90,6 +99,9 @@ export class Store {
       setWinner: action,
       setMemoCards: action,
       setIsMemoStart: action,
+      setIsMemoFieldBlock: action,
+      checkEqual: action,
+      openCard: action
     });
 
     this.setIsGame(true);
@@ -145,8 +157,20 @@ export class Store {
     this.isMemoStart = value;
   }
   setMemoCards = (cardS: ICard[]) => {
-    const shake = [...cardS, ...cardS].sort(() => 0.5 - Math.random());
-    this.memoCards = shake;
+    const shuffle = [...cardS, ...cardS]
+      .sort(() => 0.5 - Math.random())
+      .map(el => {
+        const memoCard: IMemoCard = {
+          value: el.id,
+          url: el.url,
+          isOpen: false
+        }
+        return memoCard;
+      });
+    this.memoCards = shuffle;
+  }
+  setIsMemoFieldBlock = (value: boolean) => {
+    this.isMemoFieldBlock = value;
   }
 
   //round logic
@@ -197,6 +221,56 @@ export class Store {
     }
     if (this.theme === ThemeEnum.sea) {
       this.setMemoCards(seaCards);
+    }
+  }
+
+  openCard = (index: number) => {
+
+    if (this.memoCouple.cardId1 !== null && this.memoCouple.cardId2 !== null) {
+      console.error('Two card open');
+      return;
+    }
+    const item: IMemoOpenCard = {
+      value: this.memoCards[index].value,
+      index: index,
+    }
+    if (!this.memoCouple.cardId1) {
+      this.isMemoRound = true;
+      this.memoCouple.cardId1 = item;
+    } else {
+      this.memoCouple.cardId2 = item;
+    }
+    this.memoCards[index].isOpen = true;
+    this.setIsMemoFieldBlock(true);
+    console.log('this.memoCouple');
+    console.log(this.memoCouple);
+  }
+
+  checkEqual = () => {
+    if (!this.isMemoRound) {
+      return;
+    }
+    console.log('this.memoCouple');
+    console.log(this.memoCouple);
+
+    const openCards = this.memoCards.filter(el => el.isOpen === true);
+    if (openCards.length === this.memoCards.length) {
+      console.log('You win!!!');
+    }
+    if (this.memoCouple.cardId2 === null) {
+      this.setIsMemoFieldBlock(false);
+      return;
+    }
+    if (this.memoCouple.cardId1 && this.memoCouple.cardId2) {
+      this.isMemoRound = false;
+      if (this.memoCouple.cardId1.value === this.memoCouple.cardId2.value) {
+        sounds.winRound.play();
+      } else {
+        this.memoCards[this.memoCouple.cardId1.index].isOpen = false;
+        this.memoCards[this.memoCouple.cardId2.index].isOpen = false;
+      }
+      this.memoCouple.cardId1 = null;
+      this.memoCouple.cardId2 = null;
     }
   }
 

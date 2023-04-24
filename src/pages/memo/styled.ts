@@ -10,6 +10,15 @@ export const MemoStyle = styled.div`
   gap: 2rem;
 `;
 
+export const MemoBlockedStyle = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: sgba(0, 0, 0, 0%);
+`;
+
 export const MemoTopPanel = styled.div`
   width: 100%;
   display: flex;

@@ -11,12 +11,20 @@ export const MemoCardStyle = styled.div`
   border-radius: ${borderRadius};
   cursor: pointer;
 
-    &:hover :nth-child(1) {
+    /* &:hover :nth-child(1) {
         transform: rotateY(180deg);
     }
     
     &:hover :nth-child(2) {
         transform: rotateY(180deg) scale(-1, 1);
+    } */
+    @keyframes hidden {
+      from {transform: translateX(0deg)}
+      to {transform: translateX(180deg)}}
+    }
+    @keyframes showBack {
+      from {transform: translateX(0deg) scale(-1, 1)}
+      to {transform: translateX(180deg scale(-1, 1))}}
     }
 `;
 
