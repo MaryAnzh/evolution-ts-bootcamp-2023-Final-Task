@@ -50,8 +50,8 @@ const App = observer(() => {
           <Header changeTheme={changeTheme} />
           <MainStyle>
             <Routes>
-              <Route path="/game" element={<GamePage />} />
-              <Route path="/" element={<MemoPage />} />
+              <Route path="/" element={<GamePage />} />
+              <Route path="/memo" element={<MemoPage />} />
             </Routes>
           </MainStyle>
           <Footer />

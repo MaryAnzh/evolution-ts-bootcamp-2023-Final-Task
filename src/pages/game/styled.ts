@@ -28,3 +28,35 @@ export const SlotGameTitle = styled.h2`
    color: ${({ theme }) => theme.color};
    font-weight: 600;
  `;
+
+export const LinkToMemo = styled.div`
+   position: relative;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   background-image: url('./assets/dollar.png');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
+   transition: .3s;
+   cursor: pointer;
+
+   &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      box-sizing: border-box;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        background: radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #D1B464 100%) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 2;
+    }
+    &:hover {
+    transform: scale(1.1);
+   }
+ `;

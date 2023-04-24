@@ -4,6 +4,8 @@ import { store } from "../../App";
 import { observer } from "mobx-react-lite";
 
 import { MemoWinnerMessage } from "../../components/pop-up-components/memo-win";
+import { ScorePanel } from "../game/components/score";
+
 import {
     MemoStyle,
     MemoTitle,
@@ -17,6 +19,7 @@ export const MemoPage = observer(() => {
     const startGame = () => {
         store.startMemo();
     }
+
     return (
         <MemoStyle>
             {store.isMemoFieldBlock &&
@@ -26,7 +29,7 @@ export const MemoPage = observer(() => {
             <MemoTopPanel>
                 <MemoTitle>Memo</MemoTitle>
                 {store.isMemoStart ?
-                    <MemoTimerStyle>Timer</MemoTimerStyle>
+                    <ScorePanel />
                     : <MemoStartButton onClick={startGame}>Start</MemoStartButton>
                 }
             </MemoTopPanel>

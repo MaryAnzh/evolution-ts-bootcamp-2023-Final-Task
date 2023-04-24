@@ -65,6 +65,7 @@ export class Store {
   score = 20;
   startScore = 20;
   winnerScore = 1000;
+  memoScore = 100;
 
   storeConst = {
     spinTime: 1000,
@@ -103,7 +104,8 @@ export class Store {
       setIsMemoStart: action,
       setIsMemoFieldBlock: action,
       checkEqual: action,
-      openCard: action
+      openCard: action,
+      setIsMemoWin: action
     });
 
     this.setIsGame(true);
@@ -174,6 +176,9 @@ export class Store {
   setIsMemoFieldBlock = (value: boolean) => {
     this.isMemoFieldBlock = value;
   }
+  setIsMemoWin = (value: boolean) => {
+    this.isMemoWin = value;
+  }
 
   //round logic
   startNewGame = () => {
@@ -218,6 +223,7 @@ export class Store {
 
   startMemo() {
     this.setIsMemoStart(true);
+
     if (this.theme === ThemeEnum.black) {
       this.setMemoCards(blackCards);
     }
@@ -227,11 +233,12 @@ export class Store {
   }
 
   finishMemo = () => {
-    console.log('finish');
     this.setIsMemoStart(false);
     this.isMemoRound = false;
-    this.isMemoWin = false;
+    this.setIsMemoWin(false);
     this.setMemoCards([]);
+    this.setScore(this.memoScore);
+    this.startNewGame();
   }
 
   openCard = (index: number) => {
@@ -260,7 +267,7 @@ export class Store {
     }
     const openCards = this.memoCards.filter(el => el.isOpen === true);
     if (openCards.length === this.memoCards.length) {
-      this.isMemoWin = true;
+      this.setIsMemoWin(true);
       sounds.winRound.play();
     }
     if (this.memoCouple.cardId2 === null) {

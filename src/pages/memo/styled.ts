@@ -8,6 +8,7 @@ export const MemoStyle = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  color: ${({theme}) => theme.fontColor};
 `;
 
 export const MemoBlockedStyle = styled.div`

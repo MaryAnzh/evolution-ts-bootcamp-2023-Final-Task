@@ -18,6 +18,7 @@ export const WinTitle = styled.h3`
   color: ${({ theme }) => theme.fontColor};
   font-weight: 600;
   text-transform: uppercase;
+  text-align: center;
 `;
 
 export const WinMessage = styled.p`
