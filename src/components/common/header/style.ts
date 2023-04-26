@@ -42,6 +42,7 @@ export const NavButtonStyle = styled.div`
   outline: none;
   border-radius: 6px;
   transition: all.3s;
+  opacity: 0.7;
   cursor: pointer;
 
   &::after {
@@ -58,8 +59,6 @@ export const NavButtonStyle = styled.div`
         linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
         mask-composite: exclude;
-        opacity: 0.7;
-        transition: all.3s;
     }
 
     &:hover {
