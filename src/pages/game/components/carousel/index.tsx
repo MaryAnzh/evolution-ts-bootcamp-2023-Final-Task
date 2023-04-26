@@ -7,8 +7,7 @@ import {
     CarouselBodyWrap,
     CarouselBody,
     CarouselCard,
-    CardBorderStyle,
-    Fairy,
+    CardBorderStyle
 } from "./styled";
 import { store } from "../../../../App";
 import { observer } from "mobx-react-lite";

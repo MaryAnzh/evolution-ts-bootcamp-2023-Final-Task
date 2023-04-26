@@ -1,6 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 import { ICard, blackCards, seaCards } from "../data/cards";
 import { ThemeEnum } from "../themes/theme.interface";
+import { IMemoCouple, IMemoCard, IMemoOpenCard } from "../interfaces/memo.interface";
 import { sounds } from "../data/sounds";
 
 export interface ISlot {
@@ -15,6 +16,8 @@ export interface ISlots {
 }
 
 export class Store {
+
+  //slot game
   isGame = false;
   isWinner = false;
   theme: ThemeEnum = ThemeEnum.black;
@@ -46,11 +49,23 @@ export class Store {
     }
   ]
 
+  //memo
+  isMemoStart = false;
+  isMemoFieldBlock = false;
+  isMemoRound = false;
+  isMemoWin = false;
+  memoCards: IMemoCard[] = [];
+  memoCouple: IMemoCouple = {
+    cardId1: null,
+    cardId2: null,
+  }
+
   //const
   cardsInCarousel = 8;
   score = 20;
   startScore = 20;
   winnerScore = 1000;
+  memoScore = 100;
 
   storeConst = {
     spinTime: 1000,
@@ -70,6 +85,10 @@ export class Store {
       slots: observable,
       fairyAnimation: observable,
       score: observable,
+      memoCards: observable,
+      isMemoStart: observable,
+      isMemoFieldBlock: observable,
+      isMemoWin: observable,
       setIsGame: action,
       setUser: action,
       startNewGame: action,
@@ -81,6 +100,12 @@ export class Store {
       setTheme: action,
       setMixCard: action,
       setWinner: action,
+      setMemoCards: action,
+      setIsMemoStart: action,
+      setIsMemoFieldBlock: action,
+      checkEqual: action,
+      openCard: action,
+      setIsMemoWin: action
     });
 
     this.setIsGame(true);
@@ -131,6 +156,30 @@ export class Store {
     this.slots[slotIndex].cards = cards;
   }
 
+  //memo set
+  setIsMemoStart = (value: boolean) => {
+    this.isMemoStart = value;
+  }
+  setMemoCards = (cardS: ICard[]) => {
+    const shuffle = [...cardS, ...cardS]
+      .sort(() => 0.5 - Math.random())
+      .map(el => {
+        const memoCard: IMemoCard = {
+          value: el.id,
+          url: el.url,
+          isOpen: false
+        }
+        return memoCard;
+      });
+    this.memoCards = shuffle;
+  }
+  setIsMemoFieldBlock = (value: boolean) => {
+    this.isMemoFieldBlock = value;
+  }
+  setIsMemoWin = (value: boolean) => {
+    this.isMemoWin = value;
+  }
+
   //round logic
   startNewGame = () => {
     this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, false));
@@ -170,6 +219,72 @@ export class Store {
         clearTimeout(timer);
       }, this.storeConst.spinTime * (i + 1));
     });
+  }
+
+  startMemo() {
+    this.setIsMemoStart(true);
+    if (this.theme === ThemeEnum.black) {
+      this.setMemoCards(blackCards);
+    }
+    if (this.theme === ThemeEnum.sea) {
+      this.setMemoCards(seaCards);
+    }
+  }
+
+  finishMemo = () => {
+    this.setIsMemoStart(false);
+    this.setIsMemoWin(false);
+    this.setMemoCards([]);
+    this.setScore(this.memoScore);
+    this.startNewGame();
+  }
+
+  openCard = (index: number) => {
+
+    if (this.memoCouple.cardId1 !== null && this.memoCouple.cardId2 !== null) {
+      console.error('Two card open');
+      return;
+    }
+    const item: IMemoOpenCard = {
+      value: this.memoCards[index].value,
+      index: index,
+    }
+    if (!this.memoCouple.cardId1) {
+      this.isMemoRound = true;
+      this.memoCouple.cardId1 = item;
+    } else {
+      this.memoCouple.cardId2 = item;
+    }
+    this.memoCards[index].isOpen = true;
+    this.setIsMemoFieldBlock(true);
+  }
+
+  checkEqual = () => {
+    if (!this.isMemoRound) {
+      return;
+    }
+    const openCards = this.memoCards.filter(el => el.isOpen === true);
+    if (openCards.length === this.memoCards.length) {
+      this.setIsMemoWin(true);
+      sounds.winRound.play();
+    }
+    if (this.memoCouple.cardId2 === null) {
+      this.setIsMemoFieldBlock(false);
+      return;
+    }
+    if (this.memoCouple.cardId1 && this.memoCouple.cardId2) {
+      this.isMemoRound = false;
+      if (this.memoCouple.cardId1.value === this.memoCouple.cardId2.value) {
+        const audio = new Audio();
+        audio.src = './sounds/ring.mp3';
+        audio.play();
+      } else {
+        this.memoCards[this.memoCouple.cardId1.index].isOpen = false;
+        this.memoCards[this.memoCouple.cardId2.index].isOpen = false;
+      }
+      this.memoCouple.cardId1 = null;
+      this.memoCouple.cardId2 = null;
+    }
   }
 
   //utils

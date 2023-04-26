@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WinStyle = styled.div`
+export const MemoWinStyle = styled.div`
   max-width: 500px;
   width: 100%;
   padding: 1rem;
@@ -13,7 +13,7 @@ export const WinStyle = styled.div`
   border: 1px solid ${({ theme }) => theme.fontColor};
 `;
 
-export const WinTitle = styled.h3`
+export const MemoWinTitle = styled.h3`
   font-size: 4rem;
   color: ${({ theme }) => theme.fontColor};
   font-weight: 600;
@@ -21,14 +21,14 @@ export const WinTitle = styled.h3`
   text-align: center;
 `;
 
-export const WinMessage = styled.p`
+export const MemoWinMessage = styled.p`
   font-size: 1.65rem;
   font-weight: 400;
   text-align: center;
   color: ${({ theme }) => theme.fontColor}
 `;
 
-export const WinButtonWrap = styled.div`
+export const MemoWinButtonWrap = styled.div`
   width: 100%;
   padding: 2rem;
   display: flex;
@@ -37,7 +37,7 @@ export const WinButtonWrap = styled.div`
   gap: 2rem;
 `;
 
-export const WinMoney = styled.div`
+export const MemoWinMoney = styled.div`
   width: 100px;
   height: 100px;
   background-image: url(./assets/money.png);
@@ -47,7 +47,7 @@ export const WinMoney = styled.div`
   transform: translateY(10px);
   `;
 
-export const ContinuaGameButton = styled.button`
+export const MemoContinuaGameButton = styled.button`
   width: 80px;
   height: 80px;
   border-radius: 100%;
