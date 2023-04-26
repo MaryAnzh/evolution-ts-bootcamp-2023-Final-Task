@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { store } from "../../../App";
+
+import { Logo } from "../logo";
 import {
     HeaderStyle,
-    UserNameGreasing,
-    UserNameWrap,
-    ThemesWrap,
-    BlackThemeButton,
-    SeaThemeButton
+    HeaderLogoNavSection,
+    HeaderLogo
+    // UserNameGreasing,
+    // UserNameWrap,
+    // ThemesWrap,
+    // BlackThemeButton,
+    // SeaThemeButton
 } from "./style";
 import { ThemeEnum } from "../../../themes/theme.interface";
 
@@ -19,7 +23,13 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
 
     return (
         <HeaderStyle>
-            <UserNameWrap>
+            <HeaderLogoNavSection>
+                <HeaderLogo>
+                    <Logo />
+                </HeaderLogo>
+            </HeaderLogoNavSection>
+
+            {/* <UserNameWrap>
                 <UserNameGreasing>
                     Hello  {store.user}
                 </UserNameGreasing>
@@ -37,7 +47,7 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                 >
                     Sea
                 </SeaThemeButton>
-            </ThemesWrap>
+            </ThemesWrap> */}
         </HeaderStyle >
     );
 })

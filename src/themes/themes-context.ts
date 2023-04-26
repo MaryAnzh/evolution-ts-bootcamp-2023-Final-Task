@@ -26,13 +26,14 @@ export const blackTheme: ITheme = {
     contrastColor: '#F5D17E',
     contrastColorLight: 'string',
     contrastColorDark: 'string',
-    fontColor: '#F5D17E',
+    fontColor: '#D8BAAB',
     fontSize: 'string',
     fontSizeHeader: '1.25rem',
     fontSizeTitle: 'string',
     fontFamily: 'string',
     fontFamilyTitle: 'string',
     background: `rgb(0, 0, 0)`,
+    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
     gradient: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%)',
     gloverImg: './assets/gold-button.png'
 }
@@ -51,13 +52,14 @@ export const seaTheme: ITheme = {
     contrastColor: '#F5D17E',
     contrastColorLight: 'string',
     contrastColorDark: '#074E5E',
-    fontColor: '#F5D17E',
+    fontColor: '#D8BAAB',
     fontSize: 'string',
     fontSizeHeader: 'string',
     fontSizeTitle: 'string',
     fontFamily: 'string',
     fontFamilyTitle: 'string',
     background: `rgb(56, 56, 56)`,
+    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
     gradient: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%)',
     gloverImg: './assets/bubble.png'
 }

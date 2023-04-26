@@ -10,34 +10,46 @@ export const HeaderStyle = styled.header`
   align-items: center;
 `;
 
-export const UserNameWrap = styled.div`
-  width: 10rem;
-`;
+export const HeaderLogoNavSection = styled.div`
+   width: 360px;
+   display: flex;
+   align-items: flex-end;
+   gap: 1rem;
+ `;
 
-export const UserNameGreasing = styled.span`
-  font-size: ${({ theme }) => theme.fontSizeHeader};
-`;
+export const HeaderLogo = styled.div`
+   width: 100px;
+ `;
 
-export const ThemesWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`
 
-export const BlackThemeButton = styled.button`
-  padding: 0.4rem 0.6rem;
-  background: none;
-  border: 1px solid ;
-  color: ${({ theme }) => theme.fontColor};;
-  text-transform: uppercase;
-  border-radius: 6px;
-`;
+// export const UserNameWrap = styled.div`
+//   width: 10rem;
+// `;
 
-export const SeaThemeButton = styled.button`
-  padding: 0.4rem 0.6rem;
-  background: ${({ theme }) => theme.gradient};
-  border: 1px solid ;
-  color: ${({ theme }) => theme.fontColor};;
-  text-transform: uppercase;
-  border-radius: 6px;
-`;
+// export const UserNameGreasing = styled.span`
+//   font-size: ${({ theme }) => theme.fontSizeHeader};
+// `;
+
+// export const ThemesWrap = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1rem;
+// `
+
+// export const BlackThemeButton = styled.button`
+//   padding: 0.4rem 0.6rem;
+//   background: none;
+//   border: 1px solid ;
+//   color: ${({ theme }) => theme.fontColor};;
+//   text-transform: uppercase;
+//   border-radius: 6px;
+// `;
+
+// export const SeaThemeButton = styled.button`
+//   padding: 0.4rem 0.6rem;
+//   background: ${({ theme }) => theme.gradient};
+//   border: 1px solid ;
+//   color: ${({ theme }) => theme.fontColor};;
+//   text-transform: uppercase;
+//   border-radius: 6px;
+// `;
