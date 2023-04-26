@@ -5,8 +5,12 @@ import { store } from "../../../App";
 import { Logo } from "../logo";
 import {
     HeaderStyle,
-    HeaderLogoNavSection,
-    HeaderLogo
+    HeaderLogoSection,
+    HeaderNavStyle,
+    NavButtonStyle,
+    HeaderSettingsStyle,
+    SettingLogo,
+    HeaderNavSettings
     // UserNameGreasing,
     // UserNameWrap,
     // ThemesWrap,
@@ -23,11 +27,19 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
 
     return (
         <HeaderStyle>
-            <HeaderLogoNavSection>
-                <HeaderLogo>
-                    <Logo />
-                </HeaderLogo>
-            </HeaderLogoNavSection>
+            <HeaderLogoSection>
+                <Logo />
+            </HeaderLogoSection>
+            <HeaderNavSettings>
+                <HeaderNavStyle>
+                    <NavButtonStyle>Game</NavButtonStyle>
+                    <NavButtonStyle>About</NavButtonStyle>
+                    <NavButtonStyle>Info</NavButtonStyle>
+                </HeaderNavStyle>
+                <HeaderSettingsStyle>
+                    <SettingLogo src='./assets/settings.png' alt='settings'></SettingLogo>
+                </HeaderSettingsStyle>
+            </HeaderNavSettings>
 
             {/* <UserNameWrap>
                 <UserNameGreasing>
