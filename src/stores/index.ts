@@ -18,11 +18,11 @@ export enum ViewEnum { slot, memo }
 
 export class Store {
   view: ViewEnum = ViewEnum.slot;
+  theme: ThemeEnum = ThemeEnum.black;
 
   //slot game
   isGame = false;
   isWinner = false;
-  theme: ThemeEnum = ThemeEnum.black;
   user = 'Guest';
   slots: ISlot[] = [
     {
@@ -244,7 +244,7 @@ export class Store {
     this.setIsMemoWin(false);
     this.setMemoCards([]);
     this.setScore(this.memoScore);
-    this.startNewGame();
+    this.setView(ViewEnum.slot);
   }
 
   openCard = (index: number) => {

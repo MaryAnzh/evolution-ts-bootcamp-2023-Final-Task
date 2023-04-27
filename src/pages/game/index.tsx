@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 import { store } from "../../App";
 
 import { Carousel } from "./components/carousel";
@@ -18,7 +19,7 @@ import {
 } from "./styled";
 import { ViewEnum } from "../../stores";
 
-export const GamePage = () => {
+export const GamePage = observer(() => {
     const slotCount = 3;
 
     const slots = [...Array(slotCount).keys()].map((slot) => {
@@ -29,17 +30,21 @@ export const GamePage = () => {
 
     const changeView = (view: ViewEnum) => {
         store.setView(view);
+        if (view === ViewEnum.memo) {
+            store.startMemo();
+        }
     }
 
     return (
         <GamePageStyle>
             <SlotGameTopPanel>
-                <SlotGameTitle>Slot game</SlotGameTitle>
+                <SlotGameTitle>{store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}</SlotGameTitle>
                 <MoneyWrap>
                     <ScorePanel />
-                    {store.score < 100 &&
-                        <LinkToMemo onClick={() => changeView(ViewEnum.memo)}></LinkToMemo>
-                    }
+                    <LinkToMemo
+                        className={store.view === ViewEnum.memo || store.score > 100 ? 'blocked' : ''}
+                        onClick={() => changeView(ViewEnum.memo)}></LinkToMemo>
+
                 </MoneyWrap>
 
 
@@ -56,4 +61,4 @@ export const GamePage = () => {
             }
         </GamePageStyle >
     );
-}
+})

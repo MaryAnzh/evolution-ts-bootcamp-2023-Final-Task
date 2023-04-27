@@ -30,7 +30,7 @@ export const HeaderNavStyle = styled.div`
   justify-content: space-between;
 `;
 
-export const NavButtonStyle = styled.div`
+export const NavButtonStyle = styled.div<{ opacity: string, pointerEvent: string }>`
   position: relative;
   width: fit-content;
   padding: 0.4rem 0.8rem;
@@ -42,8 +42,10 @@ export const NavButtonStyle = styled.div`
   outline: none;
   border-radius: 6px;
   transition: all.3s;
-  opacity: 0.7;
+  color: ${({ theme }) => theme.fontColor};
   cursor: pointer;
+  opacity: ${({ opacity }) => opacity};
+  pointer-events: ${({ pointerEvent }) => pointerEvent};
 
   &::after {
       content: '';

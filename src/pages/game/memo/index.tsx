@@ -11,29 +11,22 @@ import {
     MemoTitle,
     MemoTopPanel,
     MemoStartButton,
-    MemoTimerStyle,
     MemoBlockedStyle
 } from "./styled";
 
 export const MemoGame = observer(() => {
-    const startGame = () => {
-        console.log('click');
-        store.startMemo();
-    }
 
     return (
         <MemoStyle>
-            {store.isMemoFieldBlock &&
-                <MemoBlockedStyle></MemoBlockedStyle>}
-            {store.isMemoWin &&
-                <MemoWinnerMessage></MemoWinnerMessage>}
-            <MemoTopPanel>
-                <MemoTitle>Memo</MemoTitle>
-                {store.isMemoStart ?
-                    <ScorePanel />
-                    : <MemoStartButton onClick={startGame}>Start</MemoStartButton>
-                }
-            </MemoTopPanel>
+            {
+                store.isMemoFieldBlock &&
+                <MemoBlockedStyle></MemoBlockedStyle>
+            }
+            {
+                store.isMemoWin &&
+                <MemoWinnerMessage></MemoWinnerMessage>
+            }
+            
             <MemoField />
         </MemoStyle>
     );

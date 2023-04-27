@@ -21,6 +21,11 @@ import {
 
 
 export const store = new Store();
+export enum PageEnum {
+  game = '/',
+  info = '/info',
+  about = '/app-about'
+}
 
 const App = observer(() => {
   const [theme, setTheme] = useState<ITheme>(themes.black);
@@ -51,9 +56,9 @@ const App = observer(() => {
           <Header changeTheme={changeTheme} />
           <MainStyle>
             <Routes>
-              <Route path="/" element={<GamePage />} />
-              <Route path="/info" element={<GameInfoPage />} />
-              <Route path="/app-about" element={<AppAboutPage />} />
+              <Route path={PageEnum.game} element={<GamePage />} />
+              <Route path={PageEnum.info} element={<GameInfoPage />} />
+              <Route path={PageEnum.about} element={<AppAboutPage />} />
             </Routes>
           </MainStyle>
           <Footer />
