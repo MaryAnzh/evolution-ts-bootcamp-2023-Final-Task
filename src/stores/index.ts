@@ -14,8 +14,10 @@ export interface ISlots {
   slot1: ISlot,
   slot2: ISlot,
 }
+export enum ViewEnum { slot, memo }
 
 export class Store {
+  view: ViewEnum = ViewEnum.slot;
 
   //slot game
   isGame = false;
@@ -79,6 +81,7 @@ export class Store {
 
   constructor() {
     makeObservable(this, {
+      view: observable,
       isGame: observable,
       isWinner: observable,
       user: observable,
@@ -89,6 +92,7 @@ export class Store {
       isMemoStart: observable,
       isMemoFieldBlock: observable,
       isMemoWin: observable,
+      setView: action,
       setIsGame: action,
       setUser: action,
       startNewGame: action,
@@ -113,6 +117,10 @@ export class Store {
   }
 
   //setters
+  setView = (value: ViewEnum) => {
+    this.view = value;
+  }
+
   setIsGame = (value: boolean) => {
     this.isGame = value;
   }

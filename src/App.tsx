@@ -7,7 +7,8 @@ import { Header } from './components/common/header';
 import { Footer } from './components/common/footer';
 import { MainStyle } from './AppStyled';
 import { GamePage } from './pages/game';
-import { MemoPage } from './pages/memo';
+import { GameInfoPage } from './pages/game-info';
+import { AppAboutPage } from './pages/app-about';
 import { themes } from './themes/themes-context';
 import { ITheme, ThemeEnum } from './themes/theme.interface';
 import { GameOver } from './components/pop-up-components/game-over';
@@ -51,7 +52,8 @@ const App = observer(() => {
           <MainStyle>
             <Routes>
               <Route path="/" element={<GamePage />} />
-              <Route path="/memo" element={<MemoPage />} />
+              <Route path="/info" element={<GameInfoPage />} />
+              <Route path="/app-about" element={<AppAboutPage />} />
             </Routes>
           </MainStyle>
           <Footer />

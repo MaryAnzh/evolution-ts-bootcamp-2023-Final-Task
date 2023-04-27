@@ -1,10 +1,10 @@
 import React from "react";
-import { MemoField } from "./component/game-field";
-import { store } from "../../App";
+import { store } from "../../../App";
 import { observer } from "mobx-react-lite";
 
-import { MemoWinnerMessage } from "../../components/pop-up-components/memo-win";
-import { ScorePanel } from "../game/components/score";
+import { MemoField } from "./component/game-field";
+import { MemoWinnerMessage } from "../../../components/pop-up-components/memo-win";
+import { ScorePanel } from "../components/score";
 
 import {
     MemoStyle,
@@ -15,7 +15,7 @@ import {
     MemoBlockedStyle
 } from "./styled";
 
-export const MemoPage = observer(() => {
+export const MemoGame = observer(() => {
     const startGame = () => {
         console.log('click');
         store.startMemo();

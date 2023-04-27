@@ -1,9 +1,10 @@
 import React from "react";
-import { MemoFieldStyle } from "./styled";
-import { MemoCard } from "../memo-card";
-import { store } from "../../../../App";
+import { store } from "../../../../../App";
 import { observer } from "mobx-react-lite";
-import { IMemoCard } from "../../../../interfaces/memo.interface";
+import { IMemoCard } from "../../../../../interfaces/memo.interface";
+
+import { MemoCard } from "../memo-card";
+import { MemoFieldStyle } from "./styled";
 
 export const MemoField = observer(() => {
     const cardsList = [...store.memoCards].map((card: IMemoCard, i: number) => {
