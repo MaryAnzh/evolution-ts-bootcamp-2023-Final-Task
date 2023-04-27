@@ -29,6 +29,14 @@ export const SlotGameTitle = styled.h2`
    font-weight: 600;
  `;
 
+export const MoneyWrap = styled.div`
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+
 export const LinkToMemo = styled.div`
    position: relative;
    width: 40px;
@@ -59,4 +67,12 @@ export const LinkToMemo = styled.div`
     &:hover {
     transform: scale(1.1);
    }
+ `;
+
+export const SlotGameWrap = styled.div`
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
  `;

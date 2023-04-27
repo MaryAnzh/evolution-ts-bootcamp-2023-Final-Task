@@ -25,6 +25,15 @@ code {
   pointer-events: none;
 }
 
+.active-nav {
+  opacity: 1;
+  pointer-events: none;
+}
+.disable-nav {
+  opacity: 0.7;
+  pointer-events: all;
+}
+
 .memo-card-blocked {
   pointer-events: none;
 

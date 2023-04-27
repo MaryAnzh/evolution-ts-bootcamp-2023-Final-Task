@@ -1,25 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 import { store } from "../../App";
 
 import { Carousel } from "./components/carousel";
 import { ControlPanel } from "./components/control-panel";
 import { ScorePanel } from "./components/score";
+import { MemoGame } from "./memo";
 
 import {
     GamePageStyle,
     SlotGameStyle,
     SlotGameTitle,
     SlotGameTopPanel,
-    LinkToMemo
+    LinkToMemo,
+    SlotGameWrap,
+    MoneyWrap
 } from "./styled";
+import { ViewEnum } from "../../stores";
 
-export const GamePage = () => {
+export const GamePage = observer(() => {
     const slotCount = 3;
-    const nav = useNavigate();
-    const link = () => {
-        nav('/memo');
-    }
 
     const slots = [...Array(slotCount).keys()].map((slot) => {
         return (
@@ -27,19 +28,37 @@ export const GamePage = () => {
         );
     });
 
+    const changeView = (view: ViewEnum) => {
+        store.setView(view);
+        if (view === ViewEnum.memo) {
+            store.startMemo();
+        }
+    }
+
     return (
         <GamePageStyle>
             <SlotGameTopPanel>
-                <SlotGameTitle>Slot game</SlotGameTitle>
-                {store.score < 100 &&
-                    <LinkToMemo onClick={link}></LinkToMemo>
-                }
-                <ScorePanel />
+                <SlotGameTitle>{store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}</SlotGameTitle>
+                <MoneyWrap>
+                    <ScorePanel />
+                    <LinkToMemo
+                        className={store.view === ViewEnum.memo || store.score > 100 ? 'blocked' : ''}
+                        onClick={() => changeView(ViewEnum.memo)}></LinkToMemo>
+
+                </MoneyWrap>
+
+
             </SlotGameTopPanel>
-            <SlotGameStyle>
-                {slots}
-            </SlotGameStyle>
-            <ControlPanel />
-        </GamePageStyle>
+            {store.view === ViewEnum.slot ?
+                <SlotGameWrap>
+                    <SlotGameStyle>
+                        {slots}
+                    </SlotGameStyle>
+                    <ControlPanel />
+                </SlotGameWrap>
+                :
+                <MemoGame />
+            }
+        </GamePageStyle >
     );
-}
+})

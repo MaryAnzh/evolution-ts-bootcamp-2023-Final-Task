@@ -1,6 +1,11 @@
 import React from "react";
-import { MemoCardStyle, MemoCardFront, MemoBackCard } from "./styled";
-import { store } from '../../../../App';
+import { store } from "../../../../../App";
+
+import {
+    MemoCardStyle,
+    MemoCardFront,
+    MemoBackCard
+} from "./styled";
 
 type CardProps = {
     img: string,
