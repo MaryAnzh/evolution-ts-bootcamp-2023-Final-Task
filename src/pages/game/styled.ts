@@ -22,6 +22,17 @@ export const SlotGameStyle = styled.div`
   display: flex;
   gap: 1rem;
 `;
+export const LinkToSlot = styled.img`
+  height: 2rem;
+  padding-right: 2rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
 
 export const SlotGameTitle = styled.h2`
    font-size: 3rem;

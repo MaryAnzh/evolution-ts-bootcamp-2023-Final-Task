@@ -15,7 +15,8 @@ import {
     SlotGameTopPanel,
     LinkToMemo,
     SlotGameWrap,
-    MoneyWrap
+    MoneyWrap,
+    LinkToSlot
 } from "./styled";
 import { ViewEnum } from "../../stores";
 
@@ -34,11 +35,23 @@ export const GamePage = observer(() => {
             store.startMemo();
         }
     }
+    const closeMemo = () => {
+        store.closeMemo();
+    }
 
     return (
         <GamePageStyle>
             <SlotGameTopPanel>
-                <SlotGameTitle>{store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}</SlotGameTitle>
+                <SlotGameTitle>
+                    {store.view === ViewEnum.memo &&
+                        <LinkToSlot
+                            src='./assets/golden-arrow.png'
+                            alt='arrow to slot'
+                            onClick={closeMemo}>
+                        </LinkToSlot>
+                    }
+
+                    {store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}</SlotGameTitle>
                 <MoneyWrap>
                     <ScorePanel />
                     <LinkToMemo

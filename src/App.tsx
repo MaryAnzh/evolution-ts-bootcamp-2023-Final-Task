@@ -14,6 +14,7 @@ import { ITheme, ThemeEnum } from './themes/theme.interface';
 import { GameOver } from './components/pop-up-components/game-over';
 import { observer } from 'mobx-react-lite';
 import { WinnerMessage } from './components/pop-up-components/win';
+import { Settings } from './components/common/settings';
 import {
   APPStyled,
   BlockedStyle
@@ -53,6 +54,7 @@ const App = observer(() => {
           {(store.slots[0].isSpin || store.slots[1].isSpin || store.slots[2].isSpin) &&
             <BlockedStyle></BlockedStyle>
           }
+          <Settings></Settings>
           <Header changeTheme={changeTheme} />
           <MainStyle>
             <Routes>

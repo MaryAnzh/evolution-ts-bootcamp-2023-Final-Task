@@ -109,7 +109,8 @@ export class Store {
       setIsMemoFieldBlock: action,
       checkEqual: action,
       openCard: action,
-      setIsMemoWin: action
+      setIsMemoWin: action,
+      closeMemo: action,
     });
 
     this.setIsGame(true);
@@ -239,12 +240,16 @@ export class Store {
     }
   }
 
-  finishMemo = () => {
+  closeMemo = () => {
     this.setIsMemoStart(false);
     this.setIsMemoWin(false);
     this.setMemoCards([]);
-    this.setScore(this.memoScore);
     this.setView(ViewEnum.slot);
+  }
+
+  finishMemo = () => {
+    this.closeMemo();
+    this.setScore(this.memoScore);
   }
 
   openCard = (index: number) => {

@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
     const location = useLocation();
     enum NavStyle {
         activeOpacity = '1',
-        disableOpacity = '0.7',
+        disableOpacity = '0.6',
         activeEvent = 'none',
         disableOEvent = 'all'
     }
