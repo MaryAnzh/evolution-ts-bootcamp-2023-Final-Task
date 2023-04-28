@@ -1,4 +1,8 @@
-export enum ThemeEnum { black, sea }
+export enum ThemeEnum {
+    black = 'black',
+    sea = 'sea',
+    fairy = 'fairy'
+}
 
 export interface ITheme {
     name: 'black' | 'sea',
