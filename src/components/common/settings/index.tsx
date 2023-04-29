@@ -21,7 +21,8 @@ import { ThemeEnum } from "../../../themes/theme.interface";
 import { observer } from "mobx-react-lite";
 
 type SettingProps = {
-    changeTheme: (t: ThemeEnum) => void
+    changeTheme: (t: ThemeEnum) => void,
+    hiddenSetting: () => void
 }
 
 export const Settings: React.FC<SettingProps> = observer((props) => {
@@ -36,7 +37,9 @@ export const Settings: React.FC<SettingProps> = observer((props) => {
                     <SettingsTile>
                         Setting
                     </SettingsTile>
-                    <SettingCross>
+                    <SettingCross
+                        onClick={props.hiddenSetting}
+                    >
                         <CrossLine rotate='45deg'></CrossLine>
                         <CrossLine rotate='-45deg'></CrossLine>
                     </SettingCross>

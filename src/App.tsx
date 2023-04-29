@@ -29,6 +29,16 @@ export enum PageEnum {
 }
 
 const App = observer(() => {
+  const [setting, setSetting] = useState(false);
+  const showSettings = () => {
+    setSetting((prev) => prev = true);
+  }
+
+  const hiddenSetting = () => {
+    setSetting((prev) => prev = false);
+
+  }
+
   const [theme, setTheme] = useState<ITheme>(themes.black);
 
   const changeTheme = (t: ThemeEnum) => {
@@ -58,8 +68,18 @@ const App = observer(() => {
           {(store.slots[0].isSpin || store.slots[1].isSpin || store.slots[2].isSpin) &&
             <BlockedStyle></BlockedStyle>
           }
-          <Settings changeTheme={changeTheme}></Settings>
-          <Header changeTheme={changeTheme} />
+
+          {setting &&
+            <Settings
+            changeTheme={changeTheme}
+            hiddenSetting={hiddenSetting}
+            ></Settings>
+          }
+
+          <Header
+          changeTheme={changeTheme}
+          showSettings={showSettings}
+          />
           <MainStyle>
             <Routes>
               <Route path={PageEnum.game} element={<GamePage />} />

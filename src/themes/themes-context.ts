@@ -101,7 +101,7 @@ export const fairyTheme: ITheme = {
     fontFamily: 'string',
     fontFamilyTitle: 'string',
     background: `#1E2423`,
-    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #000000 100%)`,
+    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
     gradient: `radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)`,
     gloverImg: './assets/star.png'
 }
