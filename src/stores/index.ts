@@ -256,6 +256,9 @@ export class Store {
     if (this.theme === ThemeEnum.sea) {
       this.setMemoCards(seaCards);
     }
+    if (this.theme === ThemeEnum.fairy) {
+      this.setMemoCards(fairyCards);
+    }
   }
 
   closeMemo = () => {

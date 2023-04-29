@@ -12,6 +12,8 @@ export const SettingsStyle = styled.div`
   border-radius: 8px;
   background: ${({ theme }) => theme.background};
   border: 1px solid ${({ theme }) => theme.fontColor};
+  transform: translateY(-150%);
+  transition: 0.4s;
 
   font-weight: 400;
   text-transform: uppercase;

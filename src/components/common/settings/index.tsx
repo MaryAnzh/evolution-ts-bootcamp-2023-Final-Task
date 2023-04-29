@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { store } from "../../../App";
 
 import { PopUpStyle } from "../../pop-up-components/styled";
@@ -22,23 +22,29 @@ import { observer } from "mobx-react-lite";
 
 type SettingProps = {
     changeTheme: (t: ThemeEnum) => void,
-    hiddenSetting: () => void
+    hiddenSetting: () => void,
+    show: boolean,
 }
 
 export const Settings: React.FC<SettingProps> = observer((props) => {
+    const [animation, setAnimation] = useState<string>('showSetting 0.4s linear forwards');
     const changeTheme = (value: ThemeEnum) => {
         props.changeTheme(value);
+    }
+    const close = () => {
+        setAnimation(prev => prev = 'hiddenSetting 0.4s');
+        props.hiddenSetting();
     }
 
     return (
         <PopUpStyle>
-            <SettingsStyle>
+            <SettingsStyle style={{ animation: animation }}>
                 <SettingsTop>
                     <SettingsTile>
                         Setting
                     </SettingsTile>
                     <SettingCross
-                        onClick={props.hiddenSetting}
+                        onClick={close}
                     >
                         <CrossLine rotate='45deg'></CrossLine>
                         <CrossLine rotate='-45deg'></CrossLine>

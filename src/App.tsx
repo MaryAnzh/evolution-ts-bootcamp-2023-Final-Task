@@ -31,12 +31,15 @@ export enum PageEnum {
 const App = observer(() => {
   const [setting, setSetting] = useState(false);
   const showSettings = () => {
+    console.log('show');
     setSetting((prev) => prev = true);
   }
 
   const hiddenSetting = () => {
-    setSetting((prev) => prev = false);
-
+    const timer = setTimeout(() => {
+      setSetting((prev) => prev = false);
+      clearTimeout(timer);
+    }, 400);
   }
 
   const [theme, setTheme] = useState<ITheme>(themes.black);
@@ -71,14 +74,15 @@ const App = observer(() => {
 
           {setting &&
             <Settings
-            changeTheme={changeTheme}
-            hiddenSetting={hiddenSetting}
+              changeTheme={changeTheme}
+              hiddenSetting={hiddenSetting}
+              show={setting}
             ></Settings>
           }
 
           <Header
-          changeTheme={changeTheme}
-          showSettings={showSettings}
+            changeTheme={changeTheme}
+            showSettings={showSettings}
           />
           <MainStyle>
             <Routes>
