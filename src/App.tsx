@@ -40,6 +40,10 @@ const App = observer(() => {
       store.setTheme(ThemeEnum.sea);
       setTheme(() => themes.sea);
     }
+    if (t === ThemeEnum.fairy) {
+      store.setTheme(ThemeEnum.fairy);
+      setTheme(() => themes.fairy);
+    }
   }
 
   return (
@@ -54,7 +58,7 @@ const App = observer(() => {
           {(store.slots[0].isSpin || store.slots[1].isSpin || store.slots[2].isSpin) &&
             <BlockedStyle></BlockedStyle>
           }
-          <Settings></Settings>
+          <Settings changeTheme={changeTheme}></Settings>
           <Header changeTheme={changeTheme} />
           <MainStyle>
             <Routes>

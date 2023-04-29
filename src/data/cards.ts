@@ -44,23 +44,18 @@ export const blackCards: ICard[] = [
     },
     cardsCommon[2],
 ];
+
 export const seaCards: ICard[] = [
-    {
-        id: 0,
-        url: './assets/bubble.png'
-    },
+    cardsCommon[0],
     {
         id: 1,
-        url: './assets/mermaid.png',
+        url: './assets/bubble.png',
     },
     {
         id: 2,
         url: './assets/drop.png',
     },
-    {
-        id: 3,
-        url: './assets/pearl.png',
-    },
+    cardsCommon[2],
     cardsCommon[1],
     {
         id: 5,
@@ -70,5 +65,37 @@ export const seaCards: ICard[] = [
         id: 6,
         url: './assets/crown.png',
     },
-    cardsCommon[2],
+    {
+        id: 7,
+        url: './assets/pearl.png',
+    },
+];
+
+export const fairyCards: ICard[] = [
+    cardsCommon[0],
+    {
+        id: 1,
+        url: './assets/unicorn.png',
+    },
+    {
+        id: 2,
+        url: './assets/moon.png',
+    },
+    {
+        id: 3,
+        url: './assets/star.png',
+    },
+    cardsCommon[1],
+    {
+        id: 5,
+        url: './assets/seven.png',
+    },
+    {
+        id: 6,
+        url: './assets/crown.png',
+    },
+    {
+        id: 7,
+        url: './assets/gold-button.png',
+    },
 ]; 

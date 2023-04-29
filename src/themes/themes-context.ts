@@ -4,6 +4,7 @@ import { ITheme, IThemeConst } from './theme.interface';
 export interface IThemes {
     black: ITheme,
     sea: ITheme,
+    fairy: ITheme,
 }
 
 const themeConst: IThemeConst = {
@@ -26,6 +27,8 @@ const themeConst: IThemeConst = {
           mask-composite: exclude;
           z-index: 2;
       }`,
+    seaIcon: '',
+    fairyIcon: '',
 }
 
 export const blackTheme: ITheme = {
@@ -78,7 +81,33 @@ export const seaTheme: ITheme = {
     gloverImg: './assets/bubble.png'
 }
 
+export const fairyTheme: ITheme = {
+    const: themeConst,
+    name: 'sea',
+    mainColor: '#275F6D',
+    mainColorLight: '#157991',
+    mainColorLight_1: 'string',
+    mainColorExtraLight: '#48B0C8',
+    mainColorDark: 'string',
+    mainColorDark_1: 'string',
+    mainBackground: 'string',
+    contrastColor: '#F5D17E',
+    contrastColorLight: 'string',
+    contrastColorDark: '#074E5E',
+    fontColor: '#D8BAAB',
+    fontSize: 'string',
+    fontSizeHeader: 'string',
+    fontSizeTitle: 'string',
+    fontFamily: 'string',
+    fontFamilyTitle: 'string',
+    background: `#1E2423`,
+    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #000000 100%)`,
+    gradient: `radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)`,
+    gloverImg: './assets/star.png'
+}
+
 export const themes: IThemes = {
     black: blackTheme,
     sea: seaTheme,
+    fairy: fairyTheme,
 }

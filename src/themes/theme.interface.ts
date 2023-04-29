@@ -8,6 +8,8 @@ export interface IThemeConst {
     maxPageWidth: string,
     iconSize: string,
     goldBorder: string,
+    seaIcon: string,
+    fairyIcon: string,
 }
 
 export interface ITheme {

@@ -96,7 +96,7 @@ export const ThemeIconsWrap = styled.div`
   justify-content: space-between;
   `;
 
-export const ThemeIcon = styled.div<{ themeStatus: 'active' | 'disable' }>`
+export const ThemeIcon = styled.div<{ themeStatus: 'active' | 'disable', img: string }>`
   position: relative;
   width: 2rem;
   height: 2rem;
@@ -109,7 +109,11 @@ export const ThemeIcon = styled.div<{ themeStatus: 'active' | 'disable' }>`
   cursor: pointer;
   opacity: ${({ themeStatus }) => themeStatus === 'active' ? '1' : '0.6'};
   pointer-events: ${({ themeStatus }) => themeStatus === 'active' ? 'none' : 'all'};
-
+  background-image: url(${({ img }) => img});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  
   &::after {
       content: '';
       position: absolute;

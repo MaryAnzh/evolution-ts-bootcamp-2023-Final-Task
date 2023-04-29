@@ -20,7 +20,14 @@ import {
 import { ThemeEnum } from "../../../themes/theme.interface";
 import { observer } from "mobx-react-lite";
 
-export const Settings = observer(() => {
+type SettingProps = {
+    changeTheme: (t: ThemeEnum) => void
+}
+
+export const Settings: React.FC<SettingProps> = observer((props) => {
+    const changeTheme = (value: ThemeEnum) => {
+        props.changeTheme(value);
+    }
 
     return (
         <PopUpStyle>
@@ -41,7 +48,8 @@ export const Settings = observer(() => {
                     <ThemeIconsWrap>
                         <ThemeIcon
                             themeStatus={store.theme === ThemeEnum.black ? 'active' : 'disable'}
-                            onClick={() => store.setTheme(ThemeEnum.black)}
+                            img='none'
+                            onClick={() => changeTheme(ThemeEnum.black)}
                         >
                             <span>
                                 {ThemeEnum.black}
@@ -49,13 +57,19 @@ export const Settings = observer(() => {
                         </ThemeIcon>
                         <ThemeIcon
                             themeStatus={store.theme === ThemeEnum.sea ? 'active' : 'disable'}
-                            onClick={() => store.setTheme(ThemeEnum.sea)}
+                            img='./assets/bubble.png'
+                            onClick={() => changeTheme(ThemeEnum.sea)}
                         >
                             <span>{ThemeEnum.sea}</span></ThemeIcon>
                         <ThemeIcon
                             themeStatus={store.theme === ThemeEnum.fairy ? 'active' : 'disable'}
-                        ><span>{ThemeEnum.fairy}</span></ThemeIcon>
-
+                            img='./assets/star.png'
+                            onClick={() => changeTheme(ThemeEnum.fairy)}
+                        >
+                            <span>
+                                {ThemeEnum.fairy}
+                            </span>
+                        </ThemeIcon>
                     </ThemeIconsWrap>
                 </SettingThemeWrap>
                 <SettingФAudioWrap>

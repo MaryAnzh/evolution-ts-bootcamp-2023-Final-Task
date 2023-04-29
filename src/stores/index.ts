@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
-import { ICard, blackCards, seaCards } from "../data/cards";
+import { ICard, blackCards, seaCards, fairyCards } from "../data/cards";
 import { ThemeEnum } from "../themes/theme.interface";
 import { IMemoCouple, IMemoCard, IMemoOpenCard } from "../interfaces/memo.interface";
 import { sounds } from "../data/sounds";
@@ -151,6 +151,11 @@ export class Store {
     if (value === ThemeEnum.sea) {
       this.slots.forEach((slot, i) => {
         this.setSlotCards(i, seaCards);
+      });
+    }
+    if (value === ThemeEnum.fairy) {
+      this.slots.forEach((slot, i) => {
+        this.setSlotCards(i, fairyCards);
       });
     }
   }
