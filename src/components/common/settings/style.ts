@@ -96,7 +96,7 @@ export const ThemeIconsWrap = styled.div`
   justify-content: space-between;
   `;
 
-export const ThemeIcon = styled.div<{ themeName: string }>`
+export const ThemeIcon = styled.div<{ themeStatus: 'active' | 'disable' }>`
   position: relative;
   width: 2rem;
   height: 2rem;
@@ -107,6 +107,8 @@ export const ThemeIcon = styled.div<{ themeName: string }>`
   opacity: 0.8;
   transition: .3s;
   cursor: pointer;
+  opacity: ${({ themeStatus }) => themeStatus === 'active' ? '1' : '0.6'};
+  pointer-events: ${({ themeStatus }) => themeStatus === 'active' ? 'none' : 'all'};
 
   &::after {
       content: '';
@@ -127,7 +129,7 @@ export const ThemeIcon = styled.div<{ themeName: string }>`
   & span {
     position: absolute;
     top: -1.2rem;
-    opacity: 0;
+    opacity: ${({ themeStatus }) => themeStatus === 'active' ? '1' : '0'};
     font-size: 1rem;
     font-weight: 500;
     color: ${({ theme }) => theme.fontColor};
@@ -140,5 +142,45 @@ export const ThemeIcon = styled.div<{ themeName: string }>`
     span {
         opacity: 1;
     }
+  }
+`;
+
+export const SettingФAudioWrap = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const SettingAudioTitle = styled.h4`
+  font-size: 1.25rem;
+`;
+
+export const AudioOnOff = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const AudioOnOffButton = styled.button<{ buttonStatus: 'active' | 'disable' }>`
+  position: relative;
+  width: ${({ theme }) => theme.const.iconSize};
+  height: ${({ theme }) => theme.const.iconSize};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  outline: none;
+  border-radius: 50%;  
+  color: ${({ theme }) => theme.fontColor};
+  font-size: 0.8rem;
+  opacity: ${({ buttonStatus }) => buttonStatus === 'active' ? '1' : '0.6'};
+  pointer-events: ${({ buttonStatus }) => buttonStatus === 'active' ? 'none' : 'all'};
+  transition: 0.3s;
+  cursor: pointer;
+
+  ${({ theme }) => theme.const.goldBorder}
+  
+  &:hover {
+    opacity: ${({ buttonStatus }) => buttonStatus === 'active' ? '1' : '1'};
   }
 `;

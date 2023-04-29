@@ -1,21 +1,36 @@
 import React from 'react'
-import { ITheme } from './theme.interface';
+import { ITheme, IThemeConst } from './theme.interface';
 
 export interface IThemes {
     black: ITheme,
     sea: ITheme,
 }
 
-const varConst = {
-    maxAppWidth: 1200,
-    maxPageWidth: 920,
-
+const themeConst: IThemeConst = {
+    maxAppWidth: '1200px',
+    maxPageWidth: '920px',
+    iconSize: '30px',
+    goldBorder: `
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+          height: 100%;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          background: radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #D1B464 100%) border-box;
+          -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
+          linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 2;
+      }`,
 }
 
 export const blackTheme: ITheme = {
+    const: themeConst,
     name: 'black',
-    maxAppWidth: `${varConst.maxAppWidth}px`,
-    maxPageWidth: `${varConst.maxPageWidth}px`,
     mainColor: 'string',
     mainColorLight: 'string',
     mainColorLight_1: 'string',
@@ -39,9 +54,8 @@ export const blackTheme: ITheme = {
 }
 
 export const seaTheme: ITheme = {
+    const: themeConst,
     name: 'sea',
-    maxAppWidth: `${varConst.maxAppWidth}px`,
-    maxPageWidth: `${varConst.maxPageWidth}px`,
     mainColor: '#275F6D',
     mainColorLight: '#157991',
     mainColorLight_1: 'string',

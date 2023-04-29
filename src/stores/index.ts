@@ -19,6 +19,7 @@ export enum ViewEnum { slot, memo }
 export class Store {
   view: ViewEnum = ViewEnum.slot;
   theme: ThemeEnum = ThemeEnum.black;
+  audio = true;
 
   //slot game
   isGame = false;
@@ -82,6 +83,8 @@ export class Store {
   constructor() {
     makeObservable(this, {
       view: observable,
+      theme: observable,
+      audio: observable,
       isGame: observable,
       isWinner: observable,
       user: observable,
@@ -92,6 +95,7 @@ export class Store {
       isMemoStart: observable,
       isMemoFieldBlock: observable,
       isMemoWin: observable,
+      setAudio: action,
       setView: action,
       setIsGame: action,
       setUser: action,
@@ -120,6 +124,9 @@ export class Store {
   //setters
   setView = (value: ViewEnum) => {
     this.view = value;
+  }
+  setAudio = (value: boolean) => {
+    this.audio = value;
   }
 
   setIsGame = (value: boolean) => {
@@ -215,16 +222,22 @@ export class Store {
         if (i === this.slots.length - 1) {
           this.checkResult();
           if (this.score <= 0) {
-            sounds.gameOver.play();
+            if (this.audio) {
+              sounds.gameOver.play();
+            }
             this.setIsGame(false);
           }
           if (this.score >= this.winnerScore) {
-            sounds.winGame.play();
+            if (this.audio) {
+              sounds.winGame.play();
+            }
             this.setWinner(true);
             this.winnerScore += this.winnerScore;
           }
         }
-        sounds.stopSlot[i].play();
+        if (this.audio) {
+          sounds.stopSlot[i].play();
+        }
         clearTimeout(timer);
       }, this.storeConst.spinTime * (i + 1));
     });
@@ -279,7 +292,9 @@ export class Store {
     const openCards = this.memoCards.filter(el => el.isOpen === true);
     if (openCards.length === this.memoCards.length) {
       this.setIsMemoWin(true);
-      sounds.winRound.play();
+      if (this.audio) {
+        sounds.winRound.play();
+      }
     }
     if (this.memoCouple.cardId2 === null) {
       this.setIsMemoFieldBlock(false);
@@ -288,9 +303,11 @@ export class Store {
     if (this.memoCouple.cardId1 && this.memoCouple.cardId2) {
       this.isMemoRound = false;
       if (this.memoCouple.cardId1.value === this.memoCouple.cardId2.value) {
-        const audio = new Audio();
-        audio.src = './sounds/ring.mp3';
-        audio.play();
+        if (this.audio) {
+          const audio = new Audio();
+          audio.src = './sounds/ring.mp3';
+          audio.play();
+        }
       } else {
         this.memoCards[this.memoCouple.cardId1.index].isOpen = false;
         this.memoCards[this.memoCouple.cardId2.index].isOpen = false;
@@ -338,7 +355,9 @@ export class Store {
     if ((value0 === value1 && value0 === value2) && value0 !== 0) {
       this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, true));
       this.setScore(this.pointMap.jackpot);
-      sounds.winRound.play();
+      if (this.audio) {
+        sounds.winRound.play();
+      }
     }
     else if (((value0 === value1) && value0 !== 0)
       || ((value0 === value2) && value2 !== 0)
@@ -356,7 +375,9 @@ export class Store {
         this.setFairyAnimation(0, true);
         this.setFairyAnimation(2, true);
       }
-      sounds.winRound.play();
+      if (this.audio) {
+        sounds.winRound.play();
+      }
       this.setScore(this.pointMap.bonus);
     }
   }

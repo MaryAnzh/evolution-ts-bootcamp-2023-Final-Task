@@ -14,7 +14,9 @@ import {
 
 export const GameOver = () => {
     const startGame = () => {
-        sounds.startClick.play();
+        if (store.audio) {
+            sounds.startClick.play();
+        }
         store.startNewGame();
     }
 

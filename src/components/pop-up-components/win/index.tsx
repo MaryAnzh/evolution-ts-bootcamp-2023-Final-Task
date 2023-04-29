@@ -15,7 +15,9 @@ import {
 
 export const WinnerMessage = () => {
     const startGame = () => {
-        sounds.startClick.play();
+        if (store.audio) {
+            sounds.startClick.play();
+        }
         store.startNewGame();
     }
 

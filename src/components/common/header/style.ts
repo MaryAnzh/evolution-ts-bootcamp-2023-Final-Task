@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderStyle = styled.header`
-  max-width: ${({ theme }) => theme.maxAppWidth};
+  max-width: ${({ theme }) => theme.const.maxAppWidth};
   width: 100%;
   padding: 1rem;
   display: flex;

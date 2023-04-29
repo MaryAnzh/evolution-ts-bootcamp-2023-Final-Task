@@ -16,7 +16,9 @@ import {
 
 export const MemoWinnerMessage = () => {
     const startGame = () => {
-        sounds.startClick.play();
+        if (store.audio) {
+            sounds.startClick.play();
+        }
         store.finishMemo();
     };
 
