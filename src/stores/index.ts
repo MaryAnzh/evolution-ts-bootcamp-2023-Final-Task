@@ -352,6 +352,9 @@ export class Store {
       if (this.theme === ThemeEnum.sea) {
         this.setSlotCards(i, seaCards);
       }
+      if (this.theme === ThemeEnum.fairy) {
+        this.setSlotCards(i, fairyCards);
+      }
     });
   }
 
