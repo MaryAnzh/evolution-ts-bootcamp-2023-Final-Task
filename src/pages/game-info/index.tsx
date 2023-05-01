@@ -1,7 +1,12 @@
 import React from "react";
+import { PageStyle, PageTitleStyle } from "../../AppStyled";
 
 export const GameInfoPage = () => {
     return (
-        <h2>Info</h2>
+        <PageStyle>
+            <PageTitleStyle>
+                Presentation info
+            </PageTitleStyle>
+        </PageStyle>
     );
 }

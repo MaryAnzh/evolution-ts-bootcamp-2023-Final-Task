@@ -1,9 +1,20 @@
-export enum ThemeEnum { black, sea }
-
-export interface ITheme {
-    name: 'black' | 'sea',
+export enum ThemeEnum {
+    black = 'black',
+    sea = 'sea',
+    fairy = 'fairy'
+}
+export interface IThemeConst {
     maxAppWidth: string,
     maxPageWidth: string,
+    iconSize: string,
+    goldBorder: string,
+    seaIcon: string,
+    fairyIcon: string,
+}
+
+export interface ITheme {
+    const: IThemeConst,
+    name: 'black' | 'sea',
     mainColor: string,
     mainColorLight: string,
     mainColorLight_1: string,

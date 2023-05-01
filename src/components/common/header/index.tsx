@@ -18,14 +18,15 @@ import { ThemeEnum } from "../../../themes/theme.interface";
 import { Link } from "react-router-dom";
 
 type HeaderProps = {
-    changeTheme: (themeName: ThemeEnum) => void
+    changeTheme: (themeName: ThemeEnum) => void,
+    showSettings: () => void
 }
 
 export const Header: React.FC<HeaderProps> = observer((props) => {
     const location = useLocation();
     enum NavStyle {
         activeOpacity = '1',
-        disableOpacity = '0.7',
+        disableOpacity = '0.6',
         activeEvent = 'none',
         disableOEvent = 'all'
     }
@@ -59,30 +60,15 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                         </NavButtonStyle>
                     </Link>
                 </HeaderNavStyle>
-                <HeaderSettingsStyle>
-                    <SettingLogo src='./assets/settings.png' alt='settings'></SettingLogo>
+                <HeaderSettingsStyle
+                    onClick={props.showSettings}>
+                    <SettingLogo
+                        src='./assets/settings.png'
+                        alt='settings'></SettingLogo
+
+                    >
                 </HeaderSettingsStyle>
             </HeaderNavSettings>
-
-            {/* <UserNameWrap>
-                <UserNameGreasing>
-                    Hello  {store.user}
-                </UserNameGreasing>
-            </UserNameWrap>
-
-            <ThemesWrap>
-                <BlackThemeButton
-                    className={store.isMemoStart ? 'blocked' : undefined}
-                    onClick={() => props.changeTheme(ThemeEnum.black)}>
-                    Black
-                </BlackThemeButton>
-                <SeaThemeButton
-                    className={store.isMemoStart ? 'blocked' : undefined}
-                    onClick={() => props.changeTheme(ThemeEnum.sea)}
-                >
-                    Sea
-                </SeaThemeButton>
-            </ThemesWrap> */}
         </HeaderStyle >
     );
 })

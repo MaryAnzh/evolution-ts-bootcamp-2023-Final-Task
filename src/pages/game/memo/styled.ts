@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const MemoStyle = styled.div`
-  max-width: 760px;
   width: 100%;
   padding: 1rem;
   display: flex;

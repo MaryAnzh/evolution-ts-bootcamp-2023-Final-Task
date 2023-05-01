@@ -14,6 +14,7 @@ import { ITheme, ThemeEnum } from './themes/theme.interface';
 import { GameOver } from './components/pop-up-components/game-over';
 import { observer } from 'mobx-react-lite';
 import { WinnerMessage } from './components/pop-up-components/win';
+import { Settings } from './components/common/settings';
 import {
   APPStyled,
   BlockedStyle
@@ -28,6 +29,19 @@ export enum PageEnum {
 }
 
 const App = observer(() => {
+  const [setting, setSetting] = useState(false);
+  const showSettings = () => {
+    console.log('show');
+    setSetting((prev) => prev = true);
+  }
+
+  const hiddenSetting = () => {
+    const timer = setTimeout(() => {
+      setSetting((prev) => prev = false);
+      clearTimeout(timer);
+    }, 400);
+  }
+
   const [theme, setTheme] = useState<ITheme>(themes.black);
 
   const changeTheme = (t: ThemeEnum) => {
@@ -38,6 +52,10 @@ const App = observer(() => {
     if (t === ThemeEnum.sea) {
       store.setTheme(ThemeEnum.sea);
       setTheme(() => themes.sea);
+    }
+    if (t === ThemeEnum.fairy) {
+      store.setTheme(ThemeEnum.fairy);
+      setTheme(() => themes.fairy);
     }
   }
 
@@ -53,7 +71,19 @@ const App = observer(() => {
           {(store.slots[0].isSpin || store.slots[1].isSpin || store.slots[2].isSpin) &&
             <BlockedStyle></BlockedStyle>
           }
-          <Header changeTheme={changeTheme} />
+
+          {setting &&
+            <Settings
+              changeTheme={changeTheme}
+              hiddenSetting={hiddenSetting}
+              show={setting}
+            ></Settings>
+          }
+
+          <Header
+            changeTheme={changeTheme}
+            showSettings={showSettings}
+          />
           <MainStyle>
             <Routes>
               <Route path={PageEnum.game} element={<GamePage />} />

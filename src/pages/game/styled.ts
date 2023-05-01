@@ -1,16 +1,5 @@
 import styled from "styled-components";
 
-export const GamePageStyle = styled.div`
-  max-width: ${({ theme }) => theme.maxPageWidth};
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-`;
-
 export const SlotGameTopPanel = styled.div`
   width: 100%;
   display: flex;
@@ -21,6 +10,17 @@ export const SlotGameTopPanel = styled.div`
 export const SlotGameStyle = styled.div`
   display: flex;
   gap: 1rem;
+`;
+export const LinkToSlot = styled.img`
+  height: 2rem;
+  padding-right: 2rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export const SlotGameTitle = styled.h2`

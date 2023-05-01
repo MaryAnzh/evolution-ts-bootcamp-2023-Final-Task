@@ -8,7 +8,9 @@ export const ControlPanelButton = () => {
         <ControlPanelButtonStyle
             onClick={() => {
                 store.startRound();
-                sounds.click.play();
+                if (store.audio) {
+                    sounds.click.play();
+                }
             }}>
             Spin
         </ControlPanelButtonStyle >
