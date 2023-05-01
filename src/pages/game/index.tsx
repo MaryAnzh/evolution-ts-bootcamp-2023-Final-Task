@@ -7,18 +7,17 @@ import { Carousel } from "./components/carousel";
 import { ControlPanel } from "./components/control-panel";
 import { ScorePanel } from "./components/score";
 import { MemoGame } from "./memo";
+import { ViewEnum } from "../../stores";
+import { PageStyle, PageTitleStyle } from "../../AppStyled";
 
 import {
-    GamePageStyle,
     SlotGameStyle,
-    SlotGameTitle,
     SlotGameTopPanel,
     LinkToMemo,
     SlotGameWrap,
     MoneyWrap,
     LinkToSlot
 } from "./styled";
-import { ViewEnum } from "../../stores";
 
 export const GamePage = observer(() => {
     const slotCount = 3;
@@ -40,9 +39,9 @@ export const GamePage = observer(() => {
     }
 
     return (
-        <GamePageStyle>
+        <PageStyle>
             <SlotGameTopPanel>
-                <SlotGameTitle>
+                <PageTitleStyle>
                     {store.view === ViewEnum.memo &&
                         <LinkToSlot
                             src='./assets/golden-arrow.png'
@@ -51,7 +50,8 @@ export const GamePage = observer(() => {
                         </LinkToSlot>
                     }
 
-                    {store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}</SlotGameTitle>
+                    {store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}
+                </PageTitleStyle>
                 <MoneyWrap>
                     <ScorePanel />
                     <LinkToMemo
@@ -72,6 +72,6 @@ export const GamePage = observer(() => {
                 :
                 <MemoGame />
             }
-        </GamePageStyle >
+        </PageStyle >
     );
 })

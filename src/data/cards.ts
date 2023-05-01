@@ -55,7 +55,10 @@ export const seaCards: ICard[] = [
         id: 2,
         url: './assets/drop.png',
     },
-    cardsCommon[2],
+    {
+        id: 3,
+        url: './assets/seven.png',
+    },
     cardsCommon[1],
     {
         id: 5,

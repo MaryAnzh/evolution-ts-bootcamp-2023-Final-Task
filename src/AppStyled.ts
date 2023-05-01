@@ -28,3 +28,19 @@ export const BlockedStyle = styled.div`
   z-index: 13;
 
 `;
+
+export const PageStyle = styled.div`
+  max-width: ${({ theme }) => theme.const.maxPageWidth};
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${({theme}) => theme.fontColor};
+`;
+
+export const PageTitleStyle = styled.div`
+  font-size: 2.4rem;
+  font-weight: 600;
+`;
