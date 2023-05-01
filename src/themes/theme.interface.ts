@@ -3,11 +3,13 @@ export enum ThemeEnum {
     sea = 'sea',
     fairy = 'fairy'
 }
+
 export interface IThemeConst {
     maxAppWidth: string,
     maxPageWidth: string,
     iconSize: string,
     goldBorder: string,
+    goldButtonBorder: string,
     seaIcon: string,
     fairyIcon: string,
 }

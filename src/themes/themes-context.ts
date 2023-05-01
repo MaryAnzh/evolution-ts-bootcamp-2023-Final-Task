@@ -26,7 +26,22 @@ const themeConst: IThemeConst = {
             -webkit-mask-composite: xor;
           mask-composite: exclude;
           z-index: 2;
-      }`,
+    }`,
+    goldButtonBorder: `
+      &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            background: radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #D1B464 100%) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
+            linear-gradient(#fff 0 0);
+              -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 2;
+    }`,
     seaIcon: '',
     fairyIcon: '',
 }
@@ -103,7 +118,7 @@ export const fairyTheme: ITheme = {
     background: `#1E2423`,
     goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
     gradient: `radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)`,
-    gloverImg: './assets/star.png'
+    gloverImg: './assets/star-fairy.png'
 }
 
 export const themes: IThemes = {

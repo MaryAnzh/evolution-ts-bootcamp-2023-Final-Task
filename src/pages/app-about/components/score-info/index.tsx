@@ -1,10 +1,51 @@
-import React from 'react';
-import { ScoreInfoStyle } from './style';
+import React, { useState } from 'react';
+import { Combination } from '../combination';
+import { store } from '../../../../App';
+import { observer } from "mobx-react-lite";
 
-export const ScoreInfo = () => {
-    return(
+import {
+    ScoreInfoStyle,
+    ScoreInfoTitle,
+    ScoreInfoShowMore,
+    ScoreInfoTop,
+    ScoreRoundCost,
+    ScoreRoundCostTitle,
+    ScoreRoundCostPoint
+} from './style';
+
+export const ScoreInfo = observer(() => {
+    const currentNumber = 1;
+    const [imgNumber, setImgNumber] = useState<number>(currentNumber);
+
+    const zero = store.slots[0].cards[0];
+    const card = store.slots[0].cards[imgNumber];
+
+    const changeCard = () => {
+        let newNumber = imgNumber + 1;
+        if (newNumber === 8) {
+            newNumber = 1;
+        }
+        setImgNumber((prev) => prev = newNumber);
+    }
+
+    return (
         <ScoreInfoStyle>
-            
+            <ScoreInfoTop>
+                <ScoreInfoTitle>
+                    Score info
+                </ScoreInfoTitle>
+                <ScoreInfoShowMore
+                    onClick={changeCard}
+                >Show more comb</ScoreInfoShowMore>
+            </ScoreInfoTop>
+            <ScoreRoundCost>
+                <ScoreRoundCostTitle>Round Cost</ScoreRoundCostTitle>
+                <ScoreRoundCostPoint>{store.pointMap.roundCost} point</ScoreRoundCostPoint>
+            </ScoreRoundCost>
+            <Combination images={[zero.url, zero.url]} score={0} />
+            <Combination images={[zero.url, zero.url, zero.url]} score={0} />
+            <Combination images={[card.url, card.url]} score={store.pointMap.bonus} />
+            <Combination images={[card.url, card.url, card.url]} score={store.pointMap.jackpot} />
         </ScoreInfoStyle>
     );
-}
+});
