@@ -3,7 +3,7 @@ export interface ICard {
     url: string,
 }
 
-const cardsCommon: ICard[] = [
+export const cardsCommon: ICard[] = [
     {
         id: 0,
         url: './assets/zero.png'

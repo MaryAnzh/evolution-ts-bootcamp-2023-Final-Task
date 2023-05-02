@@ -11,6 +11,7 @@ export const SlotGameStyle = styled.div`
   display: flex;
   gap: 1rem;
 `;
+
 export const LinkToSlot = styled.img`
   height: 2rem;
   padding-right: 2rem;
