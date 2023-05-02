@@ -10,6 +10,7 @@ import { ViewEnum } from "../../stores";
 import { PageStyle, PageTitleStyle } from "../../AppStyled";
 
 import {
+    GoldenWinButton,
     SlotGameStyle,
     SlotGameTopPanel,
     LinkToMemo,
@@ -50,6 +51,17 @@ export const GamePage = observer(() => {
                     }
 
                     {store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}
+                    {(store.view === ViewEnum.slot && store.demoWin) &&
+                        <GoldenWinButton
+                            onClick={() => store.startRound(3)}
+                        >3</GoldenWinButton>
+                    }
+                    {(store.view === ViewEnum.slot && store.demoWin2) &&
+                        <GoldenWinButton
+                            onClick={() => store.startRound(2)}
+                        >2</GoldenWinButton>
+                    }
+
                 </PageTitleStyle>
                 <MoneyWrap>
                     <ScorePanel />
@@ -58,7 +70,6 @@ export const GamePage = observer(() => {
                         onClick={() => changeView(ViewEnum.memo)}></LinkToMemo>
 
                 </MoneyWrap>
-
 
             </SlotGameTopPanel>
             {store.view === ViewEnum.slot ?

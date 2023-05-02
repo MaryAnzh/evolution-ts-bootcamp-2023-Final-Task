@@ -20,6 +20,8 @@ export class Store {
   view: ViewEnum = ViewEnum.slot;
   theme: ThemeEnum = ThemeEnum.black;
   audio = true;
+  demoWin = true;
+  demoWin2 = true;
 
   //slot game
   isGame = false;
@@ -85,6 +87,8 @@ export class Store {
       view: observable,
       theme: observable,
       audio: observable,
+      demoWin: observable,
+      demoWin2: observable,
       isGame: observable,
       isWinner: observable,
       user: observable,
@@ -97,6 +101,8 @@ export class Store {
       isMemoWin: observable,
       setAudio: action,
       setView: action,
+      setDemoWin: action,
+      setDemoWin2: action,
       setIsGame: action,
       setUser: action,
       startNewGame: action,
@@ -128,7 +134,12 @@ export class Store {
   setAudio = (value: boolean) => {
     this.audio = value;
   }
-
+  setDemoWin = (value: boolean) => {
+    this.demoWin = false;
+  }
+  setDemoWin2 = (value: boolean) => {
+    this.demoWin2 = false;
+  }
   setIsGame = (value: boolean) => {
     this.isGame = value;
   }
@@ -202,6 +213,7 @@ export class Store {
   }
 
   //round logic
+
   startNewGame = () => {
     this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, false));
     this.setIsGame(true);
@@ -210,19 +222,38 @@ export class Store {
     this.fillSlotCards();
   }
 
-  startRound = () => {
+  startRound = (demo?: number) => {
     this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, false));
     this.setScore(this.pointMap.roundCost);
     this.slots.forEach((el) => {
       el.isSpin = true;
     });
-    this.finishRound();
+    if (demo) {
+      this.finishRound(demo);
+    } else {
+      this.finishRound();
+    }
   }
 
-  finishRound = () => {
+  finishRound = (demo?: number) => {
+
     this.slots.map((slot, i) => {
       const timer = setTimeout(() => {
-        this.setMixCard(i, this.mixCard(slot.cards));
+        if (demo && demo === 3) {
+          const arr = [...this.slots[i].cards.sort((a, b) => a.id - b.id)];
+          const arr2 = arr.splice(0, 2);
+          this.setMixCard(i, [...arr, ...arr2]);
+          this.setDemoWin(false);
+        }
+        else if (demo && demo === 2 && i !== 2) {
+          const arr = [...this.slots[i].cards.sort((a, b) => a.id - b.id)];
+          const arr2 = arr.splice(0, 2);
+          this.setMixCard(i, [...arr, ...arr2]);
+          this.setDemoWin2(false);
+        } else {
+          this.setMixCard(i, this.mixCard(slot.cards));
+        }
+
         this.setSpin(i, false);
         if (i === this.slots.length - 1) {
           this.checkResult();

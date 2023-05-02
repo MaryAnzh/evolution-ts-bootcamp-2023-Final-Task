@@ -7,6 +7,20 @@ export const SlotGameTopPanel = styled.div`
   align-items: flex-start;
 `;
 
+export const GoldenWinButton = styled.span`
+  position: relative;
+  width: ${({ theme }) => theme.const.iconSize};
+  height: ${({ theme }) => theme.const.iconSize};
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+
+  ${({ theme }) => theme.const.goldBorder};
+  cursor: pointer;
+`;
+
 export const SlotGameStyle = styled.div`
   display: flex;
   gap: 1rem;
@@ -18,13 +32,14 @@ export const LinkToSlot = styled.img`
   cursor: pointer;
   opacity: 0.8;
   transition: 0.3s;
+  z-index: 15;
 
   &:hover {
     opacity: 1;
   }
 `;
 
-export const SlotGameTitle = styled.h2`
+export const SlotGameTitle = styled.h3`
    font-size: 3rem;
    color: ${({ theme }) => theme.color};
    font-weight: 600;

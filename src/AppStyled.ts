@@ -39,10 +39,12 @@ export const PageStyle = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  color: ${({theme}) => theme.fontColor};
+  color: ${({ theme }) => theme.fontColor};
 `;
 
 export const PageTitleStyle = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 2.4rem;
   font-weight: 600;
 `;
