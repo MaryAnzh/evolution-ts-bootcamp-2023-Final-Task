@@ -31,7 +31,6 @@ export enum PageEnum {
 const App = observer(() => {
   const [setting, setSetting] = useState(false);
   const showSettings = () => {
-    console.log('show');
     setSetting((prev) => prev = true);
   }
 
@@ -87,7 +86,7 @@ const App = observer(() => {
           <MainStyle>
             <Routes>
               <Route path={PageEnum.game} element={<GamePage />} />
-              <Route path={PageEnum.info} element={<GameInfoPage />} />
+              <Route path={PageEnum.info} element={<GameInfoPage changeTheme={changeTheme} />} />
               <Route path={PageEnum.about} element={<AppAboutPage />} />
             </Routes>
           </MainStyle>

@@ -42,8 +42,9 @@ const themeConst: IThemeConst = {
             mask-composite: exclude;
             z-index: 2;
     }`,
-    seaIcon: '',
-    fairyIcon: '',
+    blackBackground: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%))',
+    seaBackground: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%',
+    fairyBackground: 'radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)'
 }
 
 export const blackTheme: ITheme = {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const AppInfoTop = styled.div`
   width: 100%;
   display: flex;
+  color: ${({theme}) => theme.fontColor};
 `;
 
 export const TechnologyTitle = styled.h3`
@@ -19,7 +20,6 @@ export const TechnologyList = styled.ul`
   &::marker {
     color: white;
   }
-
 `;
 
 export const TechnologyListItem = styled.li<{fontSize: string}>`

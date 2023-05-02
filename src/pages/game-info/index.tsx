@@ -2,14 +2,20 @@ import React from "react";
 import { technologyList } from '../../data/technologyList';
 
 import { PageStyle, PageTitleStyle } from "../../AppStyled";
+import { ThemeExample } from "./components/themes-example";
 import {
     AppInfoTop,
     TechnologyTitle,
     TechnologyList,
     TechnologyListItem
 } from "./styled";
+import { ThemeEnum } from "../../themes/theme.interface";
 
-export const GameInfoPage = () => {
+type GameInfoProps = {
+    changeTheme: (t: ThemeEnum) => void,
+}
+
+export const GameInfoPage: React.FC<GameInfoProps> = (props) => {
     const items = technologyList.map(item =>
         <TechnologyListItem key={item.name} fontSize='2rem'>
             {item.name}
@@ -32,6 +38,7 @@ export const GameInfoPage = () => {
             <TechnologyList>
                 {items}
             </TechnologyList>
+            <ThemeExample changeTheme={props.changeTheme}/>
         </PageStyle>
     );
 }

@@ -57,7 +57,7 @@ export const seaCards: ICard[] = [
     },
     {
         id: 3,
-        url: './assets/seven.png',
+        url: './assets/crown.png',
     },
     cardsCommon[1],
     {
@@ -66,12 +66,9 @@ export const seaCards: ICard[] = [
     },
     {
         id: 6,
-        url: './assets/crown.png',
-    },
-    {
-        id: 7,
         url: './assets/pearl.png',
     },
+    cardsCommon[2],
 ];
 
 export const fairyCards: ICard[] = [
@@ -91,14 +88,11 @@ export const fairyCards: ICard[] = [
     cardsCommon[1],
     {
         id: 5,
-        url: './assets/seven.png',
+        url: './assets/golden-ball.png',
     },
     {
         id: 6,
         url: './assets/crown.png',
     },
-    {
-        id: 7,
-        url: './assets/golden-ball.png',
-    },
+    cardsCommon[2],
 ]; 
