@@ -1,0 +1,9 @@
+@keyframes showSetting {
+    0% {transform: translateY(-150%);}
+    100% {transform: translateY(0%);}
+}
+
+@keyframes hiddenSetting {
+    0% {transform: translateY(0%);}
+    100% {transform: translateY(-150%);}
+}
