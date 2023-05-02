@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const APPStyled = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;

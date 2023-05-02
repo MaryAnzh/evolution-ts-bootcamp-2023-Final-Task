@@ -59,28 +59,15 @@ export const CarouselCard = styled.div`
     transform-origin: center;
     transform-style: preserve-3d;
     border-radius: 1rem;
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
     font-size: 4rem;
     color: ${({ theme }) => theme.color};
     z-index: 11;
-    
-    /* &::after {
-      content: '';
+
+    img {
       position: absolute;
-      width: 100%;
-      box-sizing: border-box;
-        height: 100%;
-        border-radius: 1rem;
-        border: 10px solid transparent;
-        background: radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #D1B464 100%) border-box;
-        -webkit-mask: linear-gradient(#fff 0 0) padding-box, 
-        linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        z-index: 2;
-    } */
+      height: 80%;
+    }
+
 `;
 
 export const CardBorderStyle = styled.div`

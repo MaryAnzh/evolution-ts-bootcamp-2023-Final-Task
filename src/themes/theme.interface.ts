@@ -10,8 +10,9 @@ export interface IThemeConst {
     iconSize: string,
     goldBorder: string,
     goldButtonBorder: string,
-    seaIcon: string,
-    fairyIcon: string,
+    blackBackground: string,
+    seaBackground: string,
+    fairyBackground: string,
 }
 
 export interface ITheme {
