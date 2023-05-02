@@ -14,11 +14,12 @@ import {
 } from './style';
 
 export const ScoreInfo = observer(() => {
+    const cardsSorting = [...store.slots[0].cards].sort((a, b) => a.id - b.id);
     const currentNumber = 1;
     const [imgNumber, setImgNumber] = useState<number>(currentNumber);
 
-    const zero = store.slots[0].cards[0];
-    const card = store.slots[0].cards[imgNumber];
+    const zero = cardsSorting[0];
+    const card = cardsSorting[imgNumber];
 
     const changeCard = () => {
         let newNumber = imgNumber + 1;

@@ -35,8 +35,8 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
                 key={el.id}
                 style={{
                     transform: `rotateX(${rotateAngle * i}deg) translateZ(200px)`,
-                    backgroundImage: `url(${img})`
                 }}>
+                <img src={img} />
                 <FairyFrame
                     cardIndex={i}
                     cardId={el.id}
