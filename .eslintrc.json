@@ -8,8 +8,7 @@
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended"
     ],
-    "overrides": [
-    ],
+    "overrides": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -20,5 +19,27 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "@typescript-eslint/no-useless-constructor": "off",
+        "import/prefer-default-export": "off",
+        "react/no-children-prop": "off",
+        "react/no-array-index-key": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/require-default-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/display-name": "off",
+        "prefer-destructuring": "off",
+        "import/no-unresolved": "off",
+        "@typescript-eslint/no-implied-eval": "off",
+        "@typescript-eslint/no-throw-literal": "off",
+        "curly": [
+            "error",
+            "all"
+        ],
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports"
+            }
+        ]
     }
 }

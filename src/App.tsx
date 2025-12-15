@@ -10,7 +10,8 @@ import { GamePage } from './pages/game';
 import { GameInfoPage } from './pages/game-info';
 import { AppAboutPage } from './pages/app-about';
 import { themes } from './themes/themes-context';
-import { ITheme, ThemeEnum } from './themes/theme.interface';
+import type { ITheme } from './themes/theme.interface';
+import { ThemeEnum } from './themes/theme.interface';
 import { GameOver } from './components/pop-up-components/game-over';
 import { observer } from 'mobx-react-lite';
 import { WinnerMessage } from './components/pop-up-components/win';
@@ -31,12 +32,12 @@ export enum PageEnum {
 const App = observer(() => {
   const [setting, setSetting] = useState(false);
   const showSettings = () => {
-    setSetting((prev) => prev = true);
+    setSetting(true);
   }
 
   const hiddenSetting = () => {
     const timer = setTimeout(() => {
-      setSetting((prev) => prev = false);
+      setSetting(false);
       clearTimeout(timer);
     }, 400);
   }

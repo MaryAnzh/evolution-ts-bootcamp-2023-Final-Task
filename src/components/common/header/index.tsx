@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { PageEnum } from "../../../App";
@@ -12,9 +12,8 @@ import {
     HeaderSettingsStyle,
     SettingLogo,
     HeaderNavSettings
-
 } from "./style";
-import { ThemeEnum } from "../../../themes/theme.interface";
+import type { ThemeEnum } from "../../../themes/theme.interface";
 import { Link } from "react-router-dom";
 
 type HeaderProps = {

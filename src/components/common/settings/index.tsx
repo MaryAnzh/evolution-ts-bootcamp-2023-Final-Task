@@ -32,7 +32,7 @@ export const Settings: React.FC<SettingProps> = observer((props) => {
         props.changeTheme(value);
     }
     const close = () => {
-        setAnimation(prev => prev = 'hiddenSetting 0.4s');
+        setAnimation('hiddenSetting 0.4s');
         props.hiddenSetting();
     }
 

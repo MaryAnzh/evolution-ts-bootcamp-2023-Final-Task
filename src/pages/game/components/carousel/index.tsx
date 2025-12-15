@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { FairyFrame } from "../fairy-frame";
 import {
@@ -6,12 +6,11 @@ import {
     CarouselContainer,
     CarouselBodyWrap,
     CarouselBody,
-    CarouselCard,
-    CardBorderStyle
+    CarouselCard
 } from "./styled";
 import { store } from "../../../../App";
 import { observer } from "mobx-react-lite";
-import { ICard } from "../../../../data/cards";
+import type { ICard } from "../../../../data/cards";
 
 type CarouselProps = {
     number: number

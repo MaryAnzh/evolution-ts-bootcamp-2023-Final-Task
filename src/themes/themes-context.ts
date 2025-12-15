@@ -1,17 +1,16 @@
-import React from 'react'
-import { ITheme, IThemeConst } from './theme.interface';
+import type { ITheme, IThemeConst } from './theme.interface';
 
 export interface IThemes {
-    black: ITheme,
-    sea: ITheme,
-    fairy: ITheme,
+  black: ITheme,
+  sea: ITheme,
+  fairy: ITheme,
 }
 
 const themeConst: IThemeConst = {
-    maxAppWidth: '1200px',
-    maxPageWidth: '920px',
-    iconSize: '30px',
-    goldBorder: `
+  maxAppWidth: '1200px',
+  maxPageWidth: '920px',
+  iconSize: '30px',
+  goldBorder: `
     &::after {
         content: '';
         position: absolute;
@@ -27,7 +26,7 @@ const themeConst: IThemeConst = {
           mask-composite: exclude;
           z-index: 2;
     }`,
-    goldButtonBorder: `
+  goldButtonBorder: `
       &::after {
           content: '';
           position: absolute;
@@ -42,88 +41,88 @@ const themeConst: IThemeConst = {
             mask-composite: exclude;
             z-index: 2;
     }`,
-    blackBackground: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%))',
-    seaBackground: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%',
-    fairyBackground: 'radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)'
+  blackBackground: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%))',
+  seaBackground: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%',
+  fairyBackground: 'radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)'
 }
 
 export const blackTheme: ITheme = {
-    const: themeConst,
-    name: 'black',
-    mainColor: 'string',
-    mainColorLight: 'string',
-    mainColorLight_1: 'string',
-    mainColorExtraLight: 'string',
-    mainColorDark: 'string',
-    mainColorDark_1: 'string',
-    mainBackground: 'string',
-    contrastColor: '#F5D17E',
-    contrastColorLight: 'string',
-    contrastColorDark: 'string',
-    fontColor: '#D8BAAB',
-    fontSize: 'string',
-    fontSizeHeader: '1.25rem',
-    fontSizeTitle: 'string',
-    fontFamily: 'string',
-    fontFamilyTitle: 'string',
-    background: `rgb(0, 0, 0)`,
-    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
-    gradient: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%)',
-    gloverImg: './assets/gold-button.png'
+  const: themeConst,
+  name: 'black',
+  mainColor: 'string',
+  mainColorLight: 'string',
+  mainColorLight_1: 'string',
+  mainColorExtraLight: 'string',
+  mainColorDark: 'string',
+  mainColorDark_1: 'string',
+  mainBackground: 'string',
+  contrastColor: '#F5D17E',
+  contrastColorLight: 'string',
+  contrastColorDark: 'string',
+  fontColor: '#D8BAAB',
+  fontSize: 'string',
+  fontSizeHeader: '1.25rem',
+  fontSizeTitle: 'string',
+  fontFamily: 'string',
+  fontFamilyTitle: 'string',
+  background: `rgb(0, 0, 0)`,
+  goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
+  gradient: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%)',
+  gloverImg: './assets/gold-button.png'
 }
 
 export const seaTheme: ITheme = {
-    const: themeConst,
-    name: 'sea',
-    mainColor: '#275F6D',
-    mainColorLight: '#157991',
-    mainColorLight_1: 'string',
-    mainColorExtraLight: '#48B0C8',
-    mainColorDark: 'string',
-    mainColorDark_1: 'string',
-    mainBackground: 'string',
-    contrastColor: '#F5D17E',
-    contrastColorLight: 'string',
-    contrastColorDark: '#074E5E',
-    fontColor: '#D8BAAB',
-    fontSize: 'string',
-    fontSizeHeader: 'string',
-    fontSizeTitle: 'string',
-    fontFamily: 'string',
-    fontFamilyTitle: 'string',
-    background: `rgb(56, 56, 56)`,
-    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
-    gradient: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%)',
-    gloverImg: './assets/bubble.png'
+  const: themeConst,
+  name: 'sea',
+  mainColor: '#275F6D',
+  mainColorLight: '#157991',
+  mainColorLight_1: 'string',
+  mainColorExtraLight: '#48B0C8',
+  mainColorDark: 'string',
+  mainColorDark_1: 'string',
+  mainBackground: 'string',
+  contrastColor: '#F5D17E',
+  contrastColorLight: 'string',
+  contrastColorDark: '#074E5E',
+  fontColor: '#D8BAAB',
+  fontSize: 'string',
+  fontSizeHeader: 'string',
+  fontSizeTitle: 'string',
+  fontFamily: 'string',
+  fontFamilyTitle: 'string',
+  background: `rgb(56, 56, 56)`,
+  goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
+  gradient: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%)',
+  gloverImg: './assets/bubble.png'
 }
 
 export const fairyTheme: ITheme = {
-    const: themeConst,
-    name: 'sea',
-    mainColor: '#275F6D',
-    mainColorLight: '#157991',
-    mainColorLight_1: 'string',
-    mainColorExtraLight: '#48B0C8',
-    mainColorDark: 'string',
-    mainColorDark_1: 'string',
-    mainBackground: 'string',
-    contrastColor: '#F5D17E',
-    contrastColorLight: 'string',
-    contrastColorDark: '#074E5E',
-    fontColor: '#D8BAAB',
-    fontSize: 'string',
-    fontSizeHeader: 'string',
-    fontSizeTitle: 'string',
-    fontFamily: 'string',
-    fontFamilyTitle: 'string',
-    background: `#1E2423`,
-    goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
-    gradient: `radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)`,
-    gloverImg: './assets/star-fairy.png'
+  const: themeConst,
+  name: 'sea',
+  mainColor: '#275F6D',
+  mainColorLight: '#157991',
+  mainColorLight_1: 'string',
+  mainColorExtraLight: '#48B0C8',
+  mainColorDark: 'string',
+  mainColorDark_1: 'string',
+  mainBackground: 'string',
+  contrastColor: '#F5D17E',
+  contrastColorLight: 'string',
+  contrastColorDark: '#074E5E',
+  fontColor: '#D8BAAB',
+  fontSize: 'string',
+  fontSizeHeader: 'string',
+  fontSizeTitle: 'string',
+  fontFamily: 'string',
+  fontFamilyTitle: 'string',
+  background: `#1E2423`,
+  goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
+  gradient: `radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)`,
+  gloverImg: './assets/star-fairy.png'
 }
 
 export const themes: IThemes = {
-    black: blackTheme,
-    sea: seaTheme,
-    fairy: fairyTheme,
+  black: blackTheme,
+  sea: seaTheme,
+  fairy: fairyTheme,
 }

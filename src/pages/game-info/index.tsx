@@ -9,7 +9,7 @@ import {
     TechnologyList,
     TechnologyListItem
 } from "./styled";
-import { ThemeEnum } from "../../themes/theme.interface";
+import type { ThemeEnum } from "../../themes/theme.interface";
 
 type GameInfoProps = {
     changeTheme: (t: ThemeEnum) => void,
@@ -38,7 +38,7 @@ export const GameInfoPage: React.FC<GameInfoProps> = (props) => {
             <TechnologyList>
                 {items}
             </TechnologyList>
-            <ThemeExample changeTheme={props.changeTheme}/>
+            <ThemeExample changeTheme={props.changeTheme} />
         </PageStyle>
     );
 }

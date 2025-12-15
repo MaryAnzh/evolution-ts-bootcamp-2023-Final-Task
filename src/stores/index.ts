@@ -1,7 +1,8 @@
 import { action, makeObservable, observable } from "mobx";
-import { ICard, blackCards, seaCards, fairyCards } from "../data/cards";
+import type { ICard } from "../data/cards";
+import { blackCards, seaCards, fairyCards } from "../data/cards";
 import { ThemeEnum } from "../themes/theme.interface";
-import { IMemoCouple, IMemoCard, IMemoOpenCard } from "../interfaces/memo.interface";
+import type { IMemoCouple, IMemoCard, IMemoOpenCard } from "../interfaces/memo.interface";
 import { sounds } from "../data/sounds";
 
 export interface ISlot {
@@ -134,10 +135,10 @@ export class Store {
   setAudio = (value: boolean) => {
     this.audio = value;
   }
-  setDemoWin = (value: boolean) => {
+  setDemoWin = () => {
     this.demoWin = false;
   }
-  setDemoWin2 = (value: boolean) => {
+  setDemoWin2 = () => {
     this.demoWin2 = false;
   }
   setIsGame = (value: boolean) => {
@@ -177,7 +178,7 @@ export class Store {
     this.slots[i].isSpin = value;
   }
   setSlotCards = (slotIndex: number, cards: ICard[]) => {
-    this.slots[slotIndex].cards.forEach((elem, i) => {
+    this.slots[slotIndex].cards.forEach((elem) => {
       const src = cards.find(el => elem.id === el.id);
       if (src) {
         elem.url = src.url;
@@ -243,13 +244,13 @@ export class Store {
           const arr = [...this.slots[i].cards.sort((a, b) => a.id - b.id)];
           const arr2 = arr.splice(0, 2);
           this.setMixCard(i, [...arr, ...arr2]);
-          this.setDemoWin(false);
+          this.setDemoWin();
         }
         else if (demo && demo === 2 && i !== 2) {
           const arr = [...this.slots[i].cards.sort((a, b) => a.id - b.id)];
           const arr2 = arr.splice(0, 2);
           this.setMixCard(i, [...arr, ...arr2]);
-          this.setDemoWin2(false);
+          this.setDemoWin2();
         } else {
           this.setMixCard(i, this.mixCard(slot.cards));
         }
