@@ -1,10 +1,10 @@
 import React from 'react';
 
-import type { ICard } from '../../../../data/cards';
+import type { CardType } from '../../../../types';
 import { ThemeViewCard, ThemeViewStyle } from './styled';
 
 type ThemeViewProps = {
-    cards: ICard[],
+    cards: CardType[],
     isActive: boolean,
 }
 

@@ -4,7 +4,7 @@ const createAudio = (src: string) => {
     return audio;
 }
 
-export const sounds = {
+export const SOUNDS_DATA = {
     stopSlot: [...Array(3).keys()].map(() => createAudio('./sounds/ring.mp3')),
     winRound: createAudio('./sounds/win.mp3'),
     winGame: createAudio('./sounds/winGame.mp3'),

@@ -1,9 +1,6 @@
-export interface ICard {
-    id: number,
-    url: string,
-}
+import type { CardType } from "../types";
 
-export const cardsCommon: ICard[] = [
+export const cardsCommon: CardType[] = [
     {
         id: 0,
         url: './assets/zero.png'
@@ -16,10 +13,9 @@ export const cardsCommon: ICard[] = [
         id: 7,
         url: './assets/seven.png',
     },
-
 ]
 
-export const blackCards: ICard[] = [
+export const BLACK_CARDS: CardType[] = [
     cardsCommon[0],
     {
         id: 1,
@@ -45,7 +41,7 @@ export const blackCards: ICard[] = [
     cardsCommon[2],
 ];
 
-export const seaCards: ICard[] = [
+export const SEA_CARDS: CardType[] = [
     cardsCommon[0],
     {
         id: 1,
@@ -71,7 +67,7 @@ export const seaCards: ICard[] = [
     cardsCommon[2],
 ];
 
-export const fairyCards: ICard[] = [
+export const FAIRY_CARDS: CardType[] = [
     cardsCommon[0],
     {
         id: 1,

@@ -1,12 +1,8 @@
-import type { ITheme, IThemeConst } from './theme.interface';
+import type { ThemeType, ThemeConstType, ThemesType } from "./types";
+import { DICTIONARY } from "../constants";
+const { BLACK, FAIRY, SEA } = DICTIONARY;
 
-export interface IThemes {
-  black: ITheme,
-  sea: ITheme,
-  fairy: ITheme,
-}
-
-const themeConst: IThemeConst = {
+const THEME_DATA: ThemeConstType = {
   maxAppWidth: '1200px',
   maxPageWidth: '920px',
   iconSize: '30px',
@@ -46,9 +42,9 @@ const themeConst: IThemeConst = {
   fairyBackground: 'radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)'
 }
 
-export const blackTheme: ITheme = {
-  const: themeConst,
-  name: 'black',
+export const BLACK_THEME: ThemeType = {
+  const: THEME_DATA,
+  name: BLACK,
   mainColor: 'string',
   mainColorLight: 'string',
   mainColorLight_1: 'string',
@@ -71,9 +67,9 @@ export const blackTheme: ITheme = {
   gloverImg: './assets/gold-button.png'
 }
 
-export const seaTheme: ITheme = {
-  const: themeConst,
-  name: 'sea',
+export const SEA_THEME: ThemeType = {
+  const: THEME_DATA,
+  name: SEA,
   mainColor: '#275F6D',
   mainColorLight: '#157991',
   mainColorLight_1: 'string',
@@ -96,9 +92,9 @@ export const seaTheme: ITheme = {
   gloverImg: './assets/bubble.png'
 }
 
-export const fairyTheme: ITheme = {
-  const: themeConst,
-  name: 'sea',
+export const FAIRY_THEME: ThemeType = {
+  const: THEME_DATA,
+  name: FAIRY,
   mainColor: '#275F6D',
   mainColorLight: '#157991',
   mainColorLight_1: 'string',
@@ -121,8 +117,8 @@ export const fairyTheme: ITheme = {
   gloverImg: './assets/star-fairy.png'
 }
 
-export const themes: IThemes = {
-  black: blackTheme,
-  sea: seaTheme,
-  fairy: fairyTheme,
+export const THEMES: ThemesType = {
+  [BLACK]: BLACK_THEME,
+  [SEA]: SEA_THEME,
+  [FAIRY]: FAIRY_THEME,
 }

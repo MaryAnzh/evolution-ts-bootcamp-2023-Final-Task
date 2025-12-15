@@ -10,7 +10,6 @@ import {
 } from "./styled";
 import { store } from "../../../../App";
 import { observer } from "mobx-react-lite";
-import type { ICard } from "../../../../data/cards";
 
 type CarouselProps = {
     number: number
@@ -27,18 +26,19 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
         animation: store.slots[props.number].isSpin ? animation : 'none',
     }
 
-    const cardList = store.slots[props.number].cards.map((el: ICard, i: number) => {
-        const img = el.url !== '' ? el.url : '';
+    const cardList = store.slots[props.number].cards.map(({ id, url }, i: number) => {
+        const img = url !== '' ? url : '';
+
         return (
             <CarouselCard
-                key={el.id}
+                key={id}
                 style={{
                     transform: `rotateX(${rotateAngle * i}deg) translateZ(200px)`,
                 }}>
                 <img src={img} />
                 <FairyFrame
                     cardIndex={i}
-                    cardId={el.id}
+                    cardId={id}
                     slotIndex={props.number}
                 />
             </CarouselCard >
