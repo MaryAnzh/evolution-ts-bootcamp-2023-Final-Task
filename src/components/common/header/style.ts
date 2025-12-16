@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import type { IsActiveType } from "../../../types";
 
 export const HeaderStyle = styled.header`
   max-width: ${({ theme }) => theme.const.maxAppWidth};
@@ -30,7 +31,7 @@ export const HeaderNavStyle = styled.div`
   justify-content: space-between;
 `;
 
-export const NavButtonStyle = styled.div<{ opacity: string, pointerEvent: string }>`
+export const NavButtonStyle = styled.button<IsActiveType>`
   position: relative;
   width: fit-content;
   padding: 0.4rem 0.8rem;
@@ -43,9 +44,11 @@ export const NavButtonStyle = styled.div<{ opacity: string, pointerEvent: string
   border-radius: 6px;
   transition: all.3s;
   color: ${({ theme }) => theme.fontColor};
-  cursor: pointer;
-  opacity: ${({ opacity }) => opacity};
-  pointer-events: ${({ pointerEvent }) => pointerEvent};
+  ${({ isActive }) => css`
+    opacity: ${isActive ? 1 : 0.6};
+    pointer-events: ${isActive ? 'all' : 'none'};
+    ${isActive && css`cursor: pointer;`}
+  `}
 
   &::after {
       content: '';
@@ -61,11 +64,7 @@ export const NavButtonStyle = styled.div<{ opacity: string, pointerEvent: string
         linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
         mask-composite: exclude;
-    }
-
-    &:hover {
-      opacity: 1;
-    }
+  }
 `;
 
 export const HeaderSettingsStyle = styled.div`
@@ -101,38 +100,4 @@ export const HeaderSettingsStyle = styled.div`
 export const SettingLogo = styled.img`
     width: 70%;
     transition: .4s;
-    }  
-  `;
-
-
-// export const UserNameWrap = styled.div`
-//   width: 10rem;
-// `;
-
-// export const UserNameGreasing = styled.span`
-//   font-size: ${({ theme }) => theme.fontSizeHeader};
-// `;
-
-// export const ThemesWrap = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1rem;
-// `
-
-// export const BlackThemeButton = styled.button`
-//   padding: 0.4rem 0.6rem;
-//   background: none;
-//   border: 1px solid ;
-//   color: ${({ theme }) => theme.fontColor};;
-//   text-transform: uppercase;
-//   border-radius: 6px;
-// `;
-
-// export const SeaThemeButton = styled.button`
-//   padding: 0.4rem 0.6rem;
-//   background: ${({ theme }) => theme.gradient};
-//   border: 1px solid ;
-//   color: ${({ theme }) => theme.fontColor};;
-//   text-transform: uppercase;
-//   border-radius: 6px;
-// `;
+`;

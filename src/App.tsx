@@ -9,26 +9,22 @@ import { GamePage } from './pages/game';
 import { GameInfoPage } from './pages/game-info';
 import { AppAboutPage } from './pages/app-about';
 import { THEMES } from './themes';
-import type { ThemeNameType, ThemeType } from './themes';
 import { GameOver, WinnerMessage, Settings } from './components';
 import { observer } from 'mobx-react-lite';
-import { BLACK, SEA, FAIRY } from './constants';
+import { BLACK, GAME_ROUTE, INFO_ROUTE, ABOUT_ROUTE } from './constants';
+import type { ThemeNameType, ThemeType } from './themes';
+
 import * as S from './AppStyled';
 
 export const store = new Store();
-export enum PageEnum {
-  game = '/',
-  info = '/info',
-  about = '/app-about'
-}
 
 const App = observer(() => {
   const [setting, setSetting] = useState(false);
-  const showSettings = () => {
+  const handleShowSettings = () => {
     setSetting(true);
   };
 
-  const hiddenSetting = () => {
+  const handleHiddenSetting = () => {
     const timer = setTimeout(() => {
       setSetting(false);
       clearTimeout(timer);
@@ -37,20 +33,10 @@ const App = observer(() => {
 
   const [theme, setTheme] = useState<ThemeType>(THEMES[BLACK]);
 
-  const changeTheme = (t: ThemeNameType) => {
-    if (t === BLACK) {
-      store.setTheme(BLACK);
-      setTheme(() => THEMES[BLACK]);
-    }
-    if (t === SEA) {
-      store.setTheme(SEA);
-      setTheme(() => THEMES[SEA]);
-    }
-    if (t === FAIRY) {
-      store.setTheme(FAIRY);
-      setTheme(() => THEMES[FAIRY]);
-    }
-  }
+  const handleChangeTheme = (themeName: ThemeNameType) => {
+    store.setTheme(themeName);
+    setTheme(THEMES[themeName]);
+  };
 
   return (
     <BrowserRouter>
@@ -67,21 +53,21 @@ const App = observer(() => {
 
           {setting &&
             <Settings
-              changeTheme={changeTheme}
-              hiddenSetting={hiddenSetting}
+              changeTheme={handleChangeTheme}
+              hiddenSetting={handleHiddenSetting}
               show={setting}
             />
           }
 
           <Header
-            changeTheme={changeTheme}
-            showSettings={showSettings}
+            changeTheme={handleChangeTheme}
+            showSettings={handleShowSettings}
           />
           <MainStyle>
             <Routes>
-              <Route path={PageEnum.game} element={<GamePage />} />
-              <Route path={PageEnum.info} element={<GameInfoPage changeTheme={changeTheme} />} />
-              <Route path={PageEnum.about} element={<AppAboutPage />} />
+              <Route path={GAME_ROUTE} element={<GamePage />} />
+              <Route path={INFO_ROUTE} element={<GameInfoPage changeTheme={handleChangeTheme} />} />
+              <Route path={ABOUT_ROUTE} element={<AppAboutPage />} />
             </Routes>
           </MainStyle>
           <Footer />
