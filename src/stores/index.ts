@@ -1,24 +1,25 @@
 import { action, makeObservable, observable } from "mobx";
-import { ICard, blackCards, seaCards, fairyCards } from "../data/cards";
-import { ThemeEnum } from "../themes/theme.interface";
-import { IMemoCouple, IMemoCard, IMemoOpenCard } from "../interfaces/memo.interface";
-import { sounds } from "../data/sounds";
+import { BLACK_CARDS, SEA_CARDS, FAIRY_CARDS, BLACK, FAIRY, SEA, SOUNDS_DATA } from "../constants";
+import type { CardType } from "../types";
+import type { MemoCoupleType, MemoCardType, MemoOpenCardType } from "../types";
+import type { ThemeNameType } from "../themes/types";
 
-export interface ISlot {
-  isSpin: boolean,
-  cards: ICard[],
+export type SlotType = {
+  isSpin: boolean;
+  cards: CardType[];
 }
 
-export interface ISlots {
-  slot0: ISlot,
-  slot1: ISlot,
-  slot2: ISlot,
+export type SlotsType = {
+  slot0: SlotType;
+  slot1: SlotType;
+  slot2: SlotType;
 }
+
 export enum ViewEnum { slot, memo }
 
 export class Store {
   view: ViewEnum = ViewEnum.slot;
-  theme: ThemeEnum = ThemeEnum.black;
+  theme: ThemeNameType = BLACK;
   audio = true;
   demoWin = true;
   demoWin2 = true;
@@ -27,7 +28,7 @@ export class Store {
   isGame = false;
   isWinner = false;
   user = 'Guest';
-  slots: ISlot[] = [
+  slots: SlotType[] = [
     {
       isSpin: false,
       cards: [],
@@ -59,8 +60,8 @@ export class Store {
   isMemoFieldBlock = false;
   isMemoRound = false;
   isMemoWin = false;
-  memoCards: IMemoCard[] = [];
-  memoCouple: IMemoCouple = {
+  memoCards: MemoCardType[] = [];
+  memoCouple: MemoCoupleType = {
     cardId1: null,
     cardId2: null,
   }
@@ -134,10 +135,10 @@ export class Store {
   setAudio = (value: boolean) => {
     this.audio = value;
   }
-  setDemoWin = (value: boolean) => {
+  setDemoWin = () => {
     this.demoWin = false;
   }
-  setDemoWin2 = (value: boolean) => {
+  setDemoWin2 = () => {
     this.demoWin2 = false;
   }
   setIsGame = (value: boolean) => {
@@ -152,21 +153,21 @@ export class Store {
   setFairyAnimation = (index: number, value: boolean) => {
     this.fairyAnimation[index].animation = value;
   }
-  setTheme = (value: ThemeEnum) => {
+  setTheme = (value: ThemeNameType) => {
     this.theme = value;
-    if (value === ThemeEnum.black) {
+    if (value === BLACK) {
       this.slots.forEach((slot, i) => {
-        this.setSlotCards(i, blackCards);
+        this.setSlotCards(i, BLACK_CARDS);
       });
     }
-    if (value === ThemeEnum.sea) {
+    if (value === SEA) {
       this.slots.forEach((slot, i) => {
-        this.setSlotCards(i, seaCards);
+        this.setSlotCards(i, SEA_CARDS);
       });
     }
-    if (value === ThemeEnum.fairy) {
+    if (value === FAIRY) {
       this.slots.forEach((slot, i) => {
-        this.setSlotCards(i, fairyCards);
+        this.setSlotCards(i, FAIRY_CARDS);
       });
     }
   }
@@ -176,15 +177,15 @@ export class Store {
   setSpin = (i: number, value: boolean) => {
     this.slots[i].isSpin = value;
   }
-  setSlotCards = (slotIndex: number, cards: ICard[]) => {
-    this.slots[slotIndex].cards.forEach((elem, i) => {
+  setSlotCards = (slotIndex: number, cards: CardType[]) => {
+    this.slots[slotIndex].cards.forEach((elem) => {
       const src = cards.find(el => elem.id === el.id);
       if (src) {
         elem.url = src.url;
       }
     });
   }
-  setMixCard = (slotIndex: number, cards: ICard[]) => {
+  setMixCard = (slotIndex: number, cards: CardType[]) => {
     this.slots[slotIndex].cards = cards;
   }
 
@@ -192,11 +193,11 @@ export class Store {
   setIsMemoStart = (value: boolean) => {
     this.isMemoStart = value;
   }
-  setMemoCards = (cardS: ICard[]) => {
+  setMemoCards = (cardS: CardType[]) => {
     const shuffle = [...cardS, ...cardS]
       .sort(() => 0.5 - Math.random())
       .map(el => {
-        const memoCard: IMemoCard = {
+        const memoCard: MemoCardType = {
           value: el.id,
           url: el.url,
           isOpen: false
@@ -243,13 +244,13 @@ export class Store {
           const arr = [...this.slots[i].cards.sort((a, b) => a.id - b.id)];
           const arr2 = arr.splice(0, 2);
           this.setMixCard(i, [...arr, ...arr2]);
-          this.setDemoWin(false);
+          this.setDemoWin();
         }
         else if (demo && demo === 2 && i !== 2) {
           const arr = [...this.slots[i].cards.sort((a, b) => a.id - b.id)];
           const arr2 = arr.splice(0, 2);
           this.setMixCard(i, [...arr, ...arr2]);
-          this.setDemoWin2(false);
+          this.setDemoWin2();
         } else {
           this.setMixCard(i, this.mixCard(slot.cards));
         }
@@ -259,20 +260,20 @@ export class Store {
           this.checkResult();
           if (this.score <= 0) {
             if (this.audio) {
-              sounds.gameOver.play();
+              SOUNDS_DATA.gameOver.play();
             }
             this.setIsGame(false);
           }
           if (this.score >= this.winnerScore) {
             if (this.audio) {
-              sounds.winGame.play();
+              SOUNDS_DATA.winGame.play();
             }
             this.setWinner(true);
             this.winnerScore += this.winnerScore;
           }
         }
         if (this.audio) {
-          sounds.stopSlot[i].play();
+          SOUNDS_DATA.stopSlot[i].play();
         }
         clearTimeout(timer);
       }, this.storeConst.spinTime * (i + 1));
@@ -281,14 +282,14 @@ export class Store {
 
   startMemo() {
     this.setIsMemoStart(true);
-    if (this.theme === ThemeEnum.black) {
-      this.setMemoCards(blackCards);
+    if (this.theme === BLACK) {
+      this.setMemoCards(BLACK_CARDS);
     }
-    if (this.theme === ThemeEnum.sea) {
-      this.setMemoCards(seaCards);
+    if (this.theme === SEA) {
+      this.setMemoCards(SEA_CARDS);
     }
-    if (this.theme === ThemeEnum.fairy) {
-      this.setMemoCards(fairyCards);
+    if (this.theme === FAIRY) {
+      this.setMemoCards(FAIRY_CARDS);
     }
   }
 
@@ -310,7 +311,7 @@ export class Store {
       console.error('Two card open');
       return;
     }
-    const item: IMemoOpenCard = {
+    const item: MemoOpenCardType = {
       value: this.memoCards[index].value,
       index: index,
     }
@@ -332,7 +333,7 @@ export class Store {
     if (openCards.length === this.memoCards.length) {
       this.setIsMemoWin(true);
       if (this.audio) {
-        sounds.winRound.play();
+        SOUNDS_DATA.winRound.play();
       }
     }
     if (this.memoCouple.cardId2 === null) {
@@ -359,7 +360,7 @@ export class Store {
   //utils
   createCards = () => {
     return [...Array(this.cardsInCarousel).keys()].map(el => {
-      const card: ICard = {
+      const card: CardType = {
         id: el,
         url: ''
       }
@@ -367,7 +368,7 @@ export class Store {
     });
   }
 
-  mixCard = (cards: ICard[]) => {
+  mixCard = (cards: CardType[]) => {
     const random = Math.floor(Math.random() * 8);
     const arr = [...cards];
     const arr2 = arr.splice(0, random);
@@ -377,14 +378,14 @@ export class Store {
   fillSlotCards = () => {
     this.slots.forEach((slot, i) => {
       slot.cards = this.createCards();
-      if (this.theme === ThemeEnum.black) {
-        this.setSlotCards(i, blackCards);
+      if (this.theme === BLACK) {
+        this.setSlotCards(i, BLACK_CARDS);
       }
-      if (this.theme === ThemeEnum.sea) {
-        this.setSlotCards(i, seaCards);
+      if (this.theme === SEA) {
+        this.setSlotCards(i, SEA_CARDS);
       }
-      if (this.theme === ThemeEnum.fairy) {
-        this.setSlotCards(i, fairyCards);
+      if (this.theme === FAIRY) {
+        this.setSlotCards(i, FAIRY_CARDS);
       }
     });
   }
@@ -398,7 +399,7 @@ export class Store {
       this.fairyAnimation.forEach((el, i) => this.setFairyAnimation(i, true));
       this.setScore(this.pointMap.jackpot);
       if (this.audio) {
-        sounds.winRound.play();
+        SOUNDS_DATA.winRound.play();
       }
     }
     else if (((value0 === value1) && value0 !== 0)
@@ -418,7 +419,7 @@ export class Store {
         this.setFairyAnimation(2, true);
       }
       if (this.audio) {
-        sounds.winRound.play();
+        SOUNDS_DATA.winRound.play();
       }
       this.setScore(this.pointMap.bonus);
     }

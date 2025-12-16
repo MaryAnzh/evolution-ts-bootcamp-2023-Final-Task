@@ -1,47 +1,42 @@
 import React from 'react';
 import { observer } from "mobx-react-lite";
 
-import { ThemeExampleStyle, ThemeExampleTitle, ThemeExampleWrap, ThemeExampleWrapTitle } from './styled';
 import { ThemeView } from '../theme-view';
-import { blackCards, fairyCards, seaCards } from '../../../../data/cards';
+import { BLACK_CARDS, FAIRY_CARDS, SEA_CARDS, BLACK, FAIRY, SEA } from '../../../../constants';
 import { store } from '../../../../App';
-import { ThemeEnum } from '../../../../themes/theme.interface';
+import type { ThemeNameType } from '../../../../themes';
+import type { ThemesExampleProps } from './types';
+import * as S from './styled';
 
-type ThemesExampleProps = {
-    changeTheme: (t: ThemeEnum) => void,
+const cards = {
+    [BLACK]: BLACK_CARDS,
+    [SEA]: SEA_CARDS,
+    [FAIRY]: FAIRY_CARDS,
 }
 
-export const ThemeExample: React.FC<ThemesExampleProps> = observer((props) => {
-    const changeTheme = (theme: ThemeEnum) => {
-        props.changeTheme(theme);
+export const ThemeExample: React.FC<ThemesExampleProps> = observer(({ changeTheme }) => {
+    const handleChangeTheme = (theme: ThemeNameType) => {
+        changeTheme(theme);
     }
 
     return (
-        <ThemeExampleStyle>
-            <ThemeExampleTitle>
+        <S.ThemeExampleStyle>
+            <S.ThemeExampleTitle>
                 Themes
-            </ThemeExampleTitle>
-            <ThemeExampleWrap
-                isActive={store.theme === ThemeEnum.black}
-                onClick={() => changeTheme(ThemeEnum.black)}
-            >
-                <ThemeExampleWrapTitle>{ThemeEnum.black} Theme</ThemeExampleWrapTitle>
-                <ThemeView cards={blackCards} isActive={store.theme === ThemeEnum.black} />
-            </ThemeExampleWrap>
-            <ThemeExampleWrap
-                isActive={store.theme === ThemeEnum.sea}
-                onClick={() => changeTheme(ThemeEnum.sea)}
-            >
-                <ThemeView cards={seaCards} isActive={store.theme === ThemeEnum.sea} />
-                <ThemeExampleWrapTitle>{ThemeEnum.sea} Theme</ThemeExampleWrapTitle>
-            </ThemeExampleWrap>
-            <ThemeExampleWrap
-                isActive={store.theme === ThemeEnum.fairy}
-                onClick={() => changeTheme(ThemeEnum.fairy)}
-            >
-                <ThemeExampleWrapTitle>{ThemeEnum.fairy} Theme</ThemeExampleWrapTitle>
-                <ThemeView cards={fairyCards} isActive={store.theme === ThemeEnum.fairy} />
-            </ThemeExampleWrap>
-        </ThemeExampleStyle>
+            </S.ThemeExampleTitle>
+            {[BLACK, SEA, FAIRY].map(name => (
+                <S.ThemeExampleWrap
+                    key={name}
+                    isActive={store.theme === name}
+                    onClick={() => handleChangeTheme(name)}
+                >
+                    <S.ThemeExampleWrapTitle>{name} Theme</S.ThemeExampleWrapTitle>
+                    <ThemeView
+                        cards={cards[name]}
+                        isActive={store.theme === name}
+                    />
+                </S.ThemeExampleWrap>
+            ))}
+        </S.ThemeExampleStyle>
     );
 });

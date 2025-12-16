@@ -1,74 +1,40 @@
-import React, { useContext } from "react";
+import React from "react";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
-import { PageEnum } from "../../../App";
 
-import { Logo } from "../logo";
-import {
-    HeaderStyle,
-    HeaderLogoSection,
-    HeaderNavStyle,
-    NavButtonStyle,
-    HeaderSettingsStyle,
-    SettingLogo,
-    HeaderNavSettings
-
-} from "./style";
-import { ThemeEnum } from "../../../themes/theme.interface";
+import { Logo } from "../../ui/Logo";
 import { Link } from "react-router-dom";
+import { ROUTE_SET } from "./constants";
+import type { HeaderProps } from "./types";
 
-type HeaderProps = {
-    changeTheme: (themeName: ThemeEnum) => void,
-    showSettings: () => void
-}
+import * as S from "./style";
 
 export const Header: React.FC<HeaderProps> = observer((props) => {
-    const location = useLocation();
-    enum NavStyle {
-        activeOpacity = '1',
-        disableOpacity = '0.6',
-        activeEvent = 'none',
-        disableOEvent = 'all'
-    }
+    const { pathname } = useLocation();
 
     return (
-        <HeaderStyle>
-            <HeaderLogoSection>
+        <S.HeaderStyle>
+            <S.HeaderLogoSection>
                 <Logo />
-            </HeaderLogoSection>
-            <HeaderNavSettings>
-                <HeaderNavStyle>
-                    <Link to={PageEnum.game}>
-                        <NavButtonStyle
-                            opacity={location.pathname === PageEnum.game ? NavStyle.activeOpacity : NavStyle.disableOpacity}
-                            pointerEvent={location.pathname === PageEnum.game ? NavStyle.activeEvent : NavStyle.disableOEvent}>
-                            Game
-                        </NavButtonStyle>
-                    </Link>
-                    <Link to={PageEnum.about}>
-                        <NavButtonStyle
-                            opacity={location.pathname === PageEnum.about ? NavStyle.activeOpacity : NavStyle.disableOpacity}
-                            pointerEvent={location.pathname === PageEnum.about ? NavStyle.activeEvent : NavStyle.disableOEvent}>
-                            About
-                        </NavButtonStyle>
-                    </Link>
-                    <Link to={PageEnum.info}>
-                        <NavButtonStyle
-                            opacity={location.pathname === PageEnum.info ? NavStyle.activeOpacity : NavStyle.disableOpacity}
-                            pointerEvent={location.pathname === PageEnum.info ? NavStyle.activeEvent : NavStyle.disableOEvent}>
-                            Info
-                        </NavButtonStyle>
-                    </Link>
-                </HeaderNavStyle>
-                <HeaderSettingsStyle
+            </S.HeaderLogoSection>
+            <S.HeaderNavSettings>
+                <S.HeaderNavStyle>
+                    {ROUTE_SET.map(({ name, route }) => (
+                        <Link key={name} to={route}>
+                            <S.NavButtonStyle
+                                isActive={pathname !== route}>
+                                {name}
+                            </S.NavButtonStyle>
+                        </Link>
+                    ))}
+                </S.HeaderNavStyle>
+                <S.HeaderSettingsStyle
                     onClick={props.showSettings}>
-                    <SettingLogo
+                    <S.SettingLogo
                         src='./assets/settings.png'
-                        alt='settings'></SettingLogo
-
-                    >
-                </HeaderSettingsStyle>
-            </HeaderNavSettings>
-        </HeaderStyle >
+                        alt='settings' />
+                </S.HeaderSettingsStyle>
+            </S.HeaderNavSettings>
+        </S.HeaderStyle>
     );
-})
+});

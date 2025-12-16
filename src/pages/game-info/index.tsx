@@ -1,30 +1,26 @@
 import React from "react";
-import { technologyList } from '../../data/technologyList';
+import { TECHNOLOGY_LIST } from '../../constants/technologyList';
 
 import { PageStyle, PageTitleStyle } from "../../AppStyled";
 import { ThemeExample } from "./components/themes-example";
-import {
-    AppInfoTop,
-    TechnologyTitle,
-    TechnologyList,
-    TechnologyListItem
-} from "./styled";
-import { ThemeEnum } from "../../themes/theme.interface";
-
-type GameInfoProps = {
-    changeTheme: (t: ThemeEnum) => void,
-}
+import type { GameInfoProps } from "./components/types";
+import * as S from "./styled";
 
 export const GameInfoPage: React.FC<GameInfoProps> = (props) => {
-    const items = technologyList.map(item =>
-        <TechnologyListItem key={item.name} fontSize='2rem'>
+    const items = TECHNOLOGY_LIST.map(item =>
+        <S.TechnologyListItem
+            key={item.name}
+            fontSize='2rem'>
             {item.name}
             {item.sub &&
-                <TechnologyList>
-                    {item.sub.map(el => <TechnologyListItem key={el} fontSize='0.9em'>{el}</TechnologyListItem>)}
-                </TechnologyList>
+                <S.TechnologyList>
+                    {item.sub.map(el =>
+                        <S.TechnologyListItem key={el} fontSize='0.9em'>
+                            {el}
+                        </S.TechnologyListItem>)}
+                </S.TechnologyList>
             }
-        </TechnologyListItem>
+        </S.TechnologyListItem>
     );
 
     return (
@@ -32,13 +28,15 @@ export const GameInfoPage: React.FC<GameInfoProps> = (props) => {
             <PageTitleStyle>
                 Presentation info
             </PageTitleStyle>
-            <AppInfoTop>
-                <TechnologyTitle>Technology:</TechnologyTitle>
-            </AppInfoTop>
-            <TechnologyList>
+            <S.AppInfoTop>
+                <S.TechnologyTitle>
+                    Technology:
+                </S.TechnologyTitle>
+            </S.AppInfoTop>
+            <S.TechnologyList>
                 {items}
-            </TechnologyList>
-            <ThemeExample changeTheme={props.changeTheme}/>
+            </S.TechnologyList>
+            <ThemeExample changeTheme={props.changeTheme} />
         </PageStyle>
     );
 }

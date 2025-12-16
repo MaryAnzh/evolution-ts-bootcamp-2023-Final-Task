@@ -1,7 +1,6 @@
-import React from "react"
-import { ControlPanelButtonStyle } from "./styled"
-import { store } from "../../../../App"
-import { sounds } from "../../../../data/sounds"
+import { ControlPanelButtonStyle } from "./styled";
+import { store } from "../../../../App";
+import { SOUNDS_DATA } from "../../../../constants";
 
 export const ControlPanelButton = () => {
     return (
@@ -9,7 +8,7 @@ export const ControlPanelButton = () => {
             onClick={() => {
                 store.startRound();
                 if (store.audio) {
-                    sounds.click.play();
+                    SOUNDS_DATA.click.play();
                 }
             }}>
             Spin

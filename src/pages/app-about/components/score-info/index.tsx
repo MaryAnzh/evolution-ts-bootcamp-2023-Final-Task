@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Combination } from '../combination';
 import { store } from '../../../../App';
 import { observer } from "mobx-react-lite";
@@ -26,7 +26,7 @@ export const ScoreInfo = observer(() => {
         if (newNumber === 8) {
             newNumber = 1;
         }
-        setImgNumber((prev) => prev = newNumber);
+        setImgNumber(() => newNumber);
     }
 
     return (

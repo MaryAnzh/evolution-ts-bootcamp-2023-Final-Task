@@ -7,10 +7,12 @@ import {
 } from "../../AppStyled";
 
 export const AppAboutPage = () => {
+    const about = 'About game';
+
     return (
         <PageStyle>
             <PageTitleStyle>
-                About game
+                {about}
             </PageTitleStyle>
             <ScoreInfo />
         </PageStyle>

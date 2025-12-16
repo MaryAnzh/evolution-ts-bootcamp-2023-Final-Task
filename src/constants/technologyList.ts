@@ -3,7 +3,7 @@ export interface ITechnologyItem {
     sub?: string[]
 }
 
-export const technologyList: ITechnologyItem[] = [
+export const TECHNOLOGY_LIST: ITechnologyItem[] = [
     { name: 'TypeScript' },
     {
         name: 'React',
