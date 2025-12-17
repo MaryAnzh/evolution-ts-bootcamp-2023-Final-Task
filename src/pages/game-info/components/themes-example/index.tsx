@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from "mobx-react-lite";
 
 import { ThemeView } from '../theme-view';
-import { BLACK_CARDS, FAIRY_CARDS, SEA_CARDS, BLACK, FAIRY, SEA } from '../../../../constants';
+import { BLACK_CARDS, FAIRY_CARDS, SEA_CARDS, BLACK, FAIRY, SEA, THEMES } from '../../../../constants';
 import { store } from '../../../../App';
 import type { ThemeNameType } from '../../../../themes';
 import type { ThemesExampleProps } from './types';
@@ -21,8 +21,11 @@ export const ThemeExample: React.FC<ThemesExampleProps> = observer(({ changeThem
 
     return (
         <S.ThemeExampleStyle>
-            <S.ThemeExampleTitle>
-                Themes
+            <S.ThemeExampleTitle
+                asTag='h3'
+                textView='headingSRegular'
+            >
+                {THEMES}
             </S.ThemeExampleTitle>
             {[BLACK, SEA, FAIRY].map(name => (
                 <S.ThemeExampleWrap
@@ -30,7 +33,9 @@ export const ThemeExample: React.FC<ThemesExampleProps> = observer(({ changeThem
                     isActive={store.theme === name}
                     onClick={() => handleChangeTheme(name)}
                 >
-                    <S.ThemeExampleWrapTitle>{name} Theme</S.ThemeExampleWrapTitle>
+                    <S.ThemeExampleWrapTitle
+                        asTag='h4'
+                        textView='bodySRegular'>{name} Theme</S.ThemeExampleWrapTitle>
                     <ThemeView
                         cards={cards[name]}
                         isActive={store.theme === name}

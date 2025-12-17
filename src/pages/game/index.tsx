@@ -41,7 +41,10 @@ export const GamePage = observer(() => {
     return (
         <PageStyle>
             <SlotGameTopPanel>
-                <PageTitleStyle>
+                <PageTitleStyle
+                    asTag='h2'
+                    textView="headingMRegular"
+                >
                     {store.view === ViewEnum.memo &&
                         <LinkToSlot
                             src='./assets/golden-arrow.png'
@@ -49,7 +52,6 @@ export const GamePage = observer(() => {
                             onClick={closeMemo}>
                         </LinkToSlot>
                     }
-
                     {store.view === ViewEnum.slot ? 'Slot Game' : 'Memo'}
                     {(store.view === ViewEnum.slot && store.demoWin) &&
                         <GoldenWinButton
@@ -61,7 +63,6 @@ export const GamePage = observer(() => {
                             onClick={() => store.startRound(2)}
                         >2</GoldenWinButton>
                     }
-
                 </PageTitleStyle>
                 <MoneyWrap>
                     <ScorePanel />

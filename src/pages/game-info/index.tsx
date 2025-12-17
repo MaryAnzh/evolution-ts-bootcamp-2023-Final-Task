@@ -4,19 +4,28 @@ import { TECHNOLOGY_LIST } from '../../constants/technologyList';
 import { PageStyle, PageTitleStyle } from "../../AppStyled";
 import { ThemeExample } from "./components/themes-example";
 import type { GameInfoProps } from "./components/types";
+import { PRESENTATION_INFO, TECHNOLOGY } from "../../constants";
+import { Typography } from "../../components";
+
 import * as S from "./styled";
 
 export const GameInfoPage: React.FC<GameInfoProps> = (props) => {
-    const items = TECHNOLOGY_LIST.map(item =>
+    const items = TECHNOLOGY_LIST.map(({ name, list }) =>
         <S.TechnologyListItem
-            key={item.name}
-            fontSize='2rem'>
-            {item.name}
-            {item.sub &&
+            key={name}
+            theme={'li'}
+            textView="bodyMRegular"
+        >
+            {name}
+            {list &&
                 <S.TechnologyList>
-                    {item.sub.map(el =>
-                        <S.TechnologyListItem key={el} fontSize='0.9em'>
-                            {el}
+                    {list.map(text =>
+                        <S.TechnologyListItem
+                            key={text}
+                            theme='li'
+                            textView="bodySRegular"
+                        >
+                            {text}
                         </S.TechnologyListItem>)}
                 </S.TechnologyList>
             }
@@ -25,13 +34,13 @@ export const GameInfoPage: React.FC<GameInfoProps> = (props) => {
 
     return (
         <PageStyle>
-            <PageTitleStyle>
-                Presentation info
+            <PageTitleStyle asTag="h2" textView="headingMRegular">
+                {PRESENTATION_INFO}
             </PageTitleStyle>
             <S.AppInfoTop>
-                <S.TechnologyTitle>
-                    Technology:
-                </S.TechnologyTitle>
+                <Typography asTag="h3" textView="headingSMedium">
+                    {TECHNOLOGY}:
+                </Typography>
             </S.AppInfoTop>
             <S.TechnologyList>
                 {items}

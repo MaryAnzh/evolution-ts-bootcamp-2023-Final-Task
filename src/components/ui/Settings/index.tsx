@@ -7,6 +7,8 @@ import type { SettingProps } from './types';
 import { THEMES_ICONS } from './constants';
 import type { ThemeNameType } from '../../../themes';
 import * as S from "./style";
+import { Typography } from '../Typography';
+import { AUDIO, SETTINGS, THEME } from '../../../constants';
 
 export const Settings: React.FC<SettingProps> = observer(({ changeTheme, hiddenSetting }) => {
     const [animation, setAnimation] = useState<string>('showSetting 0.4s linear forwards');
@@ -23,9 +25,9 @@ export const Settings: React.FC<SettingProps> = observer(({ changeTheme, hiddenS
         <PopUpStyle>
             <S.SettingsStyle style={{ animation: animation }}>
                 <S.SettingsTop>
-                    <S.SettingsTile>
-                        Setting
-                    </S.SettingsTile>
+                    <Typography asTag='h3' textView='bodyMMedium'>
+                        {SETTINGS}
+                    </Typography>
                     <S.SettingCross
                         onClick={handleClose}
                     >
@@ -34,9 +36,9 @@ export const Settings: React.FC<SettingProps> = observer(({ changeTheme, hiddenS
                     </S.SettingCross>
                 </S.SettingsTop>
                 <S.SettingThemeWrap>
-                    <S.SettingThemeTitle>
-                        Theme:
-                    </S.SettingThemeTitle>
+                    <Typography asTag='h4' textView='bodyMRegular'>
+                        {THEME}:
+                    </Typography>
                     <S.ThemeIconsWrap>
                         {THEMES_ICONS.map(({ name, url }) => (
                             <S.ThemeIcon
@@ -45,17 +47,17 @@ export const Settings: React.FC<SettingProps> = observer(({ changeTheme, hiddenS
                                 img={url}
                                 onClick={() => handleChangeTheme(name)}
                             >
-                                <span>
+                                <Typography textView='descriptionMedium'>
                                     {name}
-                                </span>
+                                </Typography>
                             </S.ThemeIcon>
                         ))}
                     </S.ThemeIconsWrap>
                 </S.SettingThemeWrap>
                 <S.SettingФAudioWrap>
-                    <S.SettingAudioTitle>
-                        Audio:
-                    </S.SettingAudioTitle>
+                    <Typography asTag='h4' textView='bodyMRegular'>
+                        {AUDIO}:
+                    </Typography>
                     <S.AudioOnOff>
                         <S.AudioOnOffButton
                             buttonStatus={store.audio ? 'active' : 'disable'}

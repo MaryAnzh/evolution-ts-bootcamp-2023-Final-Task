@@ -2,16 +2,10 @@ import { useState } from 'react';
 import { Combination } from '../combination';
 import { store } from '../../../../App';
 import { observer } from "mobx-react-lite";
+import { Typography } from '../../../../components';
+import { POINT, ROUND_COST, SCORE_INFO, SHOW_MORE_COMB } from '../../../../constants';
 
-import {
-    ScoreInfoStyle,
-    ScoreInfoTitle,
-    ScoreInfoShowMore,
-    ScoreInfoTop,
-    ScoreRoundCost,
-    ScoreRoundCostTitle,
-    ScoreRoundCostPoint
-} from './style';
+import * as S from './style';
 
 export const ScoreInfo = observer(() => {
     const cardsSorting = [...store.slots[0].cards].sort((a, b) => a.id - b.id);
@@ -30,23 +24,33 @@ export const ScoreInfo = observer(() => {
     }
 
     return (
-        <ScoreInfoStyle>
-            <ScoreInfoTop>
-                <ScoreInfoTitle>
-                    Score info
-                </ScoreInfoTitle>
-                <ScoreInfoShowMore
-                    onClick={changeCard}
-                >Show more comb</ScoreInfoShowMore>
-            </ScoreInfoTop>
-            <ScoreRoundCost>
-                <ScoreRoundCostTitle>Round Cost</ScoreRoundCostTitle>
-                <ScoreRoundCostPoint>{store.pointMap.roundCost} point</ScoreRoundCostPoint>
-            </ScoreRoundCost>
+        <S.ScoreInfoStyle>
+            <S.ScoreInfoTop>
+                <Typography asTag='h2' textView='headingSMedium'>
+                    {SCORE_INFO}
+                </Typography>
+                <Typography
+                    textView='bodySMedium'
+                    callback={changeCard}
+                >
+                    {SHOW_MORE_COMB}
+                </Typography>
+            </S.ScoreInfoTop>
+            <S.ScoreRoundCost>
+                <Typography
+                    asTag='h4'
+                    textView='headingSRegular'>
+                    {ROUND_COST}
+                </Typography>
+                <Typography
+                    textView='bodyMMedium'
+                >{store.pointMap.roundCost} {POINT}
+                </Typography>
+            </S.ScoreRoundCost>
             <Combination images={[zero.url, zero.url]} score={0} />
             <Combination images={[zero.url, zero.url, zero.url]} score={0} />
             <Combination images={[card.url, card.url]} score={store.pointMap.bonus} />
             <Combination images={[card.url, card.url, card.url]} score={store.pointMap.jackpot} />
-        </ScoreInfoStyle>
+        </S.ScoreInfoStyle>
     );
 });

@@ -1,14 +1,10 @@
 import styled from "styled-components";
+import { Typography } from "../../components";
 
 export const AppInfoTop = styled.div`
   width: 100%;
   display: flex;
-  color: ${({theme}) => theme.fontColor};
-`;
-
-export const TechnologyTitle = styled.h3`
-  font-size: 2rem;
-  font-weight: 300;
+  color: ${({ theme }) => theme.fontColor};
 `;
 
 export const TechnologyList = styled.ul`
@@ -22,8 +18,6 @@ export const TechnologyList = styled.ul`
   }
 `;
 
-export const TechnologyListItem = styled.li<{fontSize: string}>`
+export const TechnologyListItem = styled(Typography)`
   padding: 0.5rem;
-  font-size: ${({fontSize}) => fontSize};
-  color: ${({ theme }) => theme.fontColor};
 `;

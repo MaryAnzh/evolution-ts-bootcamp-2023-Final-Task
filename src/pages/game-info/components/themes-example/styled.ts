@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Typography } from "../../../../components";
 
 export const ThemeExampleStyle = styled.section`
   width: 100%;
@@ -7,8 +8,7 @@ export const ThemeExampleStyle = styled.section`
   flex-direction: column;
 `;
 
-export const ThemeExampleTitle = styled.h3`
-  font-size: 2rem;
+export const ThemeExampleTitle = styled(Typography)`
   text-align: right;
 `;
 
@@ -27,7 +27,6 @@ export const ThemeExampleWrap = styled.div<{ isActive: boolean }>`
   cursor: pointer;
 `;
 
-export const ThemeExampleWrapTitle = styled.h4`
-  font-size: 2rem;
+export const ThemeExampleWrapTitle = styled(Typography)`
   text-transform: uppercase;
 `;

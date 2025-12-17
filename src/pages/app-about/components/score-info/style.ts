@@ -13,11 +13,6 @@ export const ScoreInfoTop = styled.div`
   justify-content: space-between;
 `;
 
-export const ScoreInfoTitle = styled.h3`
-  font-size: 2rem;
-  font-weight: 400;
-  `;
-
 export const ScoreInfoShowMore = styled.div`
   position: relative;
   padding: 0.5rem 0.8rem;
@@ -42,14 +37,4 @@ export const ScoreRoundCost = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-`;
-
-export const ScoreRoundCostTitle = styled.span`
-  font-size: 2rem;
-  font-weight: 400;
-`;
-
-export const ScoreRoundCostPoint = styled.span`
-  font-size: 2rem;
-  font-weight: 400;
 `;

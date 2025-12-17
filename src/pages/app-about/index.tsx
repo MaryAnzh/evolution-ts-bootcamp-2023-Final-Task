@@ -5,14 +5,17 @@ import {
     PageStyle,
     PageTitleStyle
 } from "../../AppStyled";
+import { ABOUT_GAME } from "../../constants";
 
 export const AppAboutPage = () => {
-    const about = 'About game';
 
     return (
         <PageStyle>
-            <PageTitleStyle>
-                {about}
+            <PageTitleStyle
+                asTag="h2"
+                textView="headingMRegular"
+            >
+                {ABOUT_GAME}
             </PageTitleStyle>
             <ScoreInfo />
         </PageStyle>
