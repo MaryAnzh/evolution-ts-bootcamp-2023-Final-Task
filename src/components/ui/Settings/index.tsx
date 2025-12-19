@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { store } from "../../../App";
+import { observer } from "mobx-react-lite";
+import { store } from '~stores';
+
+import { AUDIO, BLACK, FAIRY, SEA, SETTINGS, THEME } from '~constants';
+import { Typography } from '~components';
+import type { ThemeNameType } from '~types';
 
 import { PopUpStyle } from '../styled';
-import { observer } from "mobx-react-lite";
+
 import type { SettingProps } from './types';
-import { THEMES_ICONS } from './constants';
-import type { ThemeNameType } from '../../../themes';
 import * as S from "./style";
-import { Typography } from '../Typography';
-import { AUDIO, SETTINGS, THEME } from '../../../constants';
+
+const THEMES_ICONS = [
+    { name: BLACK, url: 'none' },
+    { name: SEA, url: './assets/bubble.png' },
+    { name: FAIRY, url: './assets/star.png' }
+];
 
 export const Settings: React.FC<SettingProps> = observer(({ changeTheme, hiddenSetting }) => {
     const [animation, setAnimation] = useState<string>('showSetting 0.4s linear forwards');

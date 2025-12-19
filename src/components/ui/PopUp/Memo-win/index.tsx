@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { store } from "~stores";
 
-import { store } from "../../../../App";
-import { SOUNDS_DATA } from "../../../../constants";
+import { CONGRATULATIONS_MESSAGE, CONTINUE, POINTS, SOUNDS_DATA, WIN_POINTS, YOU_WIN } from "~constants";
 
 import { PopUpStyle } from "../../styled";
+
 import * as S from "./styled";
 
 export const MemoWinnerMessage = () => {
@@ -18,17 +19,17 @@ export const MemoWinnerMessage = () => {
         <PopUpStyle>
             <S.MemoWinStyle>
                 <S.MemoWinTitle>
-                    You won 120 point!!!
+                    {YOU_WIN} {WIN_POINTS} {POINTS}!!!
                 </S.MemoWinTitle>
                 <S.MemoContinuaGameButton>
-                    Congratulations on your victory!!!
+                    {CONGRATULATIONS_MESSAGE}!!!
                 </S.MemoContinuaGameButton>
                 <S.MemoWinButtonWrap>
                     <S.MemoWinMoney />
                     <Link to={'/'}>
                         <S.MemoContinuaGameButton
                             onClick={startGame}>
-                            continue
+                            {CONTINUE}
                         </S.MemoContinuaGameButton>
                     </Link>
                 </S.MemoWinButtonWrap>

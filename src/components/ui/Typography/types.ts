@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { TextViewNameType } from "../../../types";
+import type { TextViewNameType } from "~types";
 
 export type TypographyViewStyleType = {
     size: string,

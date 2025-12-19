@@ -1,8 +1,8 @@
 import React from "react";
-import { store } from "../../../../App";
-import { SOUNDS_DATA } from "../../../../constants";
-
+import { store } from "~stores";
+import { SOUNDS_DATA } from "~constants";
 import { PopUpStyle } from "../../styled";
+
 import * as S from "./styled";
 
 export const GameOver = () => {

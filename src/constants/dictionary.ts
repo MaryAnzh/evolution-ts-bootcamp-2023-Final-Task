@@ -16,7 +16,14 @@ export const DICTIONARY = {
     SHOW_MORE_COMB: 'Show more comb',
     ROUND_COST: 'Round Cost',
     POINT: 'point',
+    POINTS: 'pointS',
     ABOUT_GAME: 'About game',
+    YOU_WIN: 'You win',
+    CONGRATULATIONS_MESSAGE: 'Congratulations on your victory',
+    WINNING_QUESTION: 'Do you want to continue winning',
+    CONTINUE: 'continue',
+    START: 'start',
+    SPIN: 'Spin'
 } as const;
 
 export const {
@@ -37,5 +44,12 @@ export const {
     SHOW_MORE_COMB,
     ROUND_COST,
     POINT,
+    POINTS,
     ABOUT_GAME,
+    YOU_WIN,
+    CONGRATULATIONS_MESSAGE,
+    WINNING_QUESTION,
+    CONTINUE,
+    START,
+    SPIN,
 } = DICTIONARY;
