@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { Logo } from "../../ui/Logo";
+import { Logo } from "../ui/Logo";
 import { ROUTE_SET } from "./constants";
 import type { HeaderProps } from "./types";
 
