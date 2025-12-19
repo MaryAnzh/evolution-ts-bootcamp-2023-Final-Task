@@ -1,9 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Logo } from "../../ui/Logo";
-import { Link } from "react-router-dom";
 import { ROUTE_SET } from "./constants";
 import type { HeaderProps } from "./types";
 

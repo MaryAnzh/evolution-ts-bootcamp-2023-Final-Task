@@ -1,22 +1,16 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import { Store } from './stores';
 import { ThemeContext } from "styled-components";
 import { useState } from 'react';
-
-import { Footer, Header } from './components';
-import { MainStyle } from './AppStyled';
-import { GamePage } from './pages/game';
-import { GameInfoPage } from './pages/game-info';
-import { AppAboutPage } from './pages/app-about';
-import { THEMES } from './themes';
-import { GameOver, WinnerMessage, Settings } from './components';
 import { observer } from 'mobx-react-lite';
-import { BLACK, GAME_ROUTE, INFO_ROUTE, ABOUT_ROUTE } from './constants';
-import type { ThemeNameType, ThemeType } from './themes';
+import { store } from '~stores';
+
+import { Footer, Header, GameOver, WinnerMessage, Settings } from '~components';
+import { BLACK, GAME_ROUTE, INFO_ROUTE, ABOUT_ROUTE } from '~constants';
+import { GamePage, InfoPage, AboutPage } from './pages';
+import { THEMES } from './themes';
+import type { ThemeNameType, ThemeType } from './types';
 
 import * as S from './AppStyled';
-
-export const store = new Store();
 
 const App = observer(() => {
   const [setting, setSetting] = useState(false);
@@ -63,13 +57,13 @@ const App = observer(() => {
             changeTheme={handleChangeTheme}
             showSettings={handleShowSettings}
           />
-          <MainStyle>
+          <S.MainStyle>
             <Routes>
               <Route path={GAME_ROUTE} element={<GamePage />} />
-              <Route path={INFO_ROUTE} element={<GameInfoPage changeTheme={handleChangeTheme} />} />
-              <Route path={ABOUT_ROUTE} element={<AppAboutPage />} />
+              <Route path={INFO_ROUTE} element={<InfoPage changeTheme={handleChangeTheme} />} />
+              <Route path={ABOUT_ROUTE} element={<AboutPage />} />
             </Routes>
-          </MainStyle>
+          </S.MainStyle>
           <Footer />
         </S.APPStyled>
       </ThemeContext.Provider>

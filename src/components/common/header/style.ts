@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import type { IsActiveType } from "../../../types";
+import type { IsActiveType } from "~types";
 
 export const HeaderStyle = styled.header`
   max-width: ${({ theme }) => theme.const.maxAppWidth};

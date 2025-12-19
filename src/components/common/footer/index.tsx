@@ -1,9 +1,9 @@
-import { FooterStyle } from "./styled";
+import * as S from './styled';
 
 export const Footer = () => {
     return (
-        <FooterStyle>
-            Footer
-        </FooterStyle>
+        <S.FooterStyle>
+            
+        </S.FooterStyle>
     );
 }

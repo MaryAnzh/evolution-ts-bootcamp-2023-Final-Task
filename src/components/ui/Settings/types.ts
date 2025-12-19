@@ -1,4 +1,4 @@
-import type { ThemeNameType } from "../../../themes";
+import type { ThemeNameType } from "~types";
 
 export type SettingProps = {
     changeTheme: (t: ThemeNameType) => void;

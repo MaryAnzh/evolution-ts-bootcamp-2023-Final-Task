@@ -1,4 +1,6 @@
 export * from './cards';
+export * from './common';
+export * from './components';
 export * from './dictionary';
 export * from './route';
 export * from './sounds';

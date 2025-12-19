@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const SettingsStyle = styled.div`
   position: absolute;
   right: 2px;
-  top: 1rem;
+  top: 16px;
   width: 340px;
-  padding: 1rem;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 1.625rem;
@@ -14,9 +14,6 @@ export const SettingsStyle = styled.div`
   border: 1px solid ${({ theme }) => theme.fontColor};
   transform: translateY(-150%);
   transition: 0.4s;
-
-  font-weight: 400;
-  text-transform: uppercase;
   color: ${({ theme }) => theme.fontColor};
 `;
 
@@ -25,10 +22,6 @@ export const SettingsTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-export const SettingsTile = styled.h3`
-  font-size: 1.5rem;
 `;
 
 export const SettingCross = styled.div`
@@ -88,15 +81,11 @@ export const SettingThemeWrap = styled.div`
   justify-content: space-between;
 `;
 
-export const SettingThemeTitle = styled.h4`
-  font-size: 1.25rem;
-`;
-
 export const ThemeIconsWrap = styled.div`
   width: 8rem;
   display: flex;
   justify-content: space-between;
-  `;
+`;
 
 export const ThemeIcon = styled.div<{ themeStatus: 'active' | 'disable', img: string }>`
   position: relative;
@@ -158,10 +147,6 @@ export const SettingФAudioWrap = styled.div`
   justify-content: space-between;
 `;
 
-export const SettingAudioTitle = styled.h4`
-  font-size: 1.25rem;
-`;
-
 export const AudioOnOff = styled.div`
   display: flex;
   gap: 1rem;
@@ -178,7 +163,6 @@ export const AudioOnOffButton = styled.button<{ buttonStatus: 'active' | 'disabl
   outline: none;
   border-radius: 50%;  
   color: ${({ theme }) => theme.fontColor};
-  font-size: 0.8rem;
   opacity: ${({ buttonStatus }) => buttonStatus === 'active' ? '1' : '0.6'};
   pointer-events: ${({ buttonStatus }) => buttonStatus === 'active' ? 'none' : 'all'};
   transition: 0.3s;

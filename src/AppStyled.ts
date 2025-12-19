@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Typography } from "./components/ui/Typography";
 
 export const APPStyled = styled.div`
   width: 100%;
@@ -42,9 +43,7 @@ export const PageStyle = styled.div`
   color: ${({ theme }) => theme.fontColor};
 `;
 
-export const PageTitleStyle = styled.div`
+export const PageTitleStyle = styled(Typography)`
   display: flex;
   align-items: center;
-  font-size: 2.4rem;
-  font-weight: 600;
 `;

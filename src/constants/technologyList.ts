@@ -1,20 +1,16 @@
-export interface ITechnologyItem {
-    name: string,
-    sub?: string[]
-}
 
-export const TECHNOLOGY_LIST: ITechnologyItem[] = [
-    { name: 'TypeScript' },
+export const TECHNOLOGY_LIST = [
+    { name: 'TypeScript', list: undefined },
     {
         name: 'React',
-        sub: ['mobx-react-lite', 'react-router-dom'],
+        list: ['mobx-react-lite', 'react-router-dom'],
     },
     {
         name: 'CSS in JS',
-        sub: ['styled-component', 'ThemeContext'],
+        list: ['styled-component', 'ThemeContext'],
     },
     {
         name: 'CSS',
-        sub: ['@keyframes animation', '3D Transform animation']
+        list: ['@keyframes animation', '3D Transform animation']
     },
 ]

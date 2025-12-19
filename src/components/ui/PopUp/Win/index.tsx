@@ -1,7 +1,8 @@
-import { store } from "../../../../App";
-import { SOUNDS_DATA } from "../../../../constants";
+import { store } from "~stores";
 
+import { CONGRATULATIONS_MESSAGE, CONTINUE, SOUNDS_DATA, WINNING_QUESTION, YOU_WIN } from "~constants";
 import { PopUpStyle } from "../../styled";
+
 import * as S from "./styled";
 
 export const WinnerMessage = () => {
@@ -16,20 +17,20 @@ export const WinnerMessage = () => {
         <PopUpStyle>
             <S.WinStyle>
                 <S.WinTitle>
-                    You win!!!
+                    {YOU_WIN}!!!
                 </S.WinTitle>
                 <S.WinMessage>
-                    Congratulations on your victory!!!
+                    {CONGRATULATIONS_MESSAGE}!!!
                 </S.WinMessage>
                 <S.WinMessage>
-                    Do you want to continue winning?
+                    {WINNING_QUESTION}?
                 </S.WinMessage>
                 <S.WinButtonWrap>
                     <S.WinMoney />
                     <S.ContinuaGameButton
                         onClick={startGame}
                     >
-                        continue
+                        {CONTINUE}
                     </S.ContinuaGameButton>
                 </S.WinButtonWrap>
             </S.WinStyle>
