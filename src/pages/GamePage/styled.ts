@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IMAGE_PICKER as I } from "~constants";
 
 export const SlotGameTopPanel = styled.div`
   width: 100%;
@@ -58,7 +59,7 @@ export const LinkToMemo = styled.div`
    width: 40px;
    height: 40px;
    border-radius: 50%;
-   background-image: url('./assets/dollar.png');
+   background-image: url(${I.dollar});
    background-position: center;
    background-repeat: no-repeat;
    background-size: contain;

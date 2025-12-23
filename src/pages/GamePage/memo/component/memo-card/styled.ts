@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IMAGE_PICKER as I } from "~constants";
 
 const borderRadius = '0.5rem';
 
@@ -21,7 +22,7 @@ export const MemoCardFront = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-color: ${({ theme }) => theme.background};
-  background-image: url(./assets/card.png);
+  background-image: url(${I.card});
   backface-visibility: hidden;
   transition: all .4s;
   z-index: 2;

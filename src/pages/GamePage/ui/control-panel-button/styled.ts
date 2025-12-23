@@ -1,17 +1,18 @@
 import styled from "styled-components";
+import { IMAGE_PICKER as I } from "~constants";
 
 export const ControlPanelButtonStyle = styled.button`
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-image: url(./assets/blue_glass_button.png);
+  background-image: url(${I.goldButton});
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  font-size: 2rem;
-  color: ${({ theme }) => theme.fontColor};
-  opacity: 0.9;
-  transition: .3s;
+  color: var(--base-contrast);
+  font-size: 22px;
+  opacity: 0.8;
+  transition: var(--base-transition-time);
   cursor: pointer;
 
   &:hover {

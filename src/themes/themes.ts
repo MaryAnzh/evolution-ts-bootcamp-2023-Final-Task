@@ -1,6 +1,6 @@
 import type { ThemeType, ThemeConstType } from "~types";
 
-import { BLACK, FAIRY, SEA } from '~constants';
+import { BLACK, FAIRY, SEA, IMAGE_PICKER as I } from '~constants';
 
 const THEME_DATA: ThemeConstType = {
   maxAppWidth: '1200px',
@@ -64,7 +64,7 @@ export const BLACK_THEME: ThemeType = {
   background: `rgb(0, 0, 0)`,
   goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
   gradient: 'radial-gradient(ellipse at center top, #333 -10%,#000000 100%)',
-  gloverImg: './assets/gold-button.png'
+  gloverImg: I.goldButton,
 }
 
 export const SEA_THEME: ThemeType = {
@@ -89,7 +89,7 @@ export const SEA_THEME: ThemeType = {
   background: `rgb(56, 56, 56)`,
   goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
   gradient: 'radial-gradient(ellipse at center top, rgb(21, 120, 145) -10%,#000000 100%)',
-  gloverImg: './assets/bubble.png'
+  gloverImg: I.bubble,
 }
 
 export const FAIRY_THEME: ThemeType = {
@@ -114,7 +114,7 @@ export const FAIRY_THEME: ThemeType = {
   background: `#1E2423`,
   goldGradient: `linear-gradient(90deg, #CBA9A3 0%, #E8C8FF 13%, #9E4A3E 58%, #EBCECE 100%)`,
   gradient: `radial-gradient(ellipse at center top, #92A6A2 0%, #3C4845 13%, #1E2423 58%, #074E43 100%)`,
-  gloverImg: './assets/star-fairy.png'
+  gloverImg: I.starFairy,
 }
 
 export const THEMES = {

@@ -1,4 +1,5 @@
-const DOLLAR_SRC = './assets/dollar.png';
+import { IMAGE_PICKER } from "~constants";
+const { dollar: DOLLAR_SRC } = IMAGE_PICKER;
 
 export const DOLLARS_LOGO = [
     {

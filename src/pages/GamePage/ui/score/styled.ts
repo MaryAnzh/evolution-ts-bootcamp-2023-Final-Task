@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IMAGE_PICKER as I } from "~constants";
 
 export const ScorePanelStyle = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ export const ScoreWrapStyle = styled.span`
 export const ScoreIconStyle = styled.div`
   width: 60px;
   height: 60px;
-  background-image: url(./assets/money.png);
+  background-image: url(${I.money});
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;

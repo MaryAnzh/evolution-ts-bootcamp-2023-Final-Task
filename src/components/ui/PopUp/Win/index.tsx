@@ -1,4 +1,4 @@
-import { store } from "~stores";
+import { store } from "store";
 
 import { CONGRATULATIONS_MESSAGE, CONTINUE, SOUNDS_DATA, WINNING_QUESTION, YOU_WIN } from "~constants";
 import { PopUpStyle } from "../../styled";

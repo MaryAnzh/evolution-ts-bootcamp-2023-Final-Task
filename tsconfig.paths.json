@@ -2,14 +2,17 @@
 	"compilerOptions": {
 		"baseUrl": "./src",
 		"paths": {
+			"~assets/*": [
+				"./assets/*"
+			],
 			"~constants": [
 				"./constants"
 			],
 			"~types": [
 				"./types"
 			],
-			"~stores": [
-				"./stores"
+			"~store": [
+				"./store"
 			],
 			"~hooks": [
 				"./hooks"
