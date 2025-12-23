@@ -3,7 +3,9 @@ import { observer } from "mobx-react-lite";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { Logo } from "../ui/Logo";
+import { Logo } from "~components";
+import { ICON_PICKER as I } from '~constants';
+
 import { ROUTE_SET } from "./constants";
 import type { HeaderProps } from "./types";
 
@@ -30,9 +32,9 @@ export const Header: React.FC<HeaderProps> = observer((props) => {
                 </S.HeaderNavStyle>
                 <S.HeaderSettingsStyle
                     onClick={props.showSettings}>
-                    <S.SettingLogo
-                        src='./assets/settings.png'
-                        alt='settings' />
+                    <S.SettingLogo>
+                        <I.SettingsIcon />
+                    </S.SettingLogo>
                 </S.HeaderSettingsStyle>
             </S.HeaderNavSettings>
         </S.HeaderStyle>

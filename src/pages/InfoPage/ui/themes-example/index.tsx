@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from "mobx-react-lite";
-import { store } from '~stores';
+import { store } from 'store';
 
 import { BLACK, FAIRY, SEA, THEMES } from '~constants';
 import type { ThemeNameType } from '~types';

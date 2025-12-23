@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { store } from '~stores';
+import { store } from 'store';
 import { MemoWinnerMessage } from "~components";
 
 import { MemoField } from "./component/game-field";

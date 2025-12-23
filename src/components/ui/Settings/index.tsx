@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { observer } from "mobx-react-lite";
-import { store } from '~stores';
+import { store } from 'store';
 
-import { AUDIO, BLACK, FAIRY, SEA, SETTINGS, THEME } from '~constants';
+import { AUDIO, SETTINGS, THEME } from '~constants';
 import { Typography } from '~components';
 import type { ThemeNameType } from '~types';
 
@@ -10,12 +10,7 @@ import { PopUpStyle } from '../styled';
 
 import type { SettingProps } from './types';
 import * as S from "./style";
-
-const THEMES_ICONS = [
-    { name: BLACK, url: 'none' },
-    { name: SEA, url: './assets/bubble.png' },
-    { name: FAIRY, url: './assets/star.png' }
-];
+import { THEMES_ICONS } from './constants';
 
 export const Settings: React.FC<SettingProps> = observer(({ changeTheme, hiddenSetting }) => {
     const [animation, setAnimation] = useState<string>('showSetting 0.4s linear forwards');

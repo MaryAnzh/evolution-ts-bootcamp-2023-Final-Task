@@ -1,7 +1,7 @@
 import React from "react";
 
 import { observer } from "mobx-react-lite";
-import { store } from "stores";
+import { store } from "store";
 
 import { FairyFrame } from "../fairy-frame";
 import type { CarouselProps } from "./types";
@@ -27,7 +27,7 @@ export const Carousel: React.FC<CarouselProps> = observer((props) => {
                 style={{
                     transform: `rotateX(${rotateAngle * i}deg) translateZ(200px)`,
                 }}>
-                <img src={url} />
+                <img src={url} alt='game card' />
                 <FairyFrame
                     cardIndex={i}
                     cardId={id}

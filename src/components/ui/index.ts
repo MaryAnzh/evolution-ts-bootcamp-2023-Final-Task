@@ -1,5 +1,7 @@
 export { Typography } from './Typography';
 
+export * from './Button';
+export { Image } from './Image';
 export { Logo } from './Logo';
 export { Settings } from './Settings';
-export { GameOver, MemoWinnerMessage, WinnerMessage } from './PopUp';
+export * from './PopUp';

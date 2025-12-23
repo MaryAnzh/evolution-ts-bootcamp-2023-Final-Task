@@ -1,3 +1,5 @@
+export * from './icons';
+export * from './images';
 export * from './cards';
 export * from './common';
 export * from './components';

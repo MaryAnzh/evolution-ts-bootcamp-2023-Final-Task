@@ -1,4 +1,4 @@
-import { store } from "~stores";
+import { store } from "store";
 import { SOUNDS_DATA, SPIN } from "~constants";
 
 import { ControlPanelButtonStyle } from "./styled";

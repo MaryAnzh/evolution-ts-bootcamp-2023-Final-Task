@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 
-import { store } from "~stores";
+import { store } from "store";
 import { ArrayFromNum } from "~utils";
 
 import { FAIRY_IN_HORIZONTAL_LINE, FAIRY_IN_VERTICAL_LINE, LEFT_PADDING, TOP_PADDING, FAIRY_RADIUS } from "./constants";

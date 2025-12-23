@@ -5,7 +5,8 @@ import { ThemeViewCard, ThemeViewStyle } from './styled';
 
 export const ThemeView: React.FC<ThemeViewProps> = ({ cards, isActive }) =>
     <ThemeViewStyle isActive={isActive}>
-        {cards.map(card => <ThemeViewCard key={card.id}>
-            <img src={card.url} alt='theme icon' />
-        </ThemeViewCard>)}
+        {cards.map(({ url, id }) =>
+            <ThemeViewCard key={id}>
+                <img src={url} alt='theme icon' />
+            </ThemeViewCard>)}
     </ThemeViewStyle>;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { store } from "~stores";
+import { store } from "store";
 
 import type { CardProps } from "./types";
 

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { store } from "~stores";
+import { store } from "store";
 import type { MemoCardType } from "~types";
 
 import { MemoCard } from "../memo-card";

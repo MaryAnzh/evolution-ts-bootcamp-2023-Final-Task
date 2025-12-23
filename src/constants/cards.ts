@@ -1,94 +1,97 @@
-import type { CardType } from "../types";
+import { IMAGE_PICKER as I } from '~constants';
+import type { CardType } from "~types";
 
-export const cardsCommon: CardType[] = [
-    {
+const CARDS_COMMON = {
+    zero: {
         id: 0,
-        url: './assets/zero.png'
+        url: I.zero,
     },
-    {
+    dollar: {
         id: 4,
-        url: './assets/dollar.png'
+        url: I.dollar,
     },
-    {
+    seven: {
         id: 7,
-        url: './assets/seven.png',
+        url: I.seven,
     },
-]
+};
+
+const { zero, dollar, seven } = CARDS_COMMON;
 
 export const BLACK_CARDS: CardType[] = [
-    cardsCommon[0],
+    zero,
     {
         id: 1,
-        url: './assets/raspberry.png',
+        url: I.raspberry,
     },
     {
         id: 2,
-        url: './assets/pineapple.png',
+        url: I.pineapple,
     },
     {
         id: 3,
-        url: './assets/bells.png',
+        url: I.bells
     },
-    cardsCommon[1],
+    dollar,
     {
         id: 5,
-        url: './assets/cherry.png',
+        url: I.cherry,
     },
     {
         id: 6,
-        url: './assets/drop.png',
+        url: I.drop,
     },
-    cardsCommon[2],
+    seven,
 ];
 
 export const SEA_CARDS: CardType[] = [
-    cardsCommon[0],
+    zero,
     {
         id: 1,
-        url: './assets/bubble.png',
+        url: I.bubble,
     },
     {
         id: 2,
-        url: './assets/drop.png',
+        url: I.drop,
     },
     {
         id: 3,
-        url: './assets/crown.png',
+        url: I.crown,
     },
-    cardsCommon[1],
+    dollar,
     {
         id: 5,
-        url: './assets/money-card.png',
+        url: I.moneyCard,
     },
     {
         id: 6,
-        url: './assets/pearl.png',
+        url: I.perl,
     },
-    cardsCommon[2],
+    seven,
 ];
 
 export const FAIRY_CARDS: CardType[] = [
-    cardsCommon[0],
+    zero,
     {
         id: 1,
-        url: './assets/unicorn.png',
+        url: I.unicorn,
     },
     {
         id: 2,
-        url: './assets/moon.png',
+        url: I.moon,
     },
     {
         id: 3,
-        url: './assets/star.png',
+        url: I.star,
     },
-    cardsCommon[1],
+    dollar,
     {
         id: 5,
-        url: './assets/golden-ball.png',
+        url: I.goldenBall,
     },
     {
         id: 6,
-        url: './assets/crown.png',
+        url: I.crown,
     },
-    cardsCommon[2],
+    seven,
 ]; 

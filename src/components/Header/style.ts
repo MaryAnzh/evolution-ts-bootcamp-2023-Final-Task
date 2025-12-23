@@ -97,7 +97,15 @@ export const HeaderSettingsStyle = styled.div`
     }
  `;
 
-export const SettingLogo = styled.img`
-    width: 70%;
-    transition: .4s;
+export const SettingLogo = styled.div`
+    width: 100%;
+    transition: var(--base-transition-time);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-200);
+
+    svg {
+      width: 70%;
+    }
 `;

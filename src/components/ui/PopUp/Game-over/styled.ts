@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IMAGE_PICKER as I } from "~constants";
 
 export const GameOverStyle = styled.div`
   max-width: 500px;
@@ -38,7 +39,7 @@ export const GameOverButtonWrap = styled.div`
 export const GameOverMoney = styled.div`
   width: 100px;
   height: 100px;
-  background-image: url(./assets/money.png);
+  background-image: url(${I.money});
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -49,7 +50,7 @@ export const StartGameButton = styled.button`
   width: 80px;
   height: 80px;
   border-radius: 100%;
-  background-image: url(./assets/gold-button.png);
+  background-image: url(${I.goldButton});
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;

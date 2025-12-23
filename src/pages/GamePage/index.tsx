@@ -1,8 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
-import { store } from "~stores";
+import { store } from "store";
 
-import { MEMO, SLOT } from "~constants";
+import { MEMO, SLOT, IMAGE_PICKER as I } from "~constants";
 import type { ViewModeType } from "~types";
 
 import { Carousel } from "./ui/carousel";
@@ -41,8 +41,7 @@ export const GamePage = observer(() => {
                 >
                     {store.view === MEMO &&
                         <S.LinkToSlot
-                            src='./assets/golden-arrow.png'
-                            alt='arrow to slot'
+                            src={I.goldenArrow} alt='arrow to slot'
                             onClick={closeMemo}>
                         </S.LinkToSlot>
                     }

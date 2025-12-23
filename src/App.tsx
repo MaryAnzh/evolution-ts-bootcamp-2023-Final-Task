@@ -2,7 +2,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { ThemeContext } from "styled-components";
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { store } from '~stores';
+import { store } from 'store';
 
 import { Footer, Header, GameOver, WinnerMessage, Settings } from '~components';
 import { BLACK, GAME_ROUTE, INFO_ROUTE, ABOUT_ROUTE } from '~constants';

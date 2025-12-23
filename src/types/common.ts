@@ -1,4 +1,4 @@
-import type { MEMO, SLOT, TEXT_VIEW_NAME } from "../constants";
+import type { IMAGE_PICKER, ICON_PICKER, MEMO, SLOT, TEXT_VIEW_NAME } from "~constants";
 
 export type IsActiveType = { isActive: boolean }
 
@@ -10,3 +10,6 @@ export type CardType = {
 export type TextViewNameType = keyof typeof TEXT_VIEW_NAME;
 
 export type ViewModeType = typeof MEMO | typeof SLOT;
+
+export type ImageNameType = keyof typeof IMAGE_PICKER;
+export type IconNameType = keyof typeof ICON_PICKER;

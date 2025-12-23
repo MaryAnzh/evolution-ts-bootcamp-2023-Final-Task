@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 
-import { store } from "~stores";
+import { store } from "store";
 
 import * as S from "./styled";
 

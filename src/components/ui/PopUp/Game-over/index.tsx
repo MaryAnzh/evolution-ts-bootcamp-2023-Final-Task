@@ -1,5 +1,5 @@
 import React from "react";
-import { store } from "~stores";
+import { store } from "store";
 import { SOUNDS_DATA } from "~constants";
 import { PopUpStyle } from "../../styled";
 
